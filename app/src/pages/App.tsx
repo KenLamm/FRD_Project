@@ -1,18 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthenticationTitle } from '../features/auth/login';
-import { StatsCard } from '../features/process/pjprocess';
+import TodoPages from "./todondone/todo";
 
-function App() {
+
+const App = () => {
   return (
-   
-    <div>
-    <div> <StatsCard/> </div>
-    <div> <AuthenticationTitle/> </div>
-    </div>  
-   
+    <Router>
+      <Routes>
+        <Route path="/" element={<AuthenticationTitle />} />
+        <Route path="/TodoPages" element={<TodoPages />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
