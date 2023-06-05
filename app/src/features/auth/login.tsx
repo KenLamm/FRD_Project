@@ -28,7 +28,7 @@ import {
         </Text>
   
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-          <TextInput label="Email" placeholder="you@mantine.dev" required />
+          <TextInput label="UserName" placeholder="User Name" required />
           <PasswordInput label="Password" placeholder="Your password" required mt="md" />
           <Group position="apart" mt="lg">
             <Checkbox label="Remember me" />
