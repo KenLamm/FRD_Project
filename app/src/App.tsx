@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Camera from './features/camera';
+import Camera from './features/camera/camera';
 
 function App() {
   return (
@@ -20,7 +20,6 @@ function App() {
           Learn React
         </a>
       </header>
-      <Camera />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   TextInput,
   PasswordInput,
@@ -28,39 +30,20 @@ export function AuthenticationTitle() {
       </Text>
 
       <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-        <TextInput label="Email" placeholder="you@mantine.dev" required />
+        <TextInput label="UserName" placeholder="User Name" required />
         <PasswordInput label="Password" placeholder="Your password" required mt="md" />
         <Group position="apart" mt="lg">
           <Checkbox label="Remember me" />
           <Anchor component="button" size="sm">
             Forgot password?
           </Anchor>
-<<<<<<< HEAD
-        </Text>
-  
-        <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-          <TextInput label="UserName" placeholder="User Name" required />
-          <PasswordInput label="Password" placeholder="Your password" required mt="md" />
-          <Group position="apart" mt="lg">
-            <Checkbox label="Remember me" />
-            <Anchor component="button" size="sm">
-              Forgot password?
-            </Anchor>
-          </Group>
+        </Group>
+        <Link to="/stats-card">
           <Button fullWidth mt="xl">
             Sign in
           </Button>
-        </Paper>
-      </Container>
-    );
-  }
-=======
-        </Group>
-        <Button fullWidth mt="xl">
-          Sign in
-        </Button>
+        </Link>
       </Paper>
     </Container>
   );
 }
->>>>>>> refs/remotes/origin/main
