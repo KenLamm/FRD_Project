@@ -1,11 +1,19 @@
+<<<<<<< HEAD
+import React from "react";
+import ReactDOM from "react-dom/client";
+// import "./index.css";
+import App from "./pages/app/App";
+import reportWebVitals from "./reportWebVitals";
+=======
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './pages/app/App';
 import reportWebVitals from './reportWebVitals';
+>>>>>>> 3dd256bbab833ae5ca67d35fc9f780e27e2c8a68
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
