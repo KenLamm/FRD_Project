@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   TextInput,
   PasswordInput,
@@ -26,6 +28,7 @@ export function AuthenticationTitle() {
           Create account
         </Anchor>
       </Text>
+<<<<<<< HEAD
   
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
           <TextInput label="UserName" placeholder="User Name" required />
@@ -43,3 +46,24 @@ export function AuthenticationTitle() {
       </Container>
     );
   }
+=======
+
+      <Paper withBorder shadow="md" p={30} mt={30} radius="md">
+        <TextInput label="UserName" placeholder="User Name" required />
+        <PasswordInput label="Password" placeholder="Your password" required mt="md" />
+        <Group position="apart" mt="lg">
+          <Checkbox label="Remember me" />
+          <Anchor component="button" size="sm">
+            Forgot password?
+          </Anchor>
+        </Group>
+        <Link to="/stats-card">
+          <Button fullWidth mt="xl">
+            Sign in
+          </Button>
+        </Link>
+      </Paper>
+    </Container>
+  );
+}
+>>>>>>> refs/remotes/origin/main
