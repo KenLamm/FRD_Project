@@ -1,7 +1,6 @@
-import React from "react";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { AuthenticationTitle } from '../features/auth/login';
-import TodoPages from "./todondone/todo";
+import { AuthenticationTitle } from "../../features/auth/login";
+import TodoPages from "../../features/todo/todo";
 
 
 const App = () => {
