@@ -1,0 +1,31 @@
+.video_container {
+    position: absolute;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    max-height: fit-content;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.button_area {
+    position: absolute;
+    /* margin-left: 10%; */
+    /* margin-right: 10%; */
+    /* margin-top: 5%; */
+    min-width: 40%;
+    min-height: 10%;
+    /* right: 0; */
+    top: 80%;
+    left: 10%;
+    right: 10%;
+    /* background-color: aliceblue; */
+    display: flex;
+    justify-content:space-between
+    
+
+}
+

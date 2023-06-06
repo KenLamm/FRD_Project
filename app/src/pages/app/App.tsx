@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { AuthenticationTitle } from "../../features/auth/login";
 import { StatsCard } from '../../features/process/pjprocess';
+import PhotoPage from '../photodetailPages/photodetail';
+import FolderPage from '../workingfolderPages/workingFolder';
 
 const App = () => {
   return (
@@ -9,6 +11,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<AuthenticationTitle />} />
         <Route path="/stats-card" element={<StatsCard />} />
+        <Route path="/photodetail" element={<PhotoPage />} />
+        <Route path="/workingFolder" element={<FolderPage />} />
       </Routes>
     </Router>
   );
