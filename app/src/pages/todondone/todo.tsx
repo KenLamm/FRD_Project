@@ -1,16 +1,18 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AuthenticationTitle } from '../features/auth/login';
+import TodoPages from "./todondone/todo";
 
 
-import  Todo  from '../../features/todondone/todo';
-function TodoPages() {
+const App = () => {
   return (
-   
-    <div>
-   
-    <div> <Todo/> </div>
-    </div>  
-   
+    <Router>
+      <Routes>
+        <Route path="/" element={<AuthenticationTitle />} />
+        <Route path="/TodoPages" element={<TodoPages />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
-export default TodoPages;
+export default App;
