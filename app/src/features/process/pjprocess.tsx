@@ -26,98 +26,100 @@ export function StatsCard() {
   const { classes } = useStyles();
 
   return (
-    <Paper>
-      <Text ta="center" fw={700} className={classes.title}>
-        地基工程
-      </Text>
-      <Text c="dimmed" ta="center" fz="sm">
-        32 km / week
-      </Text>
-
-      <Group position="apart" mt="xs">
-        <Text fz="sm" color="dimmed">
-          Progress
+    <div>
+      <Paper>
+        <Text ta="center" fw={700} className={classes.title}>
+          地基工程
         </Text>
-        <Text fz="sm" color="dimmed">
-          62%
+        <Text c="dimmed" ta="center" fz="sm">
+          32 km / week
         </Text>
-      </Group>
 
-      <Progress value={62} mt={5} />
+        <Group position="apart" mt="xs">
+          <Text fz="sm" color="dimmed">
+            Progress
+          </Text>
+          <Text fz="sm" color="dimmed">
+            62%
+          </Text>
+        </Group>
 
-      <Group position="apart" mt="md">
-        <Text fz="sm">20 / 36 km</Text>
-        <Badge size="sm">4 days left</Badge>
-      </Group>
+        <Progress value={62} mt={5} />
 
-      <Text ta="center" fw={700} className={classes.title}>
-        主體結構
-      </Text>
-      <Text c="dimmed" ta="center" fz="sm">
-        32 km / week
-      </Text>
+        <Group position="apart" mt="md">
+          <Text fz="sm">20 / 36 km</Text>
+          <Badge size="sm">4 days left</Badge>
+        </Group>
 
-      <Group position="apart" mt="xs">
-        <Text fz="sm" color="dimmed">
-          Progress
+        <Text ta="center" fw={700} className={classes.title}>
+          主體結構
         </Text>
-        <Text fz="sm" color="dimmed">
-          62%
+        <Text c="dimmed" ta="center" fz="sm">
+          32 km / week
         </Text>
-      </Group>
 
-      <Progress value={62} mt={5} />
+        <Group position="apart" mt="xs">
+          <Text fz="sm" color="dimmed">
+            Progress
+          </Text>
+          <Text fz="sm" color="dimmed">
+            62%
+          </Text>
+        </Group>
 
-      <Group position="apart" mt="md">
-        <Text fz="sm">20 / 36 km</Text>
-        <Badge size="sm">4 days left</Badge>
-      </Group>
+        <Progress value={62} mt={5} />
 
-      <Text ta="center" fw={700} className={classes.title}>
-        建築安裝
-      </Text>
-      <Text c="dimmed" ta="center" fz="sm">
-        32 km / week
-      </Text>
+        <Group position="apart" mt="md">
+          <Text fz="sm">20 / 36 km</Text>
+          <Badge size="sm">4 days left</Badge>
+        </Group>
 
-      <Group position="apart" mt="xs">
-        <Text fz="sm" color="dimmed">
-          Progress
+        <Text ta="center" fw={700} className={classes.title}>
+          建築安裝
         </Text>
-        <Text fz="sm" color="dimmed">
-          62%
+        <Text c="dimmed" ta="center" fz="sm">
+          32 km / week
         </Text>
-      </Group>
 
-      <Progress value={62} mt={5} />
+        <Group position="apart" mt="xs">
+          <Text fz="sm" color="dimmed">
+            Progress
+          </Text>
+          <Text fz="sm" color="dimmed">
+            62%
+          </Text>
+        </Group>
 
-      <Group position="apart" mt="md">
-        <Text fz="sm">20 / 36 km</Text>
-        <Badge size="sm">4 days left</Badge>
-      </Group>
+        <Progress value={62} mt={5} />
 
-      <Text ta="center" fw={700} className={classes.title}>
-        內部裝修
-      </Text>
-      <Text c="dimmed" ta="center" fz="sm">
-        32 km / week
-      </Text>
+        <Group position="apart" mt="md">
+          <Text fz="sm">20 / 36 km</Text>
+          <Badge size="sm">4 days left</Badge>
+        </Group>
 
-      <Group position="apart" mt="xs">
-        <Text fz="sm" color="dimmed">
-          Progress
+        <Text ta="center" fw={700} className={classes.title}>
+          內部裝修
         </Text>
-        <Text fz="sm" color="dimmed">
-          62%
+        <Text c="dimmed" ta="center" fz="sm">
+          32 km / week
         </Text>
-      </Group>
 
-      <Progress value={62} mt={5} />
+        <Group position="apart" mt="xs">
+          <Text fz="sm" color="dimmed">
+            Progress
+          </Text>
+          <Text fz="sm" color="dimmed">
+            62%
+          </Text>
+        </Group>
 
-      <Group position="apart" mt="md">
-        <Text fz="sm">20 / 36 km</Text>
-        <Badge size="sm">4 days left</Badge>
-      </Group>
-    </Paper>
+        <Progress value={62} mt={5} />
+
+        <Group position="apart" mt="md">
+          <Text fz="sm">20 / 36 km</Text>
+          <Badge size="sm">4 days left</Badge>
+        </Group>
+      </Paper>
+    </div>
   );
 }
