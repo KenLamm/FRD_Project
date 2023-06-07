@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FaCamera, FaVideo, FaStop, FaSyncAlt, FaTimes } from "react-icons/fa";
-import styles from "./cameraCss";
 import useStyles from "./cameraCss";
 
 const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {

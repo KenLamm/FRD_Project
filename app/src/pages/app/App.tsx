@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AuthenticationTitle } from "../../features/auth/login";
+import { AuthenticationTitle } from "../auth/login";
 import { StatsCard } from "../../features/process/pjprocess";
 import Question from "../../features/newProject/createButton";
 import ButtonCreator from "../newProjectPages/NewProject";
