@@ -6,6 +6,7 @@ import Question from "../../features/newProject/createButton";
 import ButtonCreator from "../newProjectPages/NewProject";
 import PhotoPage from "../photodetailPages/photodetail";
 import FolderPage from "../workingfolderPages/workingFolder";
+import Todo from "../todoPages/todo";
 
 const App = () => {
   return (
@@ -14,6 +15,8 @@ const App = () => {
         <Route path="/" element={<AuthenticationTitle />} />
         <Route path="/stats-card" element={<StatsCard />} />
         <Route path="/project" element={<ButtonCreator />} />
+        <Route path="/Todo" element={<Todo />} />
+
         <Route path="/photodetail" element={<PhotoPage />} />
         <Route path="/workingFolder" element={<FolderPage />} />
       </Routes>
