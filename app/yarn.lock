@@ -3451,6 +3451,11 @@
   "resolved" "https://registry.npmjs.org/cjs-module-lexer/-/cjs-module-lexer-1.2.2.tgz"
   "version" "1.2.2"
 
+"classnames@^2.3.2":
+  "integrity" "sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw=="
+  "resolved" "https://registry.npmjs.org/classnames/-/classnames-2.3.2.tgz"
+  "version" "2.3.2"
+
 "clean-css@^5.2.2":
   "integrity" "sha512-JVJbM+f3d3Q704rF4bqQ5UUyTtuJ0JRKNbTKVEeujCCBoMdkEi+V+e8oktO9qGQNSvHrFTM6JZRXrUvGR1czww=="
   "resolved" "https://registry.npmjs.org/clean-css/-/clean-css-5.3.2.tgz"
@@ -7957,6 +7962,11 @@
   "resolved" "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.11.tgz"
   "version" "6.0.11"
 
+"react-icons@^4.9.0":
+  "integrity" "sha512-ijUnFr//ycebOqujtqtV9PFS7JjhWg0QU6ykURVHuL4cbofvRCf3f6GMn9+fBktEFQOIVZnuAYLZdiyadRQRFg=="
+  "resolved" "https://registry.npmjs.org/react-icons/-/react-icons-4.9.0.tgz"
+  "version" "4.9.0"
+
 "react-is@^16.13.1":
   "integrity" "sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ=="
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
@@ -8094,7 +8104,7 @@
   "resolved" "https://registry.npmjs.org/react-webcam/-/react-webcam-7.1.0.tgz"
   "version" "7.1.0"
 
-"react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.0.0", "react@^18.2.0", "react@>= 16", "react@>=16.2.0", "react@>=16.8", "react@>=16.8.0":
+"react@*", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.0.0", "react@^18.2.0", "react@>= 16", "react@>=16.2.0", "react@>=16.8", "react@>=16.8.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

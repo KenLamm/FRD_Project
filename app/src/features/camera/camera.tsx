@@ -1,12 +1,15 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { FaCamera, FaVideo, FaStop, FaSyncAlt, FaTimes } from 'react-icons/fa';
+import styles from "./camera.module.css"
 
-const Camera: React.FC = () => {
+const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [cameraAccess, setCameraAccess] = useState<boolean>(false);
   const [capturedImages, setCapturedImages] = useState<string[]>([]);
   const [recordings, setRecordings] = useState<Blob[]>([]);
   const [facingMode, setFacingMode] = useState<'user' | 'environment'>('user');
+  const [stream, setStream] = useState<boolean>(true)
 
   useEffect(() => {
     const enableCameraAccess = async () => {
@@ -22,21 +25,28 @@ const Camera: React.FC = () => {
     };
 
     enableCameraAccess();
-  }, [facingMode]);
+  });
 
   const handleCapture = () => {
-    if (videoRef.current && canvasRef.current) {
-      const video = videoRef.current;
-      const canvas = canvasRef.current;
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      const context = canvas.getContext('2d');
-      if (context) {
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        const capturedDataUrl = canvas.toDataURL();
-        setCapturedImages(prevImages => [...prevImages, capturedDataUrl]);
+    if (stream) {
+      if (videoRef.current && canvasRef.current) {
+        const video = videoRef.current;
+        const canvas = canvasRef.current;
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const context = canvas.getContext('2d');
+        if (context) {
+          context.drawImage(video, 0, 0, canvas.width, canvas.height);
+          const capturedDataUrl = canvas.toDataURL();
+          setCapturedImages(prevImages => [...prevImages, capturedDataUrl]);
+        }
       }
+
+      setStream(false)
+    } else {
+      setStream(true)
     }
+
   };
 
   const handleToggleFacingMode = () => {
@@ -70,28 +80,83 @@ const Camera: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        handleCloseCamera();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  const handleCloseCamera = () => {
+    handleStopRecording();
+    // onClose();
+  };
+
   return (
     <div>
       {cameraAccess ? (
         <div>
-          <video ref={videoRef} autoPlay playsInline></video>
-          <button onClick={handleCapture}>Capture</button>
-          {capturedImages.map((image, index) => (
-            <img key={index} src={image} alt={`Captured ${index}`} />
-          ))}
-          <button onClick={handleStartRecording}>Start Recording</button>
-          <button onClick={handleStopRecording}>Stop Recording</button>
-          <button onClick={handleToggleFacingMode}>Toggle Camera</button>
-          {recordings.map((recording, index) => (
-            <video key={index} controls>
-              <source src={URL.createObjectURL(recording)} type="video/webm" />
-            </video>
-          ))}
+          <div className={styles.video_container}>
+            {stream && <video ref={videoRef} autoPlay playsInline></video>}
+            <div className={styles.button_area}>
+              <button onClick={handleCapture} id="btn-photo" className={styles.button}>
+                <FaCamera />
+              </button>
+              <button onClick={handleStartRecording} id="btn-record">
+                <FaVideo />
+              </button>
+              <button onClick={handleStopRecording} id="btn-stop-record">
+                <FaStop />
+              </button>
+              <button onClick={handleToggleFacingMode} id="btn-cam-chooser">
+                <FaSyncAlt />
+              </button>
+              <button onClick={handleCloseCamera} id="btn-close-cam">
+                <FaTimes />
+              </button>
+            </div>
+
+
+          </div>
         </div>
       ) : (
         <p>Camera access denied.</p>
       )}
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
+
+      {!stream ? <div className={styles.video_container}>{capturedImages.map((image, index) => (
+        <img key={index} src={image} alt={`Captured ${index}`} />
+      ))}
+        <div className={styles.button_area}>
+          <button onClick={handleCapture} id="btn-photo" className={styles.button}>
+            <FaCamera />
+          </button>
+          <button onClick={handleStartRecording} id="btn-record">
+            <FaVideo />
+          </button>
+          <button onClick={handleStopRecording} id="btn-stop-record">
+            <FaStop />
+          </button>
+          <button onClick={handleToggleFacingMode} id="btn-cam-chooser">
+            <FaSyncAlt />
+          </button>
+          <button onClick={handleCloseCamera} id="btn-close-cam">
+            <FaTimes />
+          </button>
+        </div>
+      </div> : <></>}
+
+      {!stream ? recordings.map((recording, index) => (
+        <video key={index} controls>
+          <source src={URL.createObjectURL(recording)} type="video/webm" />
+        </video>
+      )) : <></>}
     </div>
   );
 };
