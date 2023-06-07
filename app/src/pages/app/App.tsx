@@ -7,12 +7,14 @@ import ButtonCreator from "../newProjectPages/NewProject";
 import PhotoPage from "../photodetailPages/photodetail";
 import FolderPage from "../workingfolderPages/workingFolder";
 import Todo from "../todoPages/todo";
+import Landing from "../../Landing";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<AuthenticationTitle />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<AuthenticationTitle />} />
         <Route path="/stats-card" element={<StatsCard />} />
         <Route path="/project" element={<ButtonCreator />} />
         <Route path="/Todo" element={<Todo />} />

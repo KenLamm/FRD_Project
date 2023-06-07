@@ -8,18 +8,19 @@ import { Link } from "react-router-dom";
 const Landing = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      history.push("/home"); // 在3秒后导航到'/home'页面
+      window.location.href = "/login";
     }, 3000);
 
     return () => clearTimeout(timer); // 在组件卸载时清除定时器
-  }, [history]);
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
-        <div>TECKY ENGINEERING COMPANY</div>
+        {/* <div>TECKY ENGINEERING COMPANY</div> */}
         <div className="center">
           <div>
             <img className="circle" src={logo} height={600} alt="Logo" />
+            {/* <Link to="/login">Click here if not redirected</Link> */}
           </div>
         </div>
       </header>
