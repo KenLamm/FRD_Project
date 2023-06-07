@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import { FaCamera, FaVideo } from 'react-icons/fa';
-import Camera from '../../features/camera/camera';
-import './photodetail.css';
+import React, { useState } from "react";
+import { FaCamera, FaVideo } from "react-icons/fa";
+import Camera from "../../features/camera/camera";
+import useStyles from "./photodetailCss";
 
 const PhotoPage: React.FC = () => {
+  const { classes } = useStyles();
   const [showCamera, setShowCamera] = useState(false);
 
   const handleCapturePhoto = () => {
@@ -21,23 +22,19 @@ const PhotoPage: React.FC = () => {
   return (
     <div>
       <h1>Photo Page</h1>
-      <div className="button-container">
-        <button className="capture-button" onClick={handleCapturePhoto}>
+      <div>
+        <button className={classes.captureButton} onClick={handleCapturePhoto}>
           <FaCamera />
         </button>
-        <button className="record-button" onClick={handleRecordVideo}>
+        <button className={classes.recordButton} onClick={handleRecordVideo}>
           <FaVideo />
         </button>
       </div>
       {showCamera && (
-        <div className="camera-overlay">
-
-            <Camera onClose={handleCloseCamera} />
-
+        <div className={classes.cameraOverlay}>
+          <Camera onClose={handleCloseCamera} />
         </div>
       )}
-
-      
     </div>
   );
 };
