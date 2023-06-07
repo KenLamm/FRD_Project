@@ -8,8 +8,8 @@ const useStyles = createStyles((theme) => ({
     flexDirection: 'column',
     padding: '40px',
     borderRadius: '20px',
-    backgroundColor: "rgb(0, 0, 0)",
-    color:"rgb(255, 255, 255)",
+    backgroundColor: "rgb(255, 255, 255)",
+    color:"rgb(0, 0, 0)",
   },
   workingFolderPage: {
       fontSize: '24px',
@@ -27,10 +27,10 @@ const useStyles = createStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     padding: '5px',
-    border: `3px solid rgb(0, 0, 0) `,
+    border: `3px solid rgb(255, 255, 255) `,
     borderRadius: '15px',
     textDecoration: 'none',
-    color: "rgb(0, 0, 0)",
+    color: "rgb(0, 0, 0 )",
     backgroundColor:  "rgb(255, 187, 73)",
     transition: 'background-color 0.3s ease',
   },
@@ -46,7 +46,7 @@ const useStyles = createStyles((theme) => ({
     padding: '10px',
     border: 'none',
     borderRadius: '5px',
-    backgroundColor: "rgb(0, 0, 0)",
+    backgroundColor: "rgb(255, 255, 255)",
     color: "rgb(255, 187, 73)",
     fontSize: '24px',
     cursor: 'pointer',
@@ -57,17 +57,17 @@ const useStyles = createStyles((theme) => ({
   addIcon: {
     marginRight: '5px',
     borderRadius: '5px',
-    backgroundColor: "rgm (0, 0, 0)",
+    backgroundColor: "rgm (255, 255, 255)",
     color: "rgb(255, 187, 73)",
   },
   addInput: {
     marginRight: '5px',
   },
   addButtonContainer:{
-    backgroundColor: "rgb(255, 187, 73)",
+    backgroundColor: "rgb(255, 255, 255)",
   },
   title:{
-    backgroundColor: "rgb(0, 0, 0)",
+    backgroundColor: "rgb(255, 255, 255)",
     alignItems: 'center',
   }
 
