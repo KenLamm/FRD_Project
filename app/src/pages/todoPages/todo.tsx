@@ -2,13 +2,12 @@
 
 // import TodoPages from "../../features/todo/todo";
 
-
 // const Done = () => {
 //   const { classes } = useStyles();
 //   return (
 //     <Router>
 //       <Routes>
-       
+
 //         <Route path="/TodoPages" element={<TodoPages />} />
 //       </Routes>
 //     </Router>
@@ -20,12 +19,9 @@
 //   throw new Error('Function not implemented.');
 // }
 
-
-
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import useStyles from '../../pages/todoPages/todoCss';
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import useStyles from "../../pages/todoPages/todoCss";
 
 interface Todo {
   id: number;
@@ -61,36 +57,41 @@ const Todo: React.FC = () => {
 
   return (
     <div>
-    <h1 className={classes.mainHeading}>地基工程</h1>
-  
-  <div className={classes.todoSection}>
-      <div className={classes.todoColumn}>
-        <h2>進行中</h2>
-        <ul className={classes.todoList}>
-          {todoItems.map((todo) => (
-            <li key={todo.id} className={classes.todoItem}>
-              <Link to={`/details/${todo.id}`} className={classes.todoLink}>
-                {todo.title}
-              </Link>
-              <button className={classes.todoButton} onClick={() => handleToggleDone(todo.id)}>
-                完成
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className={classes.doneColumn}>
-        <h2>已完成</h2>
-        <ul className={classes.doneList}>
-          {doneItems.map((todo) => (
-            <li key={todo.id} className={classes.doneItem}>
-              <span className={classes.doneTitle}>{todo.title}</span>
-            </li>
-          ))}
-        </ul>
+      <h1 className={classes.mainHeading}>地基工程</h1>
+
+      <div className={classes.todoSection}>
+        <div className={classes.todoColumn}>
+          <h2>進行中</h2>
+          <ul className={classes.todoList}>
+            {todoItems.map((todo) => (
+              <li key={todo.id} className={classes.todoItem}>
+                {/* <Link to={`/details/${todo.id}`} className={classes.todoLink}> */}
+                <Link to={`/WorkingFolder`} className={classes.todoLink}>
+                  {todo.title}
+                </Link>
+                <button
+                  className={classes.todoButton}
+                  onClick={() => handleToggleDone(todo.id)}
+                >
+                  完成
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={classes.doneColumn}>
+          <h2>已完成</h2>
+          <ul className={classes.doneList}>
+            {doneItems.map((todo) => (
+              <li key={todo.id} className={classes.doneItem}>
+                <span className={classes.doneTitle}>{todo.title}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-  )}
+  );
+};
 
 export default Todo;

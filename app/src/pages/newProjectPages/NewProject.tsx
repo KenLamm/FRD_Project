@@ -3,12 +3,12 @@ import { FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
 import React, { useState } from "react";
 import { Button, Modal, Text } from "@mantine/core";
 
-const centerStyle: React.CSSProperties = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: "100vh",
-};
+// const centerStyle: React.CSSProperties = {
+//   display: "flex",
+//   justifyContent: "center",
+//   alignItems: "center",
+//   height: "100vh",
+// };
 const ButtonCreator = () => {
   const { classes } = useStyles();
   const [buttons, setButtons] = useState<JSX.Element[]>([]);
@@ -56,7 +56,7 @@ const ButtonCreator = () => {
         <FaRegPlusSquare />
       </button>
       <div className={classes.buttonList}>{buttons}</div>
-      <div style={centerStyle}>
+      <div className={classes.centerStyle}>
         <Modal opened={modalOpen} onClose={closeModal} centered>
           <Modal.Header className={classes.alertTittle}>
             <Modal.Title>

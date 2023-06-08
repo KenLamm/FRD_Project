@@ -1,18 +1,20 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { AuthenticationTitle } from "../../features/auth/login";
+import { AuthenticationTitle } from "../auth/login";
 import { StatsCard } from "../../features/process/pjprocess";
 import Question from "../../features/newProject/createButton";
 import ButtonCreator from "../newProjectPages/NewProject";
 import PhotoPage from "../photodetailPages/photodetail";
 import FolderPage from "../workingfolderPages/workingFolder";
 import Todo from "../todoPages/todo";
+import Landing from "../../Landing";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<AuthenticationTitle />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<AuthenticationTitle />} />
         <Route path="/stats-card" element={<StatsCard />} />
         <Route path="/project" element={<ButtonCreator />} />
         <Route path="/Todo" element={<Todo />} />
