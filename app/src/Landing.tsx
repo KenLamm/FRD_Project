@@ -20,7 +20,6 @@ const Landing = () => {
         <div className="center">
           <div>
             <img className="circle" src={logo} height={600} alt="Logo" />
-            {/* <Link to="/login">Click here if not redirected</Link> */}
           </div>
         </div>
       </header>
