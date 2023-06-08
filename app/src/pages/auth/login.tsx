@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Center, Image } from "@mantine/core";
 import { Link } from "react-router-dom";
-import logo from "../../logo.jpeg";
+import companyName from "../../comanyName.jpg";
 import useStyles from "./loginCss";
 
 import {
@@ -39,29 +39,18 @@ export function AuthenticationTitle() {
   }, []);
   return (
     <div>
-      {/* <div className={classes.center}>
-        {showImage && (
-          <div>
-            <img
-              className={classes.circle}
-              src={logo}
-              height={600}
-              alt="Logo"
-            />
-          </div>
-        )}
-      </div>
-      {!showImage && ( */}
       <div className={classes.centerStyle}>
-        <Container size={420} my={40}>
-          <Title
-            align="center"
-            sx={(theme) => ({
-              fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-              fontWeight: 900,
-            })}
-          >
-            Welcome back!
+        <Container className="name">
+          <Title align="center" sx={(theme) => ({})}>
+            <div>
+              <img
+                style={{ width: "70%", height: "70%", marginBottom: "-30%" }}
+                className="circle"
+                src={companyName}
+                height={100}
+                alt="Company"
+              />
+            </div>
           </Title>
 
           <Paper withBorder shadow="md" p={30} mt={30} radius="md">
@@ -86,7 +75,6 @@ export function AuthenticationTitle() {
           </Paper>
         </Container>
       </div>
-      {/* )} */}
     </div>
   );
 }

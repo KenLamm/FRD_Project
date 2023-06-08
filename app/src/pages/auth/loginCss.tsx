@@ -25,11 +25,12 @@ const useStyles = createStyles((theme) => ({
     height: "100vh",
   },
   circle: {
-    width: 200,
-    height: 200,
+    width: "300px",
+    height: "300px",
     borderRadius: "50%",
     objectFit: "cover",
   },
+  name: {},
 }));
 
 export default useStyles;
