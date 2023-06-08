@@ -5,7 +5,7 @@ const useStyles = createStyles((theme) => ({
       mainHeading: {
         backgroundColor: "rgb(255, 187, 73)",
         color: "rgb(0, 0, 0)",
-        padding: "10px",
+        padding: "1%",
         textAlign: "center",
       },
       todoSection: {
@@ -22,16 +22,16 @@ const useStyles = createStyles((theme) => ({
         padding: 0,
       },
       todoItem: {
-        marginBottom: "10px",
+        marginBottom: "3%",
         listStyleType: "none",
       },
       todoLink: {
         textDecoration: "none",
         display: "inline-block",
-        padding: "5px 10px",
+        padding: "2% 2%",
         backgroundColor: "rgb(255, 187, 73)",
         color: "black",
-        borderRadius: "5px",
+        borderRadius: "15%",
       },
       todoButton: {
         backgroundColor: "rgb(0, 0, 0)",
