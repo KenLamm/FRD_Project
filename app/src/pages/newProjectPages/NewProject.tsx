@@ -69,7 +69,7 @@ const ButtonCreator = () => {
               type="text"
               value={newButtonName}
               onChange={handleInputChange}
-              style={{ width: "80%" }}
+              // style={{ width: "80%" }}
             />
           </Modal.Body>
           <Modal.Body>

@@ -1,6 +1,6 @@
 import { createStyles } from "@mantine/core";
 
-const useStyles = createStyles((theme) => ({
+const useStyles = createStyles({
   videoContainer: {
     position: "absolute",
     marginLeft: "10%",
@@ -23,6 +23,49 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
   },
-}));
+  button: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "transparent",
+    border: "none",
+    cursor: "pointer",
+    transition: "opacity 0.3s ease",
+  },
+  buttonIcon: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 24,
+    height: 24,
+    color: "rgba(255, 255, 255, 0.8)", 
+    transition: "color 0.3s ease",
+  },
+  buttonText: {
+    marginLeft: 8,
+    color: "rgba(255, 255, 255, 0.8)",
+    fontSize: 14,
+    transition: "color 0.3s ease",
+  },
+  buttonHover: {
+    "& $buttonIcon": {
+      color: "rgba(255, 255, 255, 1)",
+    },
+    "& $buttonText": {
+      color: "rgba(255, 255, 255, 1)",
+    },
+  },
+  tbSendButton: {
+    position: "absolute",
+    bottom: "-10%",
+    right: 10,
+    buttom: 500,
+  },
+  tiDeleteButton: {
+    position: "absolute",
+    bottom: "10%",
+    left: 10,
+  },
+});
 
 export default useStyles;
