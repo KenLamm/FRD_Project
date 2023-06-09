@@ -24,7 +24,7 @@ const useStyles = createStyles((theme) => ({
     flexWrap: "wrap",
     justifyContent: "center",
     width: "60%",
-    fontSize: "40px",
+    fontSize: "120%",
   },
   customButton: {
     margin: "10px",
@@ -36,8 +36,8 @@ const useStyles = createStyles((theme) => ({
     cursor: "pointer",
     textAlign: "center",
     width: "70%",
-    height: "60px",
-    fontSize: "40px",
+    height: "60%",
+    fontSize: "18px",
   },
   buttonWrapper: {
     display: "flex",
@@ -50,12 +50,27 @@ const useStyles = createStyles((theme) => ({
   alertInput: {
     marginTop: "3%",
     marginBottom: "3%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: "20px",
   },
+  // centerStyle: {
+  //   display: "flex",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  //   height: "100vh",
+  //   fontSize: "20px",
+  // },
   centerStyle: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     height: "100vh",
+    textAlign: "center",
+    position: "fixed",
+    top: "50%",
+    left: "50%",
   },
 }));
 
