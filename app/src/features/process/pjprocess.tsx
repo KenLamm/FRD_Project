@@ -21,10 +21,10 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    lineHeight: "100%",
+    lineHeight: "120%",
     backgroundColor: "rgb(255, 187, 73)",
     color: "black",
-     
+    borderRadius:"15% ",
   },
   linktodo:{
     textDecoration: "none", 
@@ -56,6 +56,7 @@ export function StatsCard() {
         alignItems: "center",
         minHeight: viewport.height,
         
+        
 
       }}
     >
@@ -64,7 +65,7 @@ export function StatsCard() {
           width: "80%",
           maxWidth: "1200px",
           margin: "auto",
-          
+         
         }}
       >
         <Link to="/Todo" className={classes.linktodo}>
