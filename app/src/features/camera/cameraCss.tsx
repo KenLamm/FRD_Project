@@ -16,7 +16,11 @@ const useStyles = createStyles({
     maxHeight: "fit-content",
     height: "100vh",
     width: "100vw",
+<<<<<<< HEAD
     zIndex: -10,
+=======
+    // zIndex: -10,
+>>>>>>> refs/remotes/origin/main
     top: "30%",
     left: "40%",
     bottom: "30%",
@@ -48,7 +52,7 @@ const useStyles = createStyles({
     justifyContent: "center",
     width: 24,
     height: 24,
-    color: "rgba(255, 255, 255, 0.8)", 
+    color: "rgba(255, 255, 255, 0.8)",
     transition: "color 0.3s ease",
   },
   buttonText: {
@@ -80,3 +84,4 @@ const useStyles = createStyles({
 
 
 export default useStyles;
+
