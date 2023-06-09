@@ -21,7 +21,18 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   useEffect(() => {
     const enableCameraAccess = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode } });
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video:
+          {
+            facingMode,
+            width: {
+              max: 400, min: 400
+            },
+            height: {
+              max: 600, min: 600
+            }
+          }
+        });
         setCameraAccess(true);
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
@@ -138,11 +149,11 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   };
 
   return (
-    <div>
+    <>
       {cameraAccess ? (
-        <div>
-          <div className={classes.videoContainer}>
-            {stream && <video ref={videoRef} autoPlay playsInline></video>}
+        <>
+          <div className={classes.videoContainer + " myclass"}>
+            {stream && <video className={classes.visibleVideo} ref={videoRef} autoPlay playsInline></video>}
             <div className={classes.buttonArea}>
               {stream ? (
                 <>
@@ -167,14 +178,10 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   </button>
                 </>
               ) : (
-                <>
-                  {/* <button className={classes.button}><TbSend className={classes.buttonIcon} /></button>
-                  <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button> */}
-                </>
+                <></>
               )}
             </div>
           </div>
-
           {!stream && (
             <div className={classes.videoContainer}>
 
@@ -182,10 +189,11 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 {capturedImages.map((image, index) => (
                   <img key={index} src={image} alt={`Captured ${index}`} />
                 ))}
-                <div className={classes.buttonArea}>
+                <div className={classes.saveCancelArea}>
                   {!stream ? (<>
-                    <button className={classes.button}><TbSend className={classes.buttonIcon} /></button>
-                    <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button></>) : (<></>)}
+                    <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
+                    <button className={classes.button}><TbSend className={classes.buttonIcon} /></button></>) : (<></>)}
+
                 </div>
               </> : <></>}
               {mode === "video" ?
@@ -197,23 +205,23 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         <source src={recording} type="video/webm" />
                       </video>
                     )))}
-              <div className={classes.buttonArea}>
-                  {!isRecording ? (<>
-                    <button className={classes.button}><TbSend className={classes.buttonIcon} /></button>
-                    <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button></>) : (<></>)}
-                </div>
+                  <div className={classes.saveCancelArea}>
+                    {!isRecording ? (<>
+                      <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
+                      <button className={classes.button}><TbSend className={classes.buttonIcon} /></button></>) : (<></>)}
+                  </div>
                 </> : <></>}
 
             </div>
           )}
-        </div>
+        </>
       ) : (
         <p>Camera access denied.</p>
       )}
 
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
 
-    </div>
+    </>
 
   );
 };
