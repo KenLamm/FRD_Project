@@ -18,12 +18,13 @@ model User {
   id        Int      @id @default(autoincrement())
   username     String   @unique
   password     String   @unique
-  isAdmin      Boolean
+  isAdmin      Boolean  @default(false)
   projects     Project[]
   photo        Photo[]
   teammate     Teammate[]
   task         Task[]
   record       Record[]
+  syslog       Syslog[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
@@ -69,7 +70,7 @@ model Teammate {
 
 model Task {
   id        Int      @id @default(autoincrement())
-  isFinished  Boolean  
+  isFinished  Boolean  @default(false)
   user        User   @relation(fields: [user_id], references: [id])
   user_id     Int    @map("user_id")
   category      Category   @relation(fields: [category_id], references: [id])
@@ -77,6 +78,7 @@ model Task {
   project     Project @relation(fields: [project_id], references: [id])
   project_id  Int   @map("project_id")
   record      Record[]
+  syslog       Syslog[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
@@ -87,12 +89,13 @@ model Task {
 
 model Record {
   id        Int      @id @default(autoincrement())
-  title     String    @unique
+  name     String    @unique
   user        User   @relation(fields: [user_id], references: [id])
   user_id     Int    @map("user_id")
   task        Task   @relation(fields: [task_id], references: [id])
   task_id     Int    @map("task_id")
   photo        Photo[]
+  syslog       Syslog[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
@@ -104,11 +107,12 @@ model Photo {
   id        Int      @id @default(autoincrement())
   user        User   @relation(fields: [user_id], references: [id])
   user_id     Int    @map("user_id")
-  photo_name  String   @unique
-  s3_name     String   @unique
-  description      String
+  photo_name  String?   @unique
+  s3_name     String?   @unique
+  description String?
   record      Record @relation(fields: [record_id], references: [id])
   record_id     Int
+  syslog       Syslog[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   
@@ -117,13 +121,15 @@ model Photo {
 }
 
 model Syslog {
-  id        Int      @id @default(autoincrement())
-  providing_user_id    Int   @unique
-  receiving_user_id    Int   
-  receiving_task_id    Int   @map("user_id")
-  receiving_folder_id  Int   
-  receiving_record_id  Int
-  receiving_photo_id   Int
+  id                   Int      @id @default(autoincrement())
+  user                 User     @relation(fields: [user_id], references: [id])
+  user_id              Int      @map("user_id")
+  task                 Task     @relation(fields: [task_id], references: [id])
+  task_id    Int     @map("task_id")  
+  record               Record   @relation(fields: [record_id], references: [id])
+  record_id  Int     @map("record_id")
+  photo                Photo    @relation(fields: [photo_id], references: [id])
+  photo_id   Int     @map("photo_id")
   action               String
   createdAt            DateTime @default(now())
 
