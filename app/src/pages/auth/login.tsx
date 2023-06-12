@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Center, Image } from "@mantine/core";
 import { Link } from "react-router-dom";
-import companyName from "../../comanyName.jpg";
+import companyName from "../../companyName.jpg";
 import useStyles from "./loginCss";
 
 import {
