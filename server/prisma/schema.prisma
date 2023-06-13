@@ -17,7 +17,7 @@ datasource db {
 model User {
   id        Int      @id @default(autoincrement())
   username     String   @unique
-  password     String   @unique
+  password     String   
   isAdmin      Boolean  @default(false)
   projects     Project[]
   photo        Photo[]
@@ -39,7 +39,6 @@ model Project {
   user_id    Int    @map("user_id")
   category   Category[]
   teammate   Teammate[]
-  task        Task[] 
   updatedAt DateTime @updatedAt
 
   @@map("project")
@@ -76,8 +75,6 @@ model Task {
   user_id     Int    @map("user_id")
   category      Category   @relation(fields: [category_id], references: [id])
   category_id   Int        @map("category_id")
-  project     Project @relation(fields: [project_id], references: [id])
-  project_id  Int   @map("project_id")
   record      Record[]
   syslog       Syslog[]
   createdAt DateTime @default(now())

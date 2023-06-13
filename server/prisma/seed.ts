@@ -59,70 +59,60 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[1].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '地基檢測',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[1].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '地基調平',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[1].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '地基加強',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[1].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '地基穩固',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[1].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '結構支撐',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[1].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '空隙填充',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[1].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '沉降處理',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[1].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '地基處理',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[1].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '滲漏處理',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[1].id,
-        project_id: seededProjects[1].id,
       },
       ///////////////////////categories 2
       {
@@ -130,35 +120,30 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[2].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '柱施工',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[2].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '梁施工',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[2].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '隔牆施工',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[2].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '結構施工',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[2].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -166,7 +151,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[2].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -174,7 +158,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[2].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -182,7 +165,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[2].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -190,7 +172,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[2].id,
-        project_id: seededProjects[1].id,
       },
 
       ///////////////////categories 3
@@ -200,7 +181,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[3].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -208,7 +188,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[3].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -216,7 +195,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[3].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -224,7 +202,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[3].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -232,7 +209,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[3].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -240,7 +216,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[3].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -248,7 +223,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[3].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -256,7 +230,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[3].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -264,7 +237,6 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[3].id,
-        project_id: seededProjects[1].id,
       },
 
       {
@@ -272,16 +244,14 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[3].id,
-        project_id: seededProjects[1].id,
       },
 
-      //////categories
+      //////categories 4
       {
         name: '磚牆施工',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[4].id,
-        project_id: seededProjects[1].id,
       },
       
       {
@@ -289,63 +259,54 @@ async function seed() {
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[4].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '木工製作',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[4].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '地板安裝',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[4].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '石材安裝',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[4].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '吊頂安裝',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[4].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '壁紙貼裝',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[4].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '櫥櫃安裝',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[4].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '電氣安裝',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[4].id,
-        project_id: seededProjects[1].id,
       },
       {
         name: '燈具安裝',
         isFinished: false,
         user_id: seededUsers[1].id,
         category_id: seededCategories[4].id,
-        project_id: seededProjects[1].id,
       },
 
     ];
@@ -411,153 +372,153 @@ async function seed() {
       {
         name: '基礎定位',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[11].id,
+        task_id: seededTasks[1].id,
       },
       {
         name: '基坑支撐',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[12].id,
+        task_id: seededTasks[2].id,
       },
       {
         name: '鋼筋綁扎',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[13].id,
+        task_id: seededTasks[3].id,
       },
       {
         name: '混凝土澆灌',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[14].id,
+        task_id: seededTasks[4].id,
       },
       {
         name: '垂直支撐',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[15].id,
+        task_id: seededTasks[5].id,
       },
       {
         name: '隔音性能',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[16].id,
+        task_id: seededTasks[6].id,
       },
       {
         name: '防水處理',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[17].id,
+        task_id: seededTasks[7].id,
       },
       {
         name: '鋼柱鋼梁連接',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[18].id,
+        task_id: seededTasks[8].id,
       },
       {
         name: '建造樓板結構',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[19].id,
+        task_id: seededTasks[9].id,
       },
       {
         name: '防水層修補',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[20].id,
+        task_id: seededTasks[10].id,
       },
       {
         name: '電線',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[21].id,
+        task_id: seededTasks[1].id,
       },
       {
         name: '電纜',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[22].id,
+        task_id: seededTasks[2].id,
       },
       {
         name: '插座',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[23].id,
+        task_id: seededTasks[3].id,
       },
       {
         name: '排水管',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[24].id,
+        task_id: seededTasks[4].id,
       },
       {
         name: '火災報警系統',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[25].id,
+        task_id: seededTasks[5].id,
       },
       {
         name: '消防設備',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[26].id,
+        task_id: seededTasks[6].id,
       },
       {
         name: '噴水滅火器',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[27].id,
+        task_id: seededTasks[7].id,
       },
       {
         name: '電梯系統安裝',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[28].id,
+        task_id: seededTasks[8].id,
       },
       {
         name: '電梯井道電梯廂',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[29].id,
+        task_id: seededTasks[9].id,
       },
       {
         name: '控制系統',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[30].id,
+        task_id: seededTasks[10].id,
       },
       {
         name: '磚瓦鋪設',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[31].id,
+        task_id: seededTasks[1].id,
       },
       {
         name: '天花板油漆',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[32].id,
+        task_id: seededTasks[2].id,
       },
       {
         name: '木製家具',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[33].id,
+        task_id: seededTasks[3].id,
       },
       {
         name: '地板鋪設固定',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[34].id,
+        task_id: seededTasks[4].id,
       },
       {
         name: '吊頂材料安裝',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[35].id,
+        task_id: seededTasks[5].id,
       },
       {
         name: '浴室櫥櫃安裝',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[36].id,
+        task_id: seededTasks[6].id,
       },
       {
         name: '廚房安裝',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[40].id,
+        task_id: seededTasks[7].id,
       },
       {
         name: '設備佈置連接',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[37].id,
+        task_id: seededTasks[8].id,
       },
       
       {
         name: '開關電氣',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[38].id,
+        task_id: seededTasks[9].id,
       },
       {
         name: '壁紙貼裝工作',
         user_id: seededUsers[1].id,
-        task_id: seededTasks[39].id,
+        task_id: seededTasks[0].id,
       },
       
 
