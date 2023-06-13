@@ -797,7 +797,11 @@
     consola "^2.15.0"
     node-fetch "^2.6.1"
 
+<<<<<<< HEAD
 "@prisma/client@^4.15.0":
+=======
+"@prisma/client@4.15.0":
+>>>>>>> 8c7e75fca9b6dc5ab6bf71a124f6ae2380856112
   version "4.15.0"
   resolved "https://registry.yarnpkg.com/@prisma/client/-/client-4.15.0.tgz#f52ec6ca6fbde37395a54b0a9e5da603a9de15f3"
   integrity sha512-xnROvyABcGiwqRNdrObHVZkD9EjkJYHOmVdlKy1yGgI+XOzvMzJ4tRg3dz1pUlsyhKxXGCnjIQjWW+2ur+YXuw==
@@ -3996,7 +4000,7 @@ pretty-format@^29.0.0, pretty-format@^29.5.0:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
-prisma@^4.15.0:
+prisma@4.15.0:
   version "4.15.0"
   resolved "https://registry.npmjs.org/prisma/-/prisma-4.15.0.tgz"
   integrity sha512-iKZZpobPl48gTcSZVawLMQ3lEy6BnXwtoMj7hluoGFYu2kQ6F9LBuBrUyF95zRVnNo8/3KzLXJXJ5TEnLSJFiA==

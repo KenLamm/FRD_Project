@@ -1,23 +1,3 @@
-// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
-// import TodoPages from "../../features/todo/todo";
-
-// const Done = () => {
-//   const { classes } = useStyles();
-//   return (
-//     <Router>
-//       <Routes>
-
-//         <Route path="/TodoPages" element={<TodoPages />} />
-//       </Routes>
-//     </Router>
-//   );
-// };
-
-// export default Done;
-// function useStyles(): { classes: any; } {
-//   throw new Error('Function not implemented.');
-// }
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -95,3 +75,4 @@ const Todo: React.FC = () => {
 };
 
 export default Todo;
+

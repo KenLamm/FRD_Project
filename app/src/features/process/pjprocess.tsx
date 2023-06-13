@@ -1,3 +1,6 @@
+
+
+
 import {
   createStyles,
   ThemeIcon,
@@ -37,7 +40,6 @@ const useStyles = createStyles((theme) => ({
   },
   tittleBar:{
     width: "28%",
-   
     justifyContent: "center",
    
 
