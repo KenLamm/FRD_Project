@@ -1,29 +1,70 @@
 import { PrismaClient } from '@prisma/client';
+import * as bcrypt from 'bcryptjs';
+const SALT_ROUNDS = 10;
 
-const prisma = new PrismaClient();
+async function hashPassword(plainPassword: string) {
+  const hash: string = await bcrypt.hash(plainPassword, SALT_ROUNDS);
+  return hash;
+}
 
-async function seed() {
+// async function main() {
+//   const prisma = new PrismaClient();
+//   const insertUser = {
+//     username: 'sam',
+//     password: await hashPassword('1234'),
+//   };
+
+//   await prisma.user.upsert({
+//     where: { username: insertUser.username },
+//     update: {},
+//     create: { ...insertUser },
+//   });
+// }
+
+main()
+  .then(() => console.log('seed done'))
+  .catch((error) => console.error(error));
+
+async function main() {
+  const prisma = new PrismaClient();
+
+  let hashed = await hashPassword('123456');
   try {
     // Seed users
     const users = [
-      { username: 'Admin', password: '123456', isAdmin: true },
-      { username: 'Admin1', password: '123456', isAdmin: true },
-      { username: 'Sam', password: '123456', isAdmin: false },
-      { username: 'Ken', password: '123456', isAdmin: false },
-      { username: 'Mav', password: '123456', isAdmin: false },
+      { username: 'Admin', password: hashed, isAdmin: true },
+      { username: 'Admin1', password: hashed, isAdmin: true },
+      { username: 'Sam', password: hashed, isAdmin: false },
+      { username: 'Ken', password: hashed, isAdmin: false },
+      { username: 'Mav', password: hashed, isAdmin: false },
     ];
 
-    const seededUsers = await prisma.user.createMany({
-      data: users,
-    });
+    // const seededUsers =  await this.prisma.user(users.map((user) => prisma.user.create({
+    //   data: user,
+    // })))
+
+    let seededUsers = [];
+
+    for (let item of users) {
+      let data = await prisma.user.create({
+        data: {
+          username: item.username,
+          password: item.password,
+          isAdmin: item.isAdmin,
+        },
+      });
+      seededUsers.push(data);
+    }
+
+    console.log('hibye', seededUsers);
 
     // Seed projects
     const projects = [
-      { name: '北區醫院擴建計劃', user_id: seededUsers[1].id },
-      { name: '油麻地戲院第二期建造工程', user_id: seededUsers[2].id },
-      { name: '瑪麗醫院第一期重建計劃', user_id: seededUsers[3].id },
-      { name: '葵涌醫院重建工程(第二及三期)', user_id: seededUsers[4].id },
-      { name: '啟德發展區興建新急症醫院', user_id: seededUsers[5].id },
+      { name: '北區醫院擴建計劃', user_id: seededUsers[0].id },
+      { name: '油麻地戲院第二期建造工程', user_id: seededUsers[1].id },
+      { name: '瑪麗醫院第一期重建計劃', user_id: seededUsers[2].id },
+      { name: '葵涌醫院重建工程(第二及三期)', user_id: seededUsers[3].id },
+      { name: '啟德發展區興建新急症醫院', user_id: seededUsers[4].id },
     ];
 
     const seededProjects = await prisma.project.createMany({
@@ -253,7 +294,7 @@ async function seed() {
         user_id: seededUsers[1].id,
         category_id: seededCategories[4].id,
       },
-      
+
       {
         name: '油漆工程',
         isFinished: false,
@@ -308,9 +349,7 @@ async function seed() {
         user_id: seededUsers[1].id,
         category_id: seededCategories[4].id,
       },
-
     ];
-
 
     const seededTasks = await prisma.task.createMany({
       data: tasks,
@@ -509,7 +548,7 @@ async function seed() {
         user_id: seededUsers[1].id,
         task_id: seededTasks[8].id,
       },
-      
+
       {
         name: '開關電氣',
         user_id: seededUsers[1].id,
@@ -520,8 +559,6 @@ async function seed() {
         user_id: seededUsers[1].id,
         task_id: seededTasks[0].id,
       },
-      
-
     ];
 
     const seededRecords = await prisma.record.createMany({
@@ -577,8 +614,3 @@ async function seed() {
     await prisma.$disconnect();
   }
 }
-
-seed().catch((error) => {
-  console.error('Seeding error:', error);
-  process.exit(1);
-});

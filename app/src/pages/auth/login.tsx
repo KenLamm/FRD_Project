@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Center, Image } from "@mantine/core";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import companyName from "../../companyName.jpg";
 import useStyles from "./loginCss";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { login } from "./authAPI";
 
 import {
   TextInput,
@@ -27,7 +29,22 @@ import {
 export function AuthenticationTitle() {
   const [showImage, setShowImage] = useState(true);
   const { classes } = useStyles();
+  const navigate = useNavigate();
+  const [username, setUserName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const inputUserName = (value: string) => {
+    setUserName(value);
+    setPassword(value);
+  };
 
+  // const handleSignIn = async () => {
+  //   let result = await login(username, password);
+  //   console.log(result);
+  // };
+
+  // const submitButton = () => {
+  //   handleSignIn();
+  // };
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowImage(false);
@@ -54,24 +71,47 @@ export function AuthenticationTitle() {
           </Title>
 
           <Paper withBorder shadow="md" p={30} mt={30} radius="md">
-            <TextInput label="UserName" placeholder="User Name" required />
-            <PasswordInput
-              label="Password"
-              placeholder="Your password"
-              required
-              mt="md"
-            />
-            <Group position="apart" mt="lg">
-              <Checkbox label="Remember me" />
-              <Anchor component="button" size="sm">
-                Forgot password?
-              </Anchor>
-            </Group>
-            <Link to="/project">
-              <Button fullWidth mt="xl">
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+                let result = await login({ username, password });
+                // on return true, navigate to home page
+                // useNavigate()
+                if (result) {
+                  navigate("/project");
+                } else {
+                  alert("Invalid username or password");
+                }
+
+                console.log("this is result:", result);
+              }}
+            >
+              <TextInput
+                label="username"
+                onChange={(e) => setUserName(e.currentTarget.value)}
+                value={username}
+                placeholder="User Name"
+                required
+              />
+              <PasswordInput
+                label="Password"
+                onChange={(e) => setPassword(e.currentTarget.value)}
+                value={password}
+                placeholder="Your password"
+                required
+                mt="md"
+              />
+              <Group position="apart" mt="lg">
+                <Checkbox label="Remember me" />
+                <Anchor component="button" size="sm">
+                  Forgot password?
+                </Anchor>
+              </Group>
+
+              <Button type="submit" fullWidth mt="xl">
                 Sign in
               </Button>
-            </Link>
+            </form>
           </Paper>
         </Container>
       </div>

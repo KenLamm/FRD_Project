@@ -50,7 +50,11 @@ const useStyles = createStyles((theme) => ({
   alertInput: {
     marginTop: "3%",
     marginBottom: "3%",
+<<<<<<< HEAD
+    fontSize: "16px",
+=======
     fontSize: "16px"
+>>>>>>> 8c7e75fca9b6dc5ab6bf71a124f6ae2380856112
   },
   // centerStyle: {
   //   display: "flex",

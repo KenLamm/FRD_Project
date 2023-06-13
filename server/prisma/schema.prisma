@@ -69,7 +69,7 @@ model Teammate {
 
 model Task {
   id        Int      @id @default(autoincrement())
-  name      String    
+  name      String  
   isFinished  Boolean  @default(false)
   user        User   @relation(fields: [user_id], references: [id])
   user_id     Int    @map("user_id")
