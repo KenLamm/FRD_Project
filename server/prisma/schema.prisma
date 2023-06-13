@@ -70,6 +70,7 @@ model Teammate {
 
 model Task {
   id        Int      @id @default(autoincrement())
+  name      String    
   isFinished  Boolean  @default(false)
   user        User   @relation(fields: [user_id], references: [id])
   user_id     Int    @map("user_id")
@@ -107,7 +108,7 @@ model Photo {
   id        Int      @id @default(autoincrement())
   user        User   @relation(fields: [user_id], references: [id])
   user_id     Int    @map("user_id")
-  photo_name  String?   @unique
+  name        String?   
   s3_name     String?   @unique
   description String?
   record      Record @relation(fields: [record_id], references: [id])
