@@ -187,17 +187,19 @@ const ButtonCreator = () => {
         >
           <Modal.Header className={classes.alertTittle}>
             <Modal.Title>
-              <h2>Enter your new project name:</h2>
+              <div>Enter your new project name:</div>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <input
-              className={classes.alertInput}
-              type="text"
-              value={newButtonName}
-              onChange={handleInputChange}
-              // style={{ width: "80%" }}
-            />
+            <div>
+              <input
+                className={classes.alertInput}
+                type="text"
+                value={newButtonName}
+                onChange={handleInputChange}
+                // style={{ width: "80%" }}
+              />
+            </div>
           </Modal.Body>
           <Modal.Body>
             <Button style={{ marginRight: "50px" }} onClick={createButton}>
