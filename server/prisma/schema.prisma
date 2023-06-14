@@ -17,7 +17,7 @@ model User {
   is_admin   Boolean    @default(false)
   projects  Project[]
   photo     Photo[]
-  user_project  User_Project[]
+  user_project  UserProject[]
   task      Task[]
   record    Record[]
   syslog    Syslog[]
@@ -33,7 +33,7 @@ model Project {
   user      User       @relation(fields: [user_id], references: [id])
   user_id   Int        @map("user_id")
   category  Category[]
-  user_project  User_Project[]
+  user_project  UserProject[]
   updated_at DateTime   @updatedAt
 
   @@map("project")
@@ -49,7 +49,7 @@ model Category {
   @@map("category")
 }
 
-model User_Project {
+model UserProject {
   id         Int      @id @default(autoincrement())
   user       User     @relation(fields: [user_id], references: [id])
   user_id    Int      @map("user_id")
