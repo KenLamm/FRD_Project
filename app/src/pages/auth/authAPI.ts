@@ -22,9 +22,21 @@ export async function login(user: User) {
     const result = data.access_token;
     if (response.status === 200) {
       // set local storage
-      let token = result;
-      let decoded = jwt_decode(token);
-      console.log("data result: ", decoded);
+
+      let decoded: any = jwt_decode(result);
+      console.log("id", decoded);
+      console.log(
+        "data result: ",
+        decoded.userId,
+        decoded.username,
+        decoded.isAdmin,
+        result
+      );
+
+      localStorage.setItem("id", decoded.userId);
+      localStorage.setItem("username", decoded.username);
+      localStorage.setItem("isAdmin", decoded.isAdmin);
+      localStorage.setItem("token", result);
 
       return true;
     } else {
