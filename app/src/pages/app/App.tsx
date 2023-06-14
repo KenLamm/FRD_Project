@@ -18,8 +18,9 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<AuthenticationTitle />} />
         <Route path="/task" element={<StatsCard/>} />
-        <Route path="/project" element={<ButtonCreator />} />
+        <Route path="/project/:projectId" element={<ButtonCreator />} />
         <Route path="/Todo" element={<Todo />} />
+      
 
         <Route path="/photodetail" element={<PhotoPage />} />
         <Route path="/workingFolder" element={<FolderPage />} />
