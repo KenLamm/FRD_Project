@@ -16,13 +16,10 @@ const useStyles = createStyles({
     maxHeight: "fit-content",
     height: "100vh",
     width: "100vw",
-    zIndex: -10,
-    // zIndex: -10,
     top: "30%",
     left: "40%",
     bottom: "30%",
     transform: "translate(-50%, -50%)",
-    // width:"200px",
   },
   buttonArea: {
     position: "absolute",
