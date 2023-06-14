@@ -10,122 +10,116 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
-
-
-
 model User {
-  id        Int      @id @default(autoincrement())
-  username     String   @unique
-  password     String   @unique
-  isAdmin      Boolean
-  projects     Project[]
-  photo        Photo[]
-  teammate     Teammate[]
-  task         Task[]
-  record       Record[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  
+  id        Int        @id @default(autoincrement())
+  username  String     @unique
+  password  String
+  isAdmin   Boolean    @default(false)
+  projects  Project[]
+  photo     Photo[]
+  teammate  Teammate[]
+  task      Task[]
+  record    Record[]
+  syslog    Syslog[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
 
   @@map("users")
 }
 
 model Project {
-  id        Int      @id @default(autoincrement())
-  name      String   @unique
-  user      User    @relation(fields: [user_id], references: [id])
-  user_id    Int    @map("user_id")
-  category   Category[]
-  teammate   Teammate[]
-  task        Task[] 
-  updatedAt DateTime @updatedAt
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  user      User       @relation(fields: [user_id], references: [id])
+  user_id   Int        @map("user_id")
+  category  Category[]
+  teammate  Teammate[]
+  updatedAt DateTime   @updatedAt
 
   @@map("project")
 }
 
 model Category {
-  id        Int      @id @default(autoincrement())
-  project        Project   @relation(fields: [project_id], references: [id])
-  project_id     Int    @map("project_id")
-  name        String 
-  task        Task[] 
+  id         Int     @id @default(autoincrement())
+  project    Project @relation(fields: [project_id], references: [id])
+  project_id Int     @map("project_id")
+  name       String
+  task       Task[]
 
   @@map("category")
 }
 
 model Teammate {
-  id        Int      @id @default(autoincrement())
-  user        User   @relation(fields: [user_id], references: [id])
-  user_id     Int    @map("user_id")
-  project     Project @relation(fields: [project_id], references: [id])
-  project_id  Int   @map("project_id")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [user_id], references: [id])
+  user_id    Int      @map("user_id")
+  project    Project  @relation(fields: [project_id], references: [id])
+  project_id Int      @map("project_id")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 
   @@map("teammate")
 }
 
 model Task {
-  id        Int      @id @default(autoincrement())
-  isFinished  Boolean  
-  user        User   @relation(fields: [user_id], references: [id])
-  user_id     Int    @map("user_id")
-  category      Category   @relation(fields: [category_id], references: [id])
-  category_id   Int        @map("category_id")
-  project     Project @relation(fields: [project_id], references: [id])
-  project_id  Int   @map("project_id")
+  id          Int      @id @default(autoincrement())
+  name        String
+  isFinished  Boolean  @default(false)
+  user        User     @relation(fields: [user_id], references: [id])
+  user_id     Int      @map("user_id")
+  category    Category @relation(fields: [category_id], references: [id])
+  category_id Int      @map("category_id")
   record      Record[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  
+  syslog      Syslog[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@map("task")
 }
 
-
 model Record {
   id        Int      @id @default(autoincrement())
-  title     String    @unique
-  user        User   @relation(fields: [user_id], references: [id])
-  user_id     Int    @map("user_id")
-  task        Task   @relation(fields: [task_id], references: [id])
-  task_id     Int    @map("task_id")
-  photo        Photo[]
+  name      String
+  user      User     @relation(fields: [user_id], references: [id])
+  user_id   Int      @map("user_id")
+  task      Task     @relation(fields: [task_id], references: [id])
+  task_id   Int      @map("task_id")
+  photo     Photo[]
+  syslog    Syslog[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
 
   @@map("record")
 }
 
 model Photo {
-  id        Int      @id @default(autoincrement())
-  user        User   @relation(fields: [user_id], references: [id])
-  user_id     Int    @map("user_id")
-  photo_name  String   @unique
-  s3_name     String   @unique
-  description      String
-  record      Record @relation(fields: [record_id], references: [id])
-  record_id     Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  
+  id          Int      @id @default(autoincrement())
+  user        User     @relation(fields: [user_id], references: [id])
+  user_id     Int      @map("user_id")
+  name        String?
+  s3_name     String?  @unique
+  description String?
+  record      Record   @relation(fields: [record_id], references: [id])
+  record_id   Int
+  syslog      Syslog[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   @@map("photo")
 }
 
 model Syslog {
   id        Int      @id @default(autoincrement())
-  providing_user_id    Int   @unique
-  receiving_user_id    Int   
-  receiving_task_id    Int   @map("user_id")
-  receiving_folder_id  Int   
-  receiving_record_id  Int
-  receiving_photo_id   Int
-  action               String
-  createdAt            DateTime @default(now())
+  user      User     @relation(fields: [user_id], references: [id])
+  user_id   Int      @map("user_id")
+  task      Task     @relation(fields: [task_id], references: [id])
+  task_id   Int      @map("task_id")
+  record    Record   @relation(fields: [record_id], references: [id])
+  record_id Int      @map("record_id")
+  photo     Photo    @relation(fields: [photo_id], references: [id])
+  photo_id  Int      @map("photo_id")
+  action    String
+  createdAt DateTime @default(now())
 
   @@map("syslog")
 }

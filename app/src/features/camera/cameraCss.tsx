@@ -1,13 +1,13 @@
 import { createStyles } from "@mantine/core";
 
 const useStyles = createStyles({
-  visibleVideo:{
+  visibleVideo: {
     height: "100%",
   },
   videoContainer: {
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     position: "fixed",
     marginLeft: "10%",
     marginRight: "10%",
@@ -16,7 +16,10 @@ const useStyles = createStyles({
     maxHeight: "fit-content",
     height: "100vh",
     width: "100vw",
+<<<<<<< HEAD
     // zIndex: -10,
+=======
+>>>>>>> d14cd6cc890b8f1baaa319cef752852d5e4be448
     top: "30%",
     left: "40%",
     bottom: "30%",
@@ -77,7 +80,4 @@ const useStyles = createStyles({
   },
 });
 
-
-
 export default useStyles;
-
