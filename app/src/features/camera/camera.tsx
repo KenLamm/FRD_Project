@@ -3,6 +3,9 @@ import useStyles from './cameraCss';
 import { TbSend } from "react-icons/tb";
 import { TiCancel } from "react-icons/ti";
 import { useEffect, useRef, useState } from 'react';
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { uploadAPI, uploadVideoAPI } from './cameraAPI';
+// import uploadForm from './cameraAPI';
 
 const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const { classes } = useStyles();
@@ -11,12 +14,13 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const camRef = useRef<any>(null);
   const [cameraAccess, setCameraAccess] = useState<boolean>(false);
   const [capturedImages, setCapturedImages] = useState<string[]>([]);
-  const [recordings, setRecordings] = useState<string[]>([]);
+  const [recordings, setRecordings] = useState<string>();
   const [facingMode, setFacingMode] = useState<'user' | 'environment'>('user');
   const [stream, setStream] = useState<boolean>(true);
   const [isRecording, setIsRecording] = useState<boolean>(false);
   const [isVideoShow, setIsVideoShow] = useState<boolean>(false)
   const [mode, setMode] = useState("")
+
 
   useEffect(() => {
     const enableCameraAccess = async () => {
@@ -56,7 +60,7 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           if (context) {
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
             const capturedDataUrl = canvas.toDataURL();
-            setCapturedImages(prevImages => [...prevImages, capturedDataUrl]);
+            setCapturedImages((prevImages: any) => [...prevImages, capturedDataUrl]);
           }
         }
       }
@@ -88,9 +92,15 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
       mediaRecorder.addEventListener('stop', () => {
         console.log("stop!")
-        const recordedBlob = new Blob(recordedChunks);
+        const recordedBlob = new Blob(recordedChunks, { type: 'video/webm' });
         const recordedUrl = URL.createObjectURL(recordedBlob);
-        setRecordings(prevRecordings => [...prevRecordings, recordedUrl]);
+        // var a = document.createElement('a')
+        // a.href = recordedUrl
+        // a.style.display = 'none'
+        // a.download = 'video.webm'
+        // a.click()
+
+        setRecordings(recordedUrl);
       });
 
 
@@ -100,8 +110,6 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       mediaRecorder.start();
 
       camRef.current = mediaRecorder
-
-      console.log("check mediaRecorder", mediaRecorder)
     }
   };
 
@@ -110,15 +118,13 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       const mediaStream = videoRef.current.srcObject as MediaStream;
       console.log("check handle stop video ref", mediaStream)
       mediaStream.getTracks().forEach(track => {
-        console.log("check track", track)
         track.stop()
-        console.log("check track after", track)
 
       }
       );
       camRef.current.stop()
     }
-    console.log("check url", recordings)
+
     setIsRecording(false);
     setIsVideoShow(true);
     setStream(false)
@@ -145,8 +151,14 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const handleCancel = async () => {
     setStream(true);
     setCapturedImages([]);
-    setRecordings([]);
+    setRecordings(undefined);
   };
+
+
+  // const handleUploadPhoto = async () => {
+  //   let result = await uploadAPI(capturedImages[0], recordings[0])
+  //   console.log(result)
+  //  }
 
   return (
     <>
@@ -192,23 +204,22 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 <div className={classes.saveCancelArea}>
                   {!stream ? (<>
                     <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
-                    <button className={classes.button}><TbSend className={classes.buttonIcon} /></button></>) : (<></>)}
+                    <button onClick={() => uploadAPI(capturedImages[0])} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>) : (<></>)}
 
                 </div>
               </> : <></>}
               {mode === "video" ?
                 <>
-                  {console.log("hihihi")}
-                  {isVideoShow && (
-                    recordings.map((recording, index) => (
-                      <video key={index} controls>
-                        <source src={recording} type="video/webm" />
-                      </video>
-                    )))}
+                  {isVideoShow && recordings && (
+                    <video controls>
+                      <source src={recordings} type="video/webm" />
+                    </video>
+                  )}
                   <div className={classes.saveCancelArea}>
-                    {!isRecording ? (<>
+                    {!isRecording && recordings ? (<>
                       <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
-                      <button className={classes.button}><TbSend className={classes.buttonIcon} /></button></>) : (<></>)}
+                      <button onClick={() => uploadVideoAPI(recordings)} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>
+                    ) : (<></>)}
                   </div>
                 </> : <></>}
 
