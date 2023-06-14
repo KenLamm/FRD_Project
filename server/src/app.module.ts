@@ -10,15 +10,13 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 
 
-
-
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, envFilePath: ['.env'] }),
     UserModule,
     PrismaModule,
-    AuthModule,PhotosModule, ProjectModule, PrismaModule, CategoryModule, TaskModule, RecordModule,
-
+    AuthModule,
+    PhotosModule, ProjectModule, PrismaModule, CategoryModule, TaskModule, RecordModule
   ],
   controllers: [],
   providers: [],

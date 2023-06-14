@@ -24,8 +24,6 @@ async function main() {
       { username: 'Mav', password: hashed, isAdmin: false },
     ];
 
-  
-
     let seededUsers = [];
 
     for (let item of users) {
@@ -49,9 +47,9 @@ async function main() {
       { name: '葵涌醫院重建工程(第二及三期)', user_id: seededUsers[0].id },
       { name: '啟德發展區興建新急症醫院', user_id: seededUsers[0].id },
     ];
-    
+
     let seededProjects = [];
-    
+
     for (let item of projects) {
       let data = await prisma.project.create({
         data: {
@@ -61,10 +59,8 @@ async function main() {
       });
       seededProjects.push(data);
     }
-    
+
     console.log('Seeded projects:', seededProjects);
-    
-    
 
     // const seededProjects = await prisma.project.createMany({
     //   data: projects,
@@ -79,7 +75,7 @@ async function main() {
     ];
 
     let seededCategories = [];
-    
+
     for (let item of categories) {
       let data = await prisma.category.create({
         data: {
@@ -89,9 +85,8 @@ async function main() {
       });
       seededCategories.push(data);
     }
-    
+
     console.log('Seeded categories:', seededCategories);
-    
 
     // Seed teammates
     const teammates = [
@@ -99,9 +94,8 @@ async function main() {
       { user_id: seededUsers[1].id, project_id: seededProjects[1].id },
     ];
 
-
     let seededTeammates = [];
-    
+
     for (let item of teammates) {
       let data = await prisma.teammate.create({
         data: {
@@ -111,9 +105,8 @@ async function main() {
       });
       seededTeammates.push(data);
     }
-    
+
     console.log('Seeded teammatess:', seededTeammates);
-    
 
     // Seed tasks
     const tasks = [
@@ -374,20 +367,19 @@ async function main() {
     ];
 
     let seededTasks = [];
-    
+
     for (let item of tasks) {
       let data = await prisma.task.create({
         data: {
           name: item.name,
           isFinished: false,
-          user_id:item.user_id,
-          category_id: item.category_id
-
+          user_id: item.user_id,
+          category_id: item.category_id,
         },
       });
       seededTasks.push(data);
     }
-    
+
     console.log('Seeded tasks:', seededTasks);
 
     // Seed records
@@ -597,19 +589,18 @@ async function main() {
     ];
 
     let seededRecords = [];
-    
+
     for (let item of records) {
       let data = await prisma.record.create({
         data: {
           name: item.name,
           user_id: item.user_id,
-          task_id: item.task_id
-
+          task_id: item.task_id,
         },
       });
       seededRecords.push(data);
     }
-    
+
     console.log('Seeded Records:', seededRecords);
 
     // Seed photos
@@ -629,44 +620,40 @@ async function main() {
     ];
 
     let seededPhotos = [];
-    
+
     for (let item of photos) {
       let data = await prisma.photo.create({
         data: {
-          user_id:item.user_id,
+          user_id: item.user_id,
           record_id: item.record_id,
           name: item.name,
-          s3_name: item.s3_name
-
+          s3_name: item.s3_name,
         },
       });
       seededPhotos.push(data);
     }
-    
+
     console.log('Seeded photos:', seededPhotos);
 
     // Seed syslogs
-    const syslogs = [
-      {
-        user_id: seededUsers[0].id,
-        task_id: seededTasks[0].id,
-        record_id: seededRecords[0].id,
-        photo_id: seededPhotos[0].id,
-        action: 'Action 1',
-      },
-      {
-        user_id: seededUsers[1].id,
-        task_id: seededTasks[1].id,
-        record_id: seededRecords[1].id,
-        photo_id: seededPhotos[1].id,
-        action: 'Action 2',
-      },
-    ];
+    //   const syslogs = [
+    //     {
+    //       user_id: seededUsers[0].id,
+    //       task_id: seededTasks[0].id,
+    //       record_id: seededRecords[0].id,
+    //       photo_id: seededPhotos[0].id,
+    //       action: 'Action 1',
+    //     },
+    //     {
+    //       user_id: seededUsers[1].id,
+    //       task_id: seededTasks[1].id,
+    //       record_id: seededRecords[1].id,
+    //       photo_id: seededPhotos[1].id,
+    //       action: 'Action 2',
+    //     },
+    //   ];
 
-    
-    
-
-    console.log('Seeding completed successfully.');
+    //   console.log('Seeding completed successfully.');
   } catch (error) {
     console.error('Seeding error:', error);
   } finally {
