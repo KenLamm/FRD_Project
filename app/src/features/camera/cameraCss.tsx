@@ -16,10 +16,7 @@ const useStyles = createStyles({
     maxHeight: "fit-content",
     height: "100vh",
     width: "100vw",
-<<<<<<< HEAD
-    // zIndex: -10,
-=======
->>>>>>> d14cd6cc890b8f1baaa319cef752852d5e4be448
+
     top: "30%",
     left: "40%",
     bottom: "30%",
