@@ -82,8 +82,6 @@ export function AuthenticationTitle() {
                 } else {
                   alert("Invalid username or password");
                 }
-
-                console.log("this is result:", result);
               }}
             >
               <TextInput
