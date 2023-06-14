@@ -8,11 +8,7 @@
     "@mantine/hooks": "^6.0.13",
     "@react-icons/all-files": "^4.1.0",
     "@tabler/icons-react": "^2.22.0",
-<<<<<<< HEAD
     "@tanstack/react-query": "^4.29.12",
-=======
-    "@tanstack/react-query": "^4.29.13",
->>>>>>> d14cd6cc890b8f1baaa319cef752852d5e4be448
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
