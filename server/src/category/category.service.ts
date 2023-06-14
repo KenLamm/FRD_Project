@@ -1,4 +1,9 @@
 import { Injectable } from '@nestjs/common';
+<<<<<<< HEAD
+
+@Injectable()
+export class CategoryService {}
+=======
 import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
@@ -13,3 +18,4 @@ export class CategoryService {
         });
     }
 }
+>>>>>>> d14cd6cc890b8f1baaa319cef752852d5e4be448
