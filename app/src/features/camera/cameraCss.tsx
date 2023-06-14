@@ -16,11 +16,7 @@ const useStyles = createStyles({
     maxHeight: "fit-content",
     height: "100vh",
     width: "100vw",
-<<<<<<< HEAD
-    zIndex: -10,
-=======
     // zIndex: -10,
->>>>>>> refs/remotes/origin/main
     top: "30%",
     left: "40%",
     bottom: "30%",

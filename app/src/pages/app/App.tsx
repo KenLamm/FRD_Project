@@ -9,10 +9,16 @@ import FolderPage from "../workingfolderPages/workingFolder";
 import Todo from "../todoPages/todo";
 import Landing from "../../Landing";
 import Navbar from "../navbarPages/Navbar";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+export const queryClient = new QueryClient();
+
+
 
 const App = () => {
   return (
     <Router>
+      <QueryClientProvider client={queryClient}>
       <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
@@ -24,6 +30,7 @@ const App = () => {
         <Route path="/photodetail" element={<PhotoPage />} />
         <Route path="/workingFolder" element={<FolderPage />} />
       </Routes>
+      </QueryClientProvider>
     </Router>
   );
 };

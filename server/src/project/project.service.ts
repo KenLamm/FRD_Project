@@ -1,0 +1,20 @@
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from "../prisma/prisma.service"
+
+@Injectable()
+export class ProjectService {
+    constructor(private readonly prismaService: PrismaService) {}
+    getAllProject(): Promise<any[]> {
+        return this.prismaService.project.findMany();
+    }
+
+    postProject(): Promise<any[]> {
+        return this.prismaService.create({
+            data:{
+                name:"123",
+                user_id: 1,
+
+            }
+        })
+    }
+}
