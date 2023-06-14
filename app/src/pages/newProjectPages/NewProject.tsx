@@ -1,6 +1,5 @@
-
 import useStyles from "./NewProjectCss";
-import { FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
+import { FaProductHunt, FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
 import React, { useState } from "react";
 import { Button, Modal, Text } from "@mantine/core";
 import { Link } from "react-router-dom";
@@ -12,16 +11,17 @@ const ButtonCreator = () => {
   const [buttons, setButtons] = useState<JSX.Element[]>([]);
   const [newButtonName, setNewButtonName] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const [getProject, setGetProject] = useState();
 
   const project = useProject();
 
   const queryClient = useQueryClient();
   const onCreateProject = useMutation(
-    async (data: {name: string}) => createProject(data.name),
+    async (data: { name: string }) => createProject(data.name),
     {
-      onSuccess: () => queryClient.invalidateQueries(["project"])
+      onSuccess: () => queryClient.invalidateQueries(["project"]),
     }
-  )
+  );
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewButtonName(event.target.value);
   };
@@ -44,7 +44,7 @@ const ButtonCreator = () => {
       //   </div>
       // );
       // setButtons((prevButtons) => [...prevButtons, newButton]);
-      onCreateProject.mutate({name: newButtonName})
+      onCreateProject.mutate({ name: newButtonName });
       closeModal();
     }
   };
@@ -56,9 +56,9 @@ const ButtonCreator = () => {
   };
 
   // Dummy Data Button
-  const dummyButton = (
+  const dummyButton = (name: string) => (
     <div className={classes.buttonWrapper} key="dummyButton">
-      <button className={classes.customButton}>Dummy Button</button>
+      <button className={classes.customButton}>{name}</button>
       <FaTrashAlt onClick={() => deleteButton("dummyButton")} />
     </div>
   );
@@ -77,8 +77,24 @@ const ButtonCreator = () => {
         <FaRegPlusSquare />
       </button>
       <div className={classes.buttonList}>
-        {buttons}
+        {/* {project.data? (
+          <div>
+            {project.data.map((item) => (
+              <div key={item.id}>
+                <div item={item}></div>
+                </div>
+            ))}
+           </div>
+        )} */}
+        {project.data?.map((elem, i) => {
+          return (
+            <Link to="/task">
+              <div>{dummyButton(elem.name)}</div>
+            </Link>
+          );
+        })}
 
+        {buttons}
 
         {/* {buttonStringArr.map((buttonStr) => (
           <div className={classes.buttonWrapper} key={buttonStr}>
@@ -87,7 +103,7 @@ const ButtonCreator = () => {
              </div>
         ))} */}
 
-        <Link to="/task">{dummyButton}</Link>
+        <Link to="/task">{dummyButton("jfies")}</Link>
       </div>
       <div className={classes.centerStyle}>
         <Modal
