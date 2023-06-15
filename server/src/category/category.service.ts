@@ -3,16 +3,17 @@ import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class CategoryService {
-    constructor(private readonly prismaService: PrismaService) {}
+  constructor(private readonly prismaService: PrismaService) {}
 
-    getAllCategory(id: number): Promise<any[]> {
-        return this.prismaService.category.findMany({
-            where: {
-                project_id: id,
-              },
-              select: {
-                name: true,
-                project_id: true,
-              },
-            });
-          }}
+  getAllCategory(id: number): Promise<any[]> {
+    return this.prismaService.category.findMany({
+      where: {
+        project_id: id,
+      },
+      select: {
+        name: true,
+        id: true,
+      },
+    });
+  }
+}

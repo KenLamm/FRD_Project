@@ -101,11 +101,11 @@ const Project = () => {
                   {elem.name}
                 </button>
 
-                <FaTrashAlt onClick={() => deleteButton("newButtonName")} />
+                {/* <FaTrashAlt onClick={() => deleteButton("newButtonName")} /> */}
               </div>
             </div>
           );
-        })} 
+        })}
 
         {buttons}
 
