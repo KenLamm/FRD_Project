@@ -9,7 +9,7 @@ export function useProject() {
   const { isLoading, error, data, isFetching } = useQuery({
     queryKey: ["getallproject"],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/project/get`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/project/get/`);
       const result = await res.json();
       console.log("Data for project: ", result[0].name);
       return result as Project[];
@@ -24,6 +24,7 @@ export function useProject() {
 }
 
 export async function createProject(name: string) {
+  console.log("hihihihihihihi");
   const res = await fetch(`${process.env.REACT_APP_API_URL}/project/post`, {
     method: "POST",
     headers: {
@@ -34,4 +35,26 @@ export async function createProject(name: string) {
 
   const result = await res.json();
   return result.data;
+}
+
+export async function delProject(id: number) {
+  try {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/project/del`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+
+    const result = await res.json();
+    if (res.status === 200) {
+      return true;
+    } else {
+      console.log(result);
+      return false;
+    }
+  } catch (err) {
+    console.error(err);
+  }
 }

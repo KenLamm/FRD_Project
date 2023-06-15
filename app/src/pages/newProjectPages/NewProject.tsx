@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createProject, useProject } from "./ProjectAPI";
 
-const ButtonCreator = () => {
+const Project = () => {
   const { classes } = useStyles();
   const [buttons, setButtons] = useState<JSX.Element[]>([]);
   const [newButtonName, setNewButtonName] = useState("");
@@ -19,7 +19,13 @@ const ButtonCreator = () => {
   const onCreateProject = useMutation(
     async (data: { name: string }) => createProject(data.name),
     {
-      onSuccess: () => queryClient.invalidateQueries(["project"]),
+      onSuccess: () => queryClient.invalidateQueries(["getallproject"]),
+    }
+  );
+  const onDeleteProject = useMutation(
+    async (data: { name: string }) => deleteButton(data.name),
+    {
+      onSuccess: () => queryClient.invalidateQueries(["getallproject"]),
     }
   );
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,17 +40,20 @@ const ButtonCreator = () => {
     setModalOpen(false);
     setNewButtonName("");
   };
+  const addButton = () => {
+    onCreateProject.mutate({ name: newButtonName });
+  };
 
   const createButton = () => {
     if (newButtonName) {
-      // const newButton = (
-      //   <div className={classes.buttonWrapper} key={newButtonName}>
-      //     <button className={classes.customButton}>{newButtonName}</button>
-      //     <FaTrashAlt onClick={() => deleteButton(newButtonName)} />
-      //   </div>
-      // );
-      // setButtons((prevButtons) => [...prevButtons, newButton]);
-      onCreateProject.mutate({ name: newButtonName });
+      const newButton = (name: string) => (
+        <div className={classes.buttonWrapper} key={newButtonName}>
+          <button className={classes.customButton}>{newButtonName}</button>
+          <FaTrashAlt onClick={() => deleteButton(newButtonName)} />
+        </div>
+      );
+      // setButtons((prevButtons) => [...prevButtons, newButton(newButtonName)]);
+      addButton();
       closeModal();
     }
   };
@@ -55,14 +64,6 @@ const ButtonCreator = () => {
     );
   };
 
-  // Dummy Data Button
-  const dummyButton = (name: string) => (
-    <div className={classes.buttonWrapper} key="dummyButton">
-      <button className={classes.customButton}>{name}</button>
-      <FaTrashAlt onClick={() => deleteButton("dummyButton")} />
-    </div>
-  );
-
   return (
     <div
       className={classes.buttonCreator}
@@ -70,27 +71,31 @@ const ButtonCreator = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+        height: "10%",
       }}
     >
       <button className={classes.addButton} onClick={openModal}>
         <FaRegPlusSquare />
       </button>
       <div className={classes.buttonList}>
-        {/* {project.data? (
-          <div>
-            {project.data.map((item) => (
-              <div key={item.id}>
-                <div item={item}></div>
-                </div>
-            ))}
-           </div>
-        )} */}
         {project.data?.map((elem, i) => {
           return (
-            <Link to="/task">
-              <div>{dummyButton(elem.name)}</div>
-            </Link>
+            <div
+              key={elem.id}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              {" "}
+              {/* key={elem.id} */}
+              <div className={classes.buttonWrapper} key="newButtonName">
+                <button className={classes.customButton}>{elem.name}</button>
+
+                <FaTrashAlt onClick={() => deleteButton("newButtonName")} />
+              </div>
+            </div>
           );
         })}
 
@@ -98,12 +103,10 @@ const ButtonCreator = () => {
 
         {/* {buttonStringArr.map((buttonStr) => (
           <div className={classes.buttonWrapper} key={buttonStr}>
-               <button className={classes.customButton}>{buttonStr}</button>
-               <FaTrashAlt onClick={() => deleteButton(buttonStr)} />
-             </div>
+            <button className={classes.customButton}>{buttonStr}</button>
+            <FaTrashAlt onClick={() => deleteButton(buttonStr)} />
+          </div>
         ))} */}
-
-        <Link to="/task">{dummyButton("jfies")}</Link>
       </div>
       <div className={classes.centerStyle}>
         <Modal
@@ -112,6 +115,7 @@ const ButtonCreator = () => {
           centered
           style={{
             display: "flex",
+
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -146,4 +150,4 @@ const ButtonCreator = () => {
   );
 };
 
-export default ButtonCreator;
+export default Project;
