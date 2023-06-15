@@ -24,13 +24,8 @@ export function StatsCard() {
   const { classes } = useStyles();
   const viewport = useViewportSize();
   const process = useProcess();
-  let data: Process[] | [] = [];
 
-  if (!process.isLoading) {
-    data = process.data;
-  }
-
-  console.log("meigig", data);
+  console.log("meigig", process.data);
 
   return (
     <div
@@ -48,17 +43,14 @@ export function StatsCard() {
           margin: "auto",
         }}
       >
-        {data &&
-          data.map((item) => {
+        {process.data &&
+          process.data.map((item) => {
             return (
               <div>
-                <Link
-                  to={`/task/${item.project_id}`}
-                  className={classes.linktodo}
-                >
+                <Link to={`/task/${item.id}`} className={classes.linktodo}>
                   <div className={classes.tittleBar}>
                     <Text ta="center" fw={700} className={classes.title}>
-                      <div key={item.project_id}>{item.name}</div>
+                      <div key={item.id}>{item.name}</div>
                     </Text>
                   </div>
                 </Link>
