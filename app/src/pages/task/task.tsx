@@ -1,8 +1,7 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import useStyles from "../../pages/todoPages/todoCss";
-import { useTask, Task } from "./todoAPI";
+import useStyles from "./taskCss";
+import { useTask, TaskType } from "./taskAPI";
 import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../app/App";
 
@@ -14,9 +13,7 @@ import { queryClient } from "../app/App";
 //   done: boolean;
 // }
 
-
-
-const Todo: React.FC = () => {
+const Task: React.FC = () => {
   const { classes } = useStyles();
   const result = useTask();
   // { id: 1, name: "降水控制", isFinished: false, user_id: 1, category_id: 1 },]
@@ -37,17 +34,16 @@ const Todo: React.FC = () => {
   const userTaskMutation = useMutation({
     mutationFn: (id: number) =>
       fetch(`${process.env.REACT_APP_API_URL}/task/update`, {
-        method: 'PATCH',
+        method: "PATCH",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id })
-      })
-    ,
+        body: JSON.stringify({ id }),
+      }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['useTask'] })
-    }
-  })
+      queryClient.invalidateQueries({ queryKey: ["useTask"] });
+    },
+  });
 
   const handleToggleDone = (id: number) => {
     // setTodos((prevTodos) =>
@@ -55,14 +51,14 @@ const Todo: React.FC = () => {
     //     todo.id === id ? { ...todo, done: !todo.done } : todo
     //   )
     // );
-    userTaskMutation.mutate(id)
-    console.log("handle toggle", id)
+    userTaskMutation.mutate(id);
+    console.log("handle toggle", id);
   };
-  let todoItems: Task[] | undefined = []
-  let doneItems: Task[] | undefined = []
+  let todoItems: TaskType[] | undefined = [];
+  let doneItems: TaskType[] | undefined = [];
 
   if (!result.isLoading) {
-    const todos = result.data
+    const todos = result.data;
     todoItems = todos!.filter((todo) => !todo.isFinished);
     doneItems = todos!.filter((todo) => todo.isFinished);
   }
@@ -75,20 +71,24 @@ const Todo: React.FC = () => {
         <div className={classes.todoColumn}>
           <h2>進行中</h2>
           <ul className={classes.todoList}>
-            {todoItems && todoItems.map((todo) => (
-              <li key={todo.id} className={classes.todoItem} >
-                {/* <Link to={`/details/${todo.id}`} className={classes.todoLink}> */}
-                <Link to={`/WorkingFolder/${todo.id}`} className={classes.todoLink}>
-                  {todo.name}
-                </Link>
-                <button
-                  className={classes.todoButton}
-                  onClick={() => handleToggleDone(todo.id)}
-                >
-                  完成
-                </button>
-              </li>
-            ))}
+            {todoItems &&
+              todoItems.map((todo) => (
+                <li key={todo.id} className={classes.todoItem}>
+                  {/* <Link to={`/details/${todo.id}`} className={classes.todoLink}> */}
+                  <Link
+                    to={`/WorkingFolder/${todo.id}`}
+                    className={classes.todoLink}
+                  >
+                    {todo.name}
+                  </Link>
+                  <button
+                    className={classes.todoButton}
+                    onClick={() => handleToggleDone(todo.id)}
+                  >
+                    完成
+                  </button>
+                </li>
+              ))}
           </ul>
         </div>
         <div className={classes.doneColumn}>
@@ -106,5 +106,4 @@ const Todo: React.FC = () => {
   );
 };
 
-export default Todo;
-
+export default Task;

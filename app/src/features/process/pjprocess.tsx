@@ -1,6 +1,3 @@
-
-
-
 import {
   createStyles,
   ThemeIcon,
@@ -12,14 +9,13 @@ import {
   rem,
 } from "@mantine/core";
 import { useViewportSize } from "@mantine/hooks";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   card: {
     position: "relative",
     overflow: "visible",
     padding: theme.spacing.xl,
-    
   },
 
   title: {
@@ -27,26 +23,22 @@ const useStyles = createStyles((theme) => ({
     lineHeight: "120%",
     backgroundColor: "rgb(255, 187, 73)",
     color: "black",
-    borderRadius:"15% ",
+    borderRadius: "15% ",
   },
-  linktodo:{
-    textDecoration: "none", 
+  linktodo: {
+    textDecoration: "none",
     display: "flex",
     justifyContent: "center",
-    
-    
-
-   
   },
-  tittleBar:{
+  tittleBar: {
     width: "28%",
     justifyContent: "center",
-   
-
-  }
+  },
 }));
 
 export function StatsCard() {
+  const projectId = useParams();
+  console.log("project id", projectId);
   const { classes } = useStyles();
   const viewport = useViewportSize();
 
@@ -57,9 +49,6 @@ export function StatsCard() {
         justifyContent: "center",
         alignItems: "center",
         minHeight: viewport.height,
-        
-        
-
       }}
     >
       <Paper
@@ -67,14 +56,13 @@ export function StatsCard() {
           width: "80%",
           maxWidth: "1200px",
           margin: "auto",
-         
         }}
       >
         <Link to="/Todo" className={classes.linktodo}>
           <div className={classes.tittleBar}>
-          <Text ta="center" fw={700} className={classes.title}>
-            地基工程
-          </Text>
+            <Text ta="center" fw={700} className={classes.title}>
+              地基工程
+            </Text>
           </div>
         </Link>
         <Group position="apart" mt="xs">
@@ -93,9 +81,9 @@ export function StatsCard() {
 
         <Link to="/Todo" className={classes.linktodo}>
           <div className={classes.tittleBar}>
-          <Text ta="center" fw={700} className={classes.title}>
-           主體結構
-          </Text>
+            <Text ta="center" fw={700} className={classes.title}>
+              主體結構
+            </Text>
           </div>
         </Link>
         <Group position="apart" mt="xs">
@@ -114,9 +102,9 @@ export function StatsCard() {
 
         <Link to="/Todo" className={classes.linktodo}>
           <div className={classes.tittleBar}>
-          <Text ta="center" fw={700} className={classes.title}>
-           建築安裝
-          </Text>
+            <Text ta="center" fw={700} className={classes.title}>
+              建築安裝
+            </Text>
           </div>
         </Link>
         <Group position="apart" mt="xs">
@@ -135,9 +123,9 @@ export function StatsCard() {
 
         <Link to="/Todo" className={classes.linktodo}>
           <div className={classes.tittleBar}>
-          <Text ta="center" fw={700} className={classes.title}>
-          內部裝修
-          </Text>
+            <Text ta="center" fw={700} className={classes.title}>
+              內部裝修
+            </Text>
           </div>
         </Link>
         <Group position="apart" mt="xs">

@@ -2,7 +2,7 @@ import useStyles from "./NewProjectCss";
 import { FaProductHunt, FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
 import React, { useState } from "react";
 import { Button, Modal, Text } from "@mantine/core";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createProject, useProject } from "./ProjectAPI";
 
@@ -13,6 +13,7 @@ const Project = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [getProject, setGetProject] = useState();
 
+  const navigate = useNavigate();
   const project = useProject();
 
   const queryClient = useQueryClient();
@@ -91,7 +92,14 @@ const Project = () => {
               {" "}
               {/* key={elem.id} */}
               <div className={classes.buttonWrapper} key="newButtonName">
-                <button className={classes.customButton}>{elem.name}</button>
+                <button
+                  className={classes.customButton}
+                  onClick={() => {
+                    navigate(`/category/${elem.id}`);
+                  }}
+                >
+                  {elem.name}
+                </button>
 
                 <FaTrashAlt onClick={() => deleteButton("newButtonName")} />
               </div>

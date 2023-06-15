@@ -20,7 +20,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const PhotoPage: React.FC = () => {
+const Photo: React.FC = () => {
   const { classes } = useStyles();
   const [showCamera, setShowCamera] = useState(false);
 
@@ -54,7 +54,7 @@ const PhotoPage: React.FC = () => {
       )}
 
       <div>
-        <div className={showCamera ?classes.displayNone : "isShow"}>
+        <div className={showCamera ? classes.displayNone : "isShow"}>
           <UserInfoIcons
             avatar="avatar.jpg"
             name="Sam Lee"
@@ -66,4 +66,4 @@ const PhotoPage: React.FC = () => {
   );
 };
 
-export default PhotoPage;
+export default Photo;

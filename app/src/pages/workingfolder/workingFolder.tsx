@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { FaFolder, FaPlus } from 'react-icons/fa';
-import useStyles from './/workingFolderCss';
-import { Link, useParams } from 'react-router-dom';
-import { postRecord, useRecord } from './workingFolderAPI';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import React, { useState } from "react";
+import { FaFolder, FaPlus } from "react-icons/fa";
+import useStyles from "./workingFolderCss";
+import { Link, useParams } from "react-router-dom";
+import { postRecord, useRecord } from "./workingFolderAPI";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 // interface Folder {
 //   id: number;
@@ -11,9 +11,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 //   path: string;
 // }
 
-const FolderPage: React.FC = () => {
-  const {paramId} = useParams()
-  console.log("11111",paramId)
+const Folder: React.FC = () => {
+  const { paramId } = useParams();
+  console.log("11111", paramId);
   const { classes } = useStyles();
   // const [folders, setFolders] = useState<Folder[]>([
   //   { id: 1, name: '岩石地基', path: '/path/to/folder1' },
@@ -24,12 +24,13 @@ const FolderPage: React.FC = () => {
   const { data: folders } = useRecord();
   const queryClient = useQueryClient();
   const onAddRecord = useMutation(
-    async (data: { name:string, task_id:string }) => postRecord(data.name, data.task_id),
+    async (data: { name: string; task_id: string }) =>
+      postRecord(data.name, data.task_id),
     {
-      onSuccess: () => queryClient.invalidateQueries(["useRecord"])
+      onSuccess: () => queryClient.invalidateQueries(["useRecord"]),
     }
-  )
-  const [newFolderName, setNewFolderName] = useState('');
+  );
+  const [newFolderName, setNewFolderName] = useState("");
   const [isAddingFolder, setIsAddingFolder] = useState(false);
 
   // const handleFolderClick = (path: string) => {
@@ -48,25 +49,26 @@ const FolderPage: React.FC = () => {
     //   setNewFolderName('');
     //   setIsAddingFolder(false);
     // }
-    onAddRecord.mutate({ name: newFolderName, task_id :paramId??""})
+    onAddRecord.mutate({ name: newFolderName, task_id: paramId ?? "" });
   };
 
   return (
     <div className={classes.container}>
       <h1 className={classes.title}>地基檢測</h1>
-      {folders && folders.map(folder => (
-        <Link
-          key={folder.id}
-          to={`/photodetail/${folder.id}`}
-          className={classes.folderButton}
-        // onClick={e => {
-        //   e.preventDefault();
-        //   handleFolderClick(folder.path);
-        // }}
-        >
-          <FaFolder className={classes.folderIcon} /> {folder.name}
-        </Link>
-      ))}
+      {folders &&
+        folders.map((folder) => (
+          <Link
+            key={folder.id}
+            to={`/photodetail/${folder.id}`}
+            className={classes.folderButton}
+            // onClick={e => {
+            //   e.preventDefault();
+            //   handleFolderClick(folder.path);
+            // }}
+          >
+            <FaFolder className={classes.folderIcon} /> {folder.name}
+          </Link>
+        ))}
       {isAddingFolder ? (
         <div className={classes.addButtonContainer}>
           <input
@@ -74,14 +76,17 @@ const FolderPage: React.FC = () => {
             className={classes.addInput}
             placeholder="Enter folder name"
             value={newFolderName}
-            onChange={e => setNewFolderName(e.target.value)}
+            onChange={(e) => setNewFolderName(e.target.value)}
           />
           <button className={classes.addButton} onClick={handleAddClick}>
             <FaPlus className={classes.addIcon} />
           </button>
         </div>
       ) : (
-        <button className={classes.addButton} onClick={() => setIsAddingFolder(true)}>
+        <button
+          className={classes.addButton}
+          onClick={() => setIsAddingFolder(true)}
+        >
           <FaPlus className={classes.addIcon} />
         </button>
       )}
@@ -89,4 +94,4 @@ const FolderPage: React.FC = () => {
   );
 };
 
-export default FolderPage;
+export default Folder;

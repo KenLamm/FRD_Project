@@ -4,7 +4,7 @@ import ReactDOM from "react-dom/client";
 import App from "./pages/app/App";
 import reportWebVitals from "./reportWebVitals";
 import Landing from "./Landing";
-import  Navbar  from "../src/pages/navbarPages/Navbar";
+import Navbar from "./pages/navbar/Navbar";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

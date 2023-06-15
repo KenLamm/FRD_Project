@@ -1,15 +1,15 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthenticationTitle } from "../auth/login";
-import { StatsCard } from "../../features/process/pjprocess";
 import Question from "../../features/newProject/createButton";
-import Project from "../newProjectPages/NewProject";
-import PhotoPage from "../photodetailPages/photodetail";
-import FolderPage from "../workingfolderPages/workingFolder";
-import Todo from "../todoPages/todo";
+import Project from "../newProject/NewProject";
+import Photo from "../photodetail/photodetail";
+import Folder from "../workingfolder/workingFolder";
+import Task from "../task/task";
 import Landing from "../../Landing";
-import Navbar from "../navbarPages/Navbar";
+import Navbar from "../navbar/Navbar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Category } from "../category/Category";
 
 export const queryClient = new QueryClient();
 
@@ -20,11 +20,11 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<AuthenticationTitle />} />
-          <Route path="/task/:id" element={<StatsCard />} />
           <Route path="/project" element={<Project />} />
-          <Route path="/Todo/:id" element={<Todo />} />
-          <Route path="/photodetail/:id" element={<PhotoPage />} />
-          <Route path="/workingFolder/:id" element={<FolderPage />} />
+          <Route path="/category/:id" element={<Category />} />
+          <Route path="/task/:id" element={<Task />} />
+          <Route path="/record/:id" element={<Folder />} />
+          <Route path="/photodetail/:id" element={<Photo />} />
         </Routes>
       </QueryClientProvider>
     </Router>
