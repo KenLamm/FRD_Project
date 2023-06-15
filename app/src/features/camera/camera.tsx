@@ -14,11 +14,14 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const camRef = useRef<any>(null);
   const [cameraAccess, setCameraAccess] = useState<boolean>(false);
   const [capturedImages, setCapturedImages] = useState<string[]>([]);
+  const [pictureName, setPictureName] = useState<string>("");
+  const [pictureDescription, setPictureDescription] = useState<string>("");
   const [recordings, setRecordings] = useState<string>();
   const [facingMode, setFacingMode] = useState<'user' | 'environment'>('user');
   const [stream, setStream] = useState<boolean>(true);
   const [isRecording, setIsRecording] = useState<boolean>(false);
-  const [isVideoShow, setIsVideoShow] = useState<boolean>(false)
+  const [isVideoShow, setIsVideoShow] = useState<boolean>(false);
+  const [isShowPicture, setIsShowPicture] = useState<boolean>(false);
   const [mode, setMode] = useState("")
 
 
@@ -203,6 +206,8 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                 ))}
                 <div className={classes.saveCancelArea}>
                   {!stream ? (<>
+                    <input></input>
+                    <input></input>
                     <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
                     <button onClick={() => uploadAPI(capturedImages[0])} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>) : (<></>)}
 
@@ -218,7 +223,7 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   <div className={classes.saveCancelArea}>
                     {!isRecording && recordings ? (<>
                       <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
-                      <button onClick={() => uploadVideoAPI(recordings)} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>
+                      <button onClick={() => uploadVideoAPI(recordings, pictureName, pictureDescription)} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>
                     ) : (<></>)}
                   </div>
                 </> : <></>}
@@ -231,7 +236,10 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       )}
 
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
-
+      <label htmlFor="pictureName">Picture Name</label>
+      <input id="pictureName" onChange={(event)=> {setPictureName(event.target.value)}}></input>
+      <label htmlFor="pictureDescription">Picture Description</label>
+      <input id="pictureDescription" onChange={(event)=> {setPictureDescription(event.target.value)}}></input>
     </>
 
   );

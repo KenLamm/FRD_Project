@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthenticationTitle } from "../auth/login";
 import  { StatsCard }  from "../../features/process/Pjprocess";
 import Question from "../../features/newProject/createButton";
-import ButtonCreator from "../newProjectPages/NewProject";
+import Project from "../newProjectPages/NewProject";
 import PhotoPage from "../photodetailPages/photodetail";
 import FolderPage from "../workingfolderPages/workingFolder";
 import Todo from "../todoPages/todo";
@@ -13,8 +13,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TbCategory } from "react-icons/tb";
 
 export const queryClient = new QueryClient();
-
-
 
 const App = () => {
   return (

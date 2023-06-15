@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { error } from "console";
 interface Project {
     id: number
     name: string
@@ -11,7 +10,7 @@ export function useProject() {
         queryFn: async () => {
             const res = await fetch(`${process.env.REACT_APP_API_URL}/project/get`)
             const result = await res.json()
-            return result.data as Project
+            return result as Project[]
         }
     });
     return{
@@ -22,15 +21,38 @@ export function useProject() {
     };
 }
 
-export async function createProject(name:string){
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/project/post`,{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json",
-        },
-        body: JSON.stringify({name}),
+export async function createProject(name: string) {
+  console.log("hihihihihihihi");
+  const res = await fetch(`${process.env.REACT_APP_API_URL}/project/post`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name }),
+  });
+
+  const result = await res.json();
+  return result.data;
+}
+
+export async function delProject(id: number) {
+  try {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/project/del`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
     });
 
     const result = await res.json();
-    return result.data
+    if (res.status === 200) {
+      return true;
+    } else {
+      console.log(result);
+      return false;
+    }
+  } catch (err) {
+    console.error(err);
+  }
 }
