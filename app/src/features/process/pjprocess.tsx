@@ -14,7 +14,7 @@ import { useProcess } from "./PjprocessAPI";
 import useStyles from "./PjprocessCss";
 
 interface Process {
-  id: number;
+  project_id: number;
   name: string;
 }
 
@@ -29,6 +29,8 @@ export function StatsCard() {
   if (!process.isLoading) {
     data = process.data;
   }
+
+  console.log("meigig", data);
 
   return (
     <div
@@ -50,10 +52,13 @@ export function StatsCard() {
           data.map((item) => {
             return (
               <div>
-                <Link to="/Todo" className={classes.linktodo}>
+                <Link
+                  to={`/task/${item.project_id}`}
+                  className={classes.linktodo}
+                >
                   <div className={classes.tittleBar}>
                     <Text ta="center" fw={700} className={classes.title}>
-                      <div key={item.id}>{item.name}</div>
+                      <div key={item.project_id}>{item.name}</div>
                     </Text>
                   </div>
                 </Link>

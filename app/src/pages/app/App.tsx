@@ -4,7 +4,7 @@ import { AuthenticationTitle } from "../auth/login";
 import Question from "../../features/newProject/createButton";
 import Project from "../newProject/NewProject";
 import Photo from "../photodetail/photodetail";
-import Folder from "../workingfolder/workingFolder";
+import Folder from "../record/record";
 import Task from "../task/task";
 import Landing from "../../Landing";
 import Navbar from "../navbar/Navbar";

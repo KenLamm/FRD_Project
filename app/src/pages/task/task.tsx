@@ -59,8 +59,10 @@ const Task: React.FC = () => {
 
   if (!result.isLoading) {
     const todos = result.data;
-    todoItems = todos!.filter((todo) => !todo.isFinished);
-    doneItems = todos!.filter((todo) => todo.isFinished);
+    todoItems = todos!.filter((todo) => !todo.is_finished);
+    doneItems = todos!.filter((todo) => todo.is_finished);
+
+    console.log("done", doneItems);
   }
 
   return (
@@ -75,10 +77,7 @@ const Task: React.FC = () => {
               todoItems.map((todo) => (
                 <li key={todo.id} className={classes.todoItem}>
                   {/* <Link to={`/details/${todo.id}`} className={classes.todoLink}> */}
-                  <Link
-                    to={`/WorkingFolder/${todo.id}`}
-                    className={classes.todoLink}
-                  >
+                  <Link to={`/record/${todo.id}`} className={classes.todoLink}>
                     {todo.name}
                   </Link>
                   <button

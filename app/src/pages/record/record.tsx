@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FaFolder, FaPlus } from "react-icons/fa";
-import useStyles from "./workingFolderCss";
+import useStyles from "./recordCss";
 import { Link, useParams } from "react-router-dom";
-import { postRecord, useRecord } from "./workingFolderAPI";
+import { postRecord, useRecord } from "./recordAPI";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 // interface Folder {

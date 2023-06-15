@@ -9,19 +9,19 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 
-
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, envFilePath: ['.env'] }),
     UserModule,
     PrismaModule,
     AuthModule,
-<<<<<<< HEAD
-    PhotosModule, ProjectModule, PrismaModule, CategoryModule, TaskModule, RecordModule,
+    PhotosModule,
+    ProjectModule,
+    PrismaModule,
+    CategoryModule,
+    TaskModule,
+    RecordModule,
   ],
-=======
-    PhotosModule, ProjectModule, PrismaModule, CategoryModule, TaskModule, RecordModule],
->>>>>>> refs/remotes/origin/main
   controllers: [],
   providers: [],
 })

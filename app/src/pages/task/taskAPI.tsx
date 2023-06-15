@@ -4,7 +4,7 @@ import { queryClient } from "../app/App";
 export interface TaskType {
   id: number;
   name: string;
-  isFinished: boolean;
+  is_finished: boolean;
   user_id: number;
   category_id: number;
 }
