@@ -17,16 +17,14 @@ const App = () => {
   return (
     <Router>
       <QueryClientProvider client={queryClient}>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<AuthenticationTitle />} />
-          <Route path="/task" element={<StatsCard />} />
+          <Route path="/task/:id" element={<StatsCard />} />
           <Route path="/project" element={<Project />} />
-          <Route path="/Todo" element={<Todo />} />
-
-          <Route path="/photodetail" element={<PhotoPage />} />
-          <Route path="/workingFolder" element={<FolderPage />} />
+          <Route path="/Todo/:id" element={<Todo />} />
+          <Route path="/photodetail/:id" element={<PhotoPage />} />
+          <Route path="/workingFolder/:id" element={<FolderPage />} />
         </Routes>
       </QueryClientProvider>
     </Router>

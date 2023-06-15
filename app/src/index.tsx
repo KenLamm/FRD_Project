@@ -4,13 +4,14 @@ import ReactDOM from "react-dom/client";
 import App from "./pages/app/App";
 import reportWebVitals from "./reportWebVitals";
 import Landing from "./Landing";
+import  Navbar  from "../src/pages/navbarPages/Navbar";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    {/* <Landing /> */}
+    <Navbar />
     <App />
   </React.StrictMode>
 );

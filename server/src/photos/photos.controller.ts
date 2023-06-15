@@ -1,10 +1,10 @@
 import {
+  Body,
   Controller,
   FileTypeValidator,
   Get,
   MaxFileSizeValidator,
   ParseFilePipe,
-  ParseFilePipeBuilder,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -33,7 +33,9 @@ export class PhotosController {
       }),
     )
     file: Express.Multer.File,
+    @Body('pictureName') pictureName: string, 
+    @Body('pictureDescription') pictureDescription: string, 
   ) {
-    return this.photosService.postPhotos(file.filename);
+    return this.photosService.postPhotos(file.filename, pictureName, pictureDescription);
   }
 }

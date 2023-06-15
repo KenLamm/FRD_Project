@@ -16,8 +16,12 @@ import { ConfigModule } from '@nestjs/config';
     UserModule,
     PrismaModule,
     AuthModule,
+<<<<<<< HEAD
+    PhotosModule, ProjectModule, PrismaModule, CategoryModule, TaskModule, RecordModule],
+=======
     PhotosModule, ProjectModule, PrismaModule, CategoryModule, TaskModule, RecordModule
   ],
+>>>>>>> 32cb5c963fc5860a9dfe74509c1912a3f20eb6bd
   controllers: [],
   providers: [],
 })

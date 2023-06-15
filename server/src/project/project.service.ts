@@ -14,7 +14,8 @@ export class ProjectService {
       ();
   }
 
-  postProject(name: string): Promise<any> {
+
+  postProject(name:string): Promise<any> {
     return this.prismaService.project.create({
       data: {
         name: name,
@@ -23,9 +24,12 @@ export class ProjectService {
     });
   }
 
+
   deleteProject(id: number): Promise<any> {
     return this.prismaService.project.delete({
       where: { id: id },
     });
   }
+
 }
+ 
