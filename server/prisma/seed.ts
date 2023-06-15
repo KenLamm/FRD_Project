@@ -17,14 +17,12 @@ async function main() {
   try {
     // Seed users
     const users = [
-      { username: 'Admin', password: hashed, isAdmin: true },
-      { username: 'Admin1', password: hashed, isAdmin: true },
-      { username: 'Sam', password: hashed, isAdmin: false },
-      { username: 'Ken', password: hashed, isAdmin: false },
-      { username: 'Mav', password: hashed, isAdmin: false },
+      { username: 'Admin', password: hashed, is_admin: true },
+      { username: 'Admin1', password: hashed, is_admin: true },
+      { username: 'Sam', password: hashed, is_admin: false },
+      { username: 'Ken', password: hashed, is_admin: false },
+      { username: 'Mav', password: hashed, is_admin: false },
     ];
-
-  
 
     let seededUsers = [];
 
@@ -33,13 +31,13 @@ async function main() {
         data: {
           username: item.username,
           password: item.password,
-          isAdmin: item.isAdmin,
+          is_admin: item.is_admin,
         },
       });
       seededUsers.push(data);
     }
 
-    console.log('hibye', seededUsers);
+    console.log('Seeded users', seededUsers);
 
     // Seed projects
     const projects = [
@@ -49,9 +47,9 @@ async function main() {
       { name: '葵涌醫院重建工程(第二及三期)', user_id: seededUsers[0].id },
       { name: '啟德發展區興建新急症醫院', user_id: seededUsers[0].id },
     ];
-    
+
     let seededProjects = [];
-    
+
     for (let item of projects) {
       let data = await prisma.project.create({
         data: {
@@ -61,10 +59,8 @@ async function main() {
       });
       seededProjects.push(data);
     }
-    
+
     console.log('Seeded projects:', seededProjects);
-    
-    
 
     // const seededProjects = await prisma.project.createMany({
     //   data: projects,
@@ -79,7 +75,7 @@ async function main() {
     ];
 
     let seededCategories = [];
-    
+
     for (let item of categories) {
       let data = await prisma.category.create({
         data: {
@@ -89,150 +85,166 @@ async function main() {
       });
       seededCategories.push(data);
     }
-    
-    console.log('Seeded categories:', seededCategories);
-    
 
-    // Seed teammates
-    const teammates = [
-      { user_id: seededUsers[0].id, project_id: seededProjects[0].id },
-      { user_id: seededUsers[1].id, project_id: seededProjects[1].id },
+    console.log('Seeded categories:', seededCategories);
+
+    // seed user project
+    const userprojects = [
+      {
+        user_id: seededUsers[0].id,
+        project_id: seededProjects[0].id,
+        role: 'admin',
+        is_valid: true,
+      },
+      {
+        user_id: seededUsers[1].id,
+        project_id: seededProjects[0].id,
+        role: 'member',
+        is_valid: true,
+      },
+
+      {
+        user_id: seededUsers[2].id,
+        project_id: seededProjects[0].id,
+        role: 'manger',
+        is_valid: true,
+      },
     ];
 
+    let seededUserProjects = [];
 
-    let seededTeammates = [];
-    
-    for (let item of teammates) {
-      let data = await prisma.teammate.create({
+    for (let item of userprojects) {
+      let data = await prisma.userProject.create({
         data: {
           user_id: item.user_id,
           project_id: item.project_id,
+          role: item.role,
+          is_valid: item.is_valid,
         },
       });
-      seededTeammates.push(data);
+      seededUserProjects.push(data);
     }
-    
-    console.log('Seeded teammatess:', seededTeammates);
-    
+
+    console.log('Seeded user_projects:', seededUserProjects);
 
     // Seed tasks
     const tasks = [
       {
         name: '降水控制',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[0].id,
       },
       {
         name: '地基檢測',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[0].id,
       },
       {
         name: '地基調平',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[0].id,
       },
       {
         name: '地基加強',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[0].id,
       },
       {
         name: '地基穩固',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[0].id,
       },
       {
         name: '結構支撐',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[0].id,
       },
       {
         name: '空隙填充',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[0].id,
       },
       {
         name: '沉降處理',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[0].id,
       },
       {
         name: '地基處理',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[0].id,
       },
       {
         name: '滲漏處理',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[0].id,
       },
       ///////////////////////categories 2
       {
         name: '基礎施工',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[1].id,
       },
       {
         name: '柱施工',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[1].id,
       },
       {
         name: '梁施工',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[1].id,
       },
       {
         name: '隔牆施工',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[1].id,
       },
       {
         name: '結構施工',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[1].id,
       },
 
       {
         name: '鋼結構安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[1].id,
       },
 
       {
         name: '鋼筋綁扎',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[1].id,
       },
 
       {
         name: '樓板施工',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[1].id,
       },
 
       {
         name: '外牆施工',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[1].id,
       },
@@ -241,70 +253,70 @@ async function main() {
 
       {
         name: '管道安装',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[2].id,
       },
 
       {
         name: '排水安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[2].id,
       },
 
       {
         name: '通風設備',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[2].id,
       },
 
       {
         name: '門窗安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[2].id,
       },
 
       {
         name: '消防安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[2].id,
       },
 
       {
         name: '電梯安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[2].id,
       },
 
       {
         name: '系統安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[2].id,
       },
 
       {
         name: '照明系統',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[2].id,
       },
 
       {
         name: '通訊系統',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[2].id,
       },
 
       {
         name: '鋁塑板安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[2].id,
       },
@@ -312,82 +324,81 @@ async function main() {
       //////categories 4
       {
         name: '磚牆施工',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[3].id,
       },
 
       {
         name: '油漆工程',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[3].id,
       },
       {
         name: '木工製作',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[3].id,
       },
       {
         name: '地板安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[3].id,
       },
       {
         name: '石材安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[3].id,
       },
       {
         name: '吊頂安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[3].id,
       },
       {
         name: '壁紙貼裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[3].id,
       },
       {
         name: '櫥櫃安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[3].id,
       },
       {
         name: '電氣安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[3].id,
       },
       {
         name: '燈具安裝',
-        isFinished: false,
+        is_finished: false,
         user_id: seededUsers[0].id,
         category_id: seededCategories[3].id,
       },
     ];
 
     let seededTasks = [];
-    
+
     for (let item of tasks) {
       let data = await prisma.task.create({
         data: {
           name: item.name,
-          isFinished: false,
-          user_id:item.user_id,
-          category_id: item.category_id
-
+          is_finished: false,
+          user_id: item.user_id,
+          category_id: item.category_id,
         },
       });
       seededTasks.push(data);
     }
-    
+
     console.log('Seeded tasks:', seededTasks);
 
     // Seed records
@@ -597,19 +608,18 @@ async function main() {
     ];
 
     let seededRecords = [];
-    
+
     for (let item of records) {
       let data = await prisma.record.create({
         data: {
           name: item.name,
           user_id: item.user_id,
-          task_id: item.task_id
-
+          task_id: item.task_id,
         },
       });
       seededRecords.push(data);
     }
-    
+
     console.log('Seeded Records:', seededRecords);
 
     // Seed photos
@@ -629,44 +639,40 @@ async function main() {
     ];
 
     let seededPhotos = [];
-    
+
     for (let item of photos) {
       let data = await prisma.photo.create({
         data: {
-          user_id:item.user_id,
+          user_id: item.user_id,
           record_id: item.record_id,
           name: item.name,
-          s3_name: item.s3_name
-
+          s3_name: item.s3_name,
         },
       });
       seededPhotos.push(data);
     }
-    
+
     console.log('Seeded photos:', seededPhotos);
 
     // Seed syslogs
-    const syslogs = [
-      {
-        user_id: seededUsers[0].id,
-        task_id: seededTasks[0].id,
-        record_id: seededRecords[0].id,
-        photo_id: seededPhotos[0].id,
-        action: 'Action 1',
-      },
-      {
-        user_id: seededUsers[1].id,
-        task_id: seededTasks[1].id,
-        record_id: seededRecords[1].id,
-        photo_id: seededPhotos[1].id,
-        action: 'Action 2',
-      },
-    ];
+    //   const syslogs = [
+    //     {
+    //       user_id: seededUsers[0].id,
+    //       task_id: seededTasks[0].id,
+    //       record_id: seededRecords[0].id,
+    //       photo_id: seededPhotos[0].id,
+    //       action: 'Action 1',
+    //     },
+    //     {
+    //       user_id: seededUsers[1].id,
+    //       task_id: seededTasks[1].id,
+    //       record_id: seededRecords[1].id,
+    //       photo_id: seededPhotos[1].id,
+    //       action: 'Action 2',
+    //     },
+    //   ];
 
-    
-    
-
-    console.log('Seeding completed successfully.');
+    //   console.log('Seeding completed successfully.');
   } catch (error) {
     console.error('Seeding error:', error);
   } finally {

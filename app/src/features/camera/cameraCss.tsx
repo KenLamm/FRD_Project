@@ -20,7 +20,6 @@ const useStyles = createStyles({
     left: "40%",
     bottom: "30%",
     transform: "translate(-50%, -50%)",
-    // width:"200px",
   },
   buttonArea: {
     position: "absolute",
