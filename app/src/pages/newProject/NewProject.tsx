@@ -105,7 +105,7 @@ const Project = () => {
               </div>
             </div>
           );
-        })}
+        })} 
 
         {buttons}
 

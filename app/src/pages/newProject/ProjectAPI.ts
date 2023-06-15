@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 interface Project {
-  id: number;
-  name: string;
+    id: number
+    name: string
 }
 
 export function useProject() {

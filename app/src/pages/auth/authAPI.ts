@@ -9,7 +9,7 @@ export async function login(user: User) {
   console.log("check check", process.env.REACT_APP_API_URL);
   try {
     const response = await fetch(
-      `http://localhost:8080/auth/login`,
+      `${process.env.REACT_APP_API_URL}/auth/login`,
       {
         method: "POST",
         headers: {

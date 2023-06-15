@@ -7,9 +7,12 @@ export class CategoryService {
 
     getAllCategory(id: number): Promise<any[]> {
         return this.prismaService.category.findMany({
-            where:{
-                project_id: +id,
-            }
-        });
-    }
-}
+            where: {
+                project_id: id,
+              },
+              select: {
+                name: true,
+                project_id: true,
+              },
+            });
+          }}

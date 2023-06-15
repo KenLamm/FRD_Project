@@ -10,6 +10,7 @@ import Landing from "../../Landing";
 import Navbar from "../navbar/Navbar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Category } from "../category/Category";
+import { TbCategory } from "react-icons/tb";
 
 export const queryClient = new QueryClient();
 

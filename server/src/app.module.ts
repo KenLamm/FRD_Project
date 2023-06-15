@@ -16,7 +16,12 @@ import { ConfigModule } from '@nestjs/config';
     UserModule,
     PrismaModule,
     AuthModule,
+<<<<<<< HEAD
+    PhotosModule, ProjectModule, PrismaModule, CategoryModule, TaskModule, RecordModule,
+  ],
+=======
     PhotosModule, ProjectModule, PrismaModule, CategoryModule, TaskModule, RecordModule],
+>>>>>>> refs/remotes/origin/main
   controllers: [],
   providers: [],
 })
