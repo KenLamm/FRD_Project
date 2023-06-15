@@ -20,13 +20,13 @@ const Project = () => {
   const onCreateProject = useMutation(
     async (data: { name: string }) => createProject(data.name),
     {
-      onSuccess: () => queryClient.invalidateQueries(["getallproject"]),
+      onSuccess: () => queryClient.invalidateQueries(["useProject"]),
     }
   );
   const onDeleteProject = useMutation(
     async (data: { name: string }) => deleteButton(data.name),
     {
-      onSuccess: () => queryClient.invalidateQueries(["getallproject"]),
+      onSuccess: () => queryClient.invalidateQueries(["useProject"]),
     }
   );
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -101,11 +101,11 @@ const Project = () => {
                   {elem.name}
                 </button>
 
-                <FaTrashAlt onClick={() => deleteButton("newButtonName")} />
+                {/* <FaTrashAlt onClick={() => deleteButton("newButtonName")} /> */}
               </div>
             </div>
           );
-        })} 
+        })}
 
         {buttons}
 
