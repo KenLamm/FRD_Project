@@ -12,7 +12,12 @@ export function useProcess() {
     queryFn: async () => {
       console.log("ok123");
       const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/category/get/1`
+        `${process.env.REACT_APP_API_URL}/category/get/1`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
       const result = await res.json();
       console.log("Data for process: ", result);

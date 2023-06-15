@@ -1,24 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 interface Project {
-    id: number
-    name: string
+  id: number;
+  name: string;
 }
 
 export function useProject() {
-    const { isLoading, error, data, isFetching } = useQuery({
-        queryKey: ["useProject"],
-        queryFn: async () => {
-            const res = await fetch(`${process.env.REACT_APP_API_URL}/project/get`)
-            const result = await res.json()
-            return result as Project[]
-        }
-    });
-    return{
-    isLoading:isLoading,
-    data:data,
-    error:error,
-    isFetching:isFetching,
-    };
+  const { isLoading, error, data, isFetching } = useQuery({
+    queryKey: ["useProject"],
+    queryFn: async () => {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/project/get`);
+      const result = await res.json();
+      return result as Project[];
+    },
+  });
+  return {
+    isLoading: isLoading,
+    data: data,
+    error: error,
+    isFetching: isFetching,
+  };
 }
 
 export async function createProject(name: string) {
@@ -27,6 +27,7 @@ export async function createProject(name: string) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     body: JSON.stringify({ name }),
   });
