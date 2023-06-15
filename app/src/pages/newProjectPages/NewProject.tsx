@@ -77,22 +77,14 @@ const ButtonCreator = () => {
         <FaRegPlusSquare />
       </button>
       <div className={classes.buttonList}>
-        {/* {project.data? (
-          <div>
-            {project.data.map((item) => (
-              <div key={item.id}>
-                <div item={item}></div>
-                </div>
-            ))}
-           </div>
-        )} */}
-        {project.data?.map((elem, i) => {
+    
+        {/* {project.data?.map((elem, i) => { */}
           return (
             <Link to="/task">
-              <div>{dummyButton(elem.name)}</div>
+              {/* <div>{dummyButton(elem.name)}</div> */}
             </Link>
           );
-        })}
+        {/* })} */}
 
         {buttons}
 

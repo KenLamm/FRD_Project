@@ -16,7 +16,7 @@ export class AuthService {
   async login(loginDto: LoginDto) {
     const user: any = await this.prisma.user.findFirst({
       where: { username: loginDto.username },
-      select: { id: true, username: true, password: true, isAdmin: true },
+      select: { id: true, username: true, password: true, is_admin: true },
     });
 
     if (!user || !(await checkPassword(loginDto.password, user.password))) {

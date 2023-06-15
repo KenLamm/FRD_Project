@@ -5,10 +5,8 @@ import { CategoryService } from './category.service';
 export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
-  @Get(':id')
+  @Get('get/:id')
   async getAllCategories(@Param('id') id:string): Promise<any[]> {
     return this.categoryService.getAllCategory(+id);
-  }
-}
-
-// http://localhost:3000/project/1 -> React -> getParams() -> useEffect -> HTTP Request
+  }}
+  // http://localhost:3000/project/1 -> React -> getParams() -> useEffect -> HTTP Request
