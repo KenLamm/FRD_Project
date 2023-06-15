@@ -3,11 +3,14 @@ import useStyles from "./NewProjectCss";
 import { FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
 import React, { useState } from "react";
 import { Button, Modal, Text } from "@mantine/core";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createProject, useProject } from "./ProjectAPI";
 
 const ButtonCreator = () => {
+  const params = useParams()
+  console.log(params)
+
   const { classes } = useStyles();
   const [buttons, setButtons] = useState<JSX.Element[]>([]);
   const [newButtonName, setNewButtonName] = useState("");

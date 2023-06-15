@@ -8,8 +8,8 @@ export class ProjectService {
         return this.prismaService.project.findMany();
     }
 
-    postProject(): Promise<any[]> {
-        return this.prismaService.create({
+    postProject(): Promise<any> {
+        return this.prismaService.project.create({
             data:{
                 name:"123",
                 user_id: 1,
@@ -18,3 +18,4 @@ export class ProjectService {
         })
     }
 }
+ 

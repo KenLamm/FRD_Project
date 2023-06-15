@@ -8,17 +8,16 @@ export class PhotosService {
     return this.prismaService.photo.findMany();
   }
 
-  postPhotos(filename: string) {
-  //   return this.prismaService.photo.create({
-  //     data: {
-  //       user_id: 1,
-  //       photo_name: filename,
-  //       s3_name:"12121212",
-  //       description:"1212121212121",
-  //       record_id:1
-  //     }
-  //   })
-  // }
-  return {message:'done'}
-}
+  postPhotos(filename: string,pictureName: string,pictureDescription: string) {
+    // return this.prismaService.photo.create({
+    //   // data: {
+      //   user_id: 1,
+      //   name: pictureName,
+      //   s3_name:filename,
+      //   description:pictureDescription,
+      //   record_id:1
+      // }
+    // })
+    return {message: "done"}
+  }
 }

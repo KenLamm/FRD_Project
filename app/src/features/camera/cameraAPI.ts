@@ -59,11 +59,13 @@ function dataURItoBlob(dataURI: string) {
   return new Blob([ia], { type: mimeString });
 }
 
-export const uploadVideoAPI = async (recordURL: string) => {
+export const uploadVideoAPI = async (recordURL: string, pictureName: string, pictureDescription:string) => {
   const blob = await fetch(recordURL).then(r => r.blob());
   console.log(blob.type)
   const formData = new FormData()
   formData.append("file", blob,'video.webm')
+  formData.append("pictureName", pictureName);
+  formData.append("pictureDescription", pictureDescription);
 
   try {
     const res = await fetch(`http://localhost:8080/photos/upload`, {
