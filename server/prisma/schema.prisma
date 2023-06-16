@@ -33,6 +33,7 @@ model Project {
   user      User       @relation(fields: [user_id], references: [id])
   user_id   Int        @map("user_id")
   category  Category[]
+  task      Task[]
   user_project  UserProject[]
   updated_at DateTime   @updatedAt
 
@@ -71,6 +72,8 @@ model Task {
   user_id     Int      @map("user_id")
   category    Category @relation(fields: [category_id], references: [id])
   category_id Int      @map("category_id")
+  project    Project  @relation(fields: [project_id], references: [id])
+  project_id  Int       @map("project_id")
   record      Record[]
   syslog      Syslog[]
   created_at   DateTime @default(now())

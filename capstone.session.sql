@@ -25,7 +25,7 @@ total AS (
   SELECT count(*) AS ct, c.id AS id
   FROM task t
   JOIN category c ON t.category_id = c.id
-  WHERE c.project_id = 
+  WHERE c.project_id = 2
   GROUP BY c.id
 )
 SELECT
