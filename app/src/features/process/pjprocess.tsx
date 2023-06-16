@@ -13,10 +13,6 @@ import { Link, useParams } from "react-router-dom";
 import { useProcess } from "./PjprocessAPI";
 import useStyles from "./PjprocessCss";
 
-interface Process {
-  project_id: number;
-  name: string;
-}
 
 export function StatsCard() {
   const projectId = useParams();
@@ -27,6 +23,13 @@ export function StatsCard() {
 
   console.log("meigig", process.data);
 
+ 
+    const calculatePercentage = (inc: number, tt: number): number => {
+      if (tt === 0) {
+        return 0;
+      }
+      return Math.floor((1 -(inc / tt)) * 100);
+    };
   return (
     <div
       style={{
@@ -46,6 +49,13 @@ export function StatsCard() {
         {process.data &&
           process.data.map((item) => {
             return (
+              // <div>
+              //   <div>{item.id}</div>
+              //   <div>{item.name}</div>
+              //    <div>{item.inc}</div>
+              //   <div>{item.tt}</div>
+              //   <div>{item.percent}</div> 
+            
               <div>
                 <Link to={`/task/${item.id}`} className={classes.linktodo}>
                   <div className={classes.tittleBar}>
@@ -59,10 +69,10 @@ export function StatsCard() {
                     進度
                   </Text>
                   <Text fz="sm" color="dimmed">
-                    62%
+                  {calculatePercentage(item.inc, item.tt)}%
                   </Text>
                 </Group>
-                <Progress value={32} mt={5} color="rgb(255, 187, 73)" />
+                <Progress value={calculatePercentage(item.inc, item.tt)} mt={5} color="rgb(255, 187, 73)" />
 
                 <Group position="apart" mt="md">
                   <Badge size="sm">4 days left</Badge>
@@ -73,33 +83,4 @@ export function StatsCard() {
       </Paper>
     </div>
   );
-}
-
-{
-  /* <Link to="/Todo" className={classes.linktodo}>
-          <div className={classes.tittleBar}>
-            <Text ta="center" fw={700} className={classes.title}>
-            {data && data.map((item) => (
-          <li key={item.id}>{item.name}</li>))}
-        </Text>
-          </div>
-        </Link>
-        <Group position="apart" mt="xs">
-          <Text fz="sm" color="dimmed">
-            進度
-          </Text>
-          <Text fz="sm" color="dimmed">
-            62%
-          </Text>
-        </Group>
-        <Progress value={32} mt={5} color="rgb(255, 187, 73)" />
-
-        <Group position="apart" mt="md">
-          <Badge size="sm">4 days left</Badge>
-        </Group>
-  
-      </Paper>
-    </div>
-  );
-} */
 }

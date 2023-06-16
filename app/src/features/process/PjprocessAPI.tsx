@@ -1,16 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 
 interface Process {
+  inc: number;
+  tt: number;
+  percent: number;
   id: number;
   name: string;
 }
 
 export function useProcess() {
-  console.log("ok");
   const { isLoading, error, data, isFetching } = useQuery({
     queryKey: ["getallprocess"],
     queryFn: async () => {
-      console.log("ok123");
+      console.log(`${process.env.REACT_APP_API_URL}/category/get/1`)
       const res = await fetch(
         `${process.env.REACT_APP_API_URL}/category/get/1`
       );
