@@ -24,11 +24,11 @@ export class AuthService {
     }
 
     console.log('check har', user);
-    return this.signToken(user.id, user.username, user.isAdmin);
+    return this.signToken(user.id, user.username, user.is_admin);
   }
 
-  async signToken(userId: number, username: string, isAdmin: boolean) {
-    const payload = { userId, username, isAdmin };
+  async signToken(userId: number, username: string, is_admin: boolean) {
+    const payload = { userId, username, is_admin };
     console.log(this.config.get('JWT_SECRET'));
     return {
       access_token: await this.jwt.signAsync(payload, {

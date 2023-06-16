@@ -13,23 +13,21 @@ import { Link, useParams } from "react-router-dom";
 import { useProcess } from "./PjprocessAPI";
 import useStyles from "./PjprocessCss";
 
-
 export function StatsCard() {
   const projectId = useParams();
   console.log("project id", projectId);
   const { classes } = useStyles();
   const viewport = useViewportSize();
-  const process = useProcess();
+  const process = useProcess(projectId.id??"");
 
   console.log("meigig", process.data);
 
- 
-    const calculatePercentage = (inc: number, tt: number): number => {
-      if (tt === 0) {
-        return 0;
-      }
-      return Math.floor((1 -(inc / tt)) * 100);
-    };
+  const calculatePercentage = (inc: number, tt: number): number => {
+    if (tt === 0) {
+      return 0;
+    }
+    return Math.floor((1 - inc / tt) * 100);
+  };
   return (
     <div
       style={{
@@ -46,16 +44,11 @@ export function StatsCard() {
           margin: "auto",
         }}
       >
+        {process.data && <><h1 className={classes.mainHeading}>{process.data[0].project_name}</h1></>}
+
         {process.data &&
           process.data.map((item) => {
             return (
-              // <div>
-              //   <div>{item.id}</div>
-              //   <div>{item.name}</div>
-              //    <div>{item.inc}</div>
-              //   <div>{item.tt}</div>
-              //   <div>{item.percent}</div> 
-            
               <div>
                 <Link to={`/task/${item.id}`} className={classes.linktodo}>
                   <div className={classes.tittleBar}>
@@ -69,10 +62,14 @@ export function StatsCard() {
                     進度
                   </Text>
                   <Text fz="sm" color="dimmed">
-                  {calculatePercentage(item.inc, item.tt)}%
+                    {calculatePercentage(item.inc, item.tt)}%
                   </Text>
                 </Group>
-                <Progress value={calculatePercentage(item.inc, item.tt)} mt={5} color="rgb(255, 187, 73)" />
+                <Progress
+                  value={calculatePercentage(item.inc, item.tt)}
+                  mt={5}
+                  color="rgb(255, 187, 73)"
+                />
 
                 <Group position="apart" mt="md">
                   <Badge size="sm">4 days left</Badge>

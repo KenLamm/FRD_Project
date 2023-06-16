@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useStyles from "./taskCss";
 import { useTask, TaskType } from "./taskAPI";
 import { useMutation } from "@tanstack/react-query";
@@ -14,8 +14,9 @@ import { queryClient } from "../app/App";
 // }
 
 const Task: React.FC = () => {
+  const params = useParams()
   const { classes } = useStyles();
-  const result = useTask();
+  const result = useTask(params.id??"");
   // { id: 1, name: "降水控制", isFinished: false, user_id: 1, category_id: 1 },]
   // const [todos, setTodos] = useState<Todo[]>([
   //   { id: 1, title: "降水控制", done: false },

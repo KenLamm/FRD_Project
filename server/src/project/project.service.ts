@@ -4,32 +4,29 @@ import { PrismaService } from '../prisma/prisma.service';
 @Injectable()
 export class ProjectService {
   constructor(private readonly prismaService: PrismaService) {}
-  getAllProject(): Promise<any[]> {
-    return this.prismaService.project
-      .findMany
-      //     {
-      //   where: {
-      //     user_id: 2,
-      //   },}
-      ();
-  }
-
-
-  postProject(name:string): Promise<any> {
-    return this.prismaService.project.create({
-      data: {
-        name: name,
-        user_id: 1,
+  getAllProject(userId: number): Promise<any[]> {
+    return this.prismaService.project.findMany({
+      orderBy: {
+        updated_at: 'desc',
+      },
+      where: {
+        user_id: userId,
       },
     });
   }
 
+  postProject(name: string, userId: number): Promise<any> {
+    return this.prismaService.project.create({
+      data: {
+        name: name,
+        user_id: userId,
+      },
+    });
+  }
 
   deleteProject(id: number): Promise<any> {
     return this.prismaService.project.delete({
       where: { id: id },
     });
   }
-
 }
- 
