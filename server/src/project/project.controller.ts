@@ -14,8 +14,9 @@ export class ProjectController {
   }
 
   @Post('post')
-  async postProject(@Body('name') name: string) {
-    return this.projectService.postProject(name);
+  @UseGuards(JwtGuard)
+  async postProject(@Body('name') name: string, @GetUser('id') userId: number) {
+    return this.projectService.postProject(name, userId);
   }
 
   @Delete('delete')

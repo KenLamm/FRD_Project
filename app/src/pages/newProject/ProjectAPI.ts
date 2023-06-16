@@ -8,7 +8,11 @@ export function useProject() {
   const { isLoading, error, data, isFetching } = useQuery({
     queryKey: ["useProject"],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/project/get`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/project/get`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
       const result = await res.json();
       return result as Project[];
     },

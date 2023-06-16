@@ -15,11 +15,11 @@ export class ProjectService {
     });
   }
 
-  postProject(name: string): Promise<any> {
+  postProject(name: string, userId: number): Promise<any> {
     return this.prismaService.project.create({
       data: {
         name: name,
-        user_id: 1,
+        user_id: userId,
       },
     });
   }
