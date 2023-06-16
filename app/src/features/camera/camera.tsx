@@ -5,9 +5,12 @@ import { TiCancel } from "react-icons/ti";
 import { useEffect, useRef, useState } from 'react';
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { uploadAPI, uploadVideoAPI } from './cameraAPI';
+import { useParams } from 'react-router';
 // import uploadForm from './cameraAPI';
 
 const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
+  const record = useParams();
+  console.log(record.id)
   const { classes } = useStyles();
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -164,83 +167,85 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   //  }
 
   return (
-    <>
+    <div style={{ position: "fixed", height: "100%", top: 0, left: 0 }}>
       {cameraAccess ? (
+
         <>
-          <div className={classes.videoContainer + " myclass"}>
-            {stream && <video className={classes.visibleVideo} ref={videoRef} autoPlay playsInline></video>}
-            <div className={classes.buttonArea}>
-              {stream ? (
-                <>
-                  <button onClick={handleCapture} id="btn-photo" className={classes.button}>
-                    <FaCamera className={classes.buttonIcon} />
-                  </button>
-                  {!isRecording && (
-                    <button onClick={handleStartRecording} id="btn-record" className={classes.button}>
-                      <FaVideo className={classes.buttonIcon} />
+          {stream ?
+            <div className={classes.videoContainer + " myclass"}>
+              {stream && <video className={classes.visibleVideo} ref={videoRef} autoPlay playsInline></video>}
+              <div className={classes.buttonArea}>
+                {stream ? (
+                  <>
+                    <button onClick={handleCapture} id="btn-photo" className={classes.button}>
+                      <FaCamera className={classes.buttonIcon} />
                     </button>
-                  )}
-                  {isRecording && (
-                    <button onClick={handleStopRecording} id="btn-stop-record" className={classes.button}>
-                      <FaStop className={classes.buttonIcon} />
+                    {!isRecording && (
+                      <button onClick={handleStartRecording} id="btn-record" className={classes.button}>
+                        <FaVideo className={classes.buttonIcon} />
+                      </button>
+                    )}
+                    {isRecording && (
+                      <button onClick={handleStopRecording} id="btn-stop-record" className={classes.button}>
+                        <FaStop className={classes.buttonIcon} />
+                      </button>
+                    )}
+                    <button onClick={handleToggleFacingMode} id="btn-cam-chooser" className={classes.button}>
+                      <FaSyncAlt className={classes.buttonIcon} />
                     </button>
-                  )}
-                  <button onClick={handleToggleFacingMode} id="btn-cam-chooser" className={classes.button}>
-                    <FaSyncAlt className={classes.buttonIcon} />
-                  </button>
-                  <button onClick={handleCloseCamera} id="btn-close-cam" className={classes.button}>
-                    <FaTimes className={classes.buttonIcon} />
-                  </button>
-                </>
-              ) : (
-                <></>
-              )}
+                    <button onClick={handleCloseCamera} id="btn-close-cam" className={classes.button}>
+                      <FaTimes className={classes.buttonIcon} />
+                    </button>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </div>
             </div>
-          </div>
-          {!stream && (
-            <div className={classes.videoContainer}>
+            : (
 
-              {mode === "photo" ? <>
-                {capturedImages.map((image, index) => (
-                  <img key={index} src={image} alt={`Captured ${index}`} />
-                ))}
-                <div className={classes.saveCancelArea}>
-                  {!stream ? (<>
-                    <input></input>
-                    <input></input>
-                    <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
-                    <button onClick={() => uploadAPI(capturedImages[0])} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>) : (<></>)}
+              <div className={classes.videoContainer + " display_result"}>
 
-                </div>
-              </> : <></>}
-              {mode === "video" ?
-                <>
-                  {isVideoShow && recordings && (
-                    <video controls>
-                      <source src={recordings} type="video/webm" />
-                    </video>
-                  )}
+                {mode === "photo" ? <>
+                  {capturedImages.map((image, index) => (
+                    <img key={index} src={image} alt={`Captured ${index}`} />
+                  ))}
                   <div className={classes.saveCancelArea}>
-                    {!isRecording && recordings ? (<>
+                    {!stream ? (<>
                       <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
-                      <button onClick={() => uploadVideoAPI(recordings, pictureName, pictureDescription)} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>
-                    ) : (<></>)}
+                      <button onClick={() => uploadAPI(capturedImages[0], pictureName, pictureDescription, record.id ?? "")} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>) : (<></>)}
+
                   </div>
                 </> : <></>}
+                {mode === "video" ?
+                  <>
+                    {isVideoShow && recordings && (
+                      <video controls>
+                        <source src={recordings} type="video/webm" />
+                      </video>
+                    )}
+                    <div className={classes.saveCancelArea}>
+                      {!isRecording && recordings ? (<>
+                        <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
+                        <button onClick={() => uploadVideoAPI(recordings, pictureName, pictureDescription, record.id ?? "")} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>
+                      ) : (<></>)}
+                    </div>
+                  </> : <></>}
+              </div>
 
-            </div>
-          )}
+
+            )}
         </>
       ) : (
         <p>Camera access denied.</p>
       )}
 
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
-      <label htmlFor="pictureName">Picture Name</label>
+      {/* <label htmlFor="pictureName">Picture Name</label>
       <input id="pictureName" onChange={(event)=> {setPictureName(event.target.value)}}></input>
       <label htmlFor="pictureDescription">Picture Description</label>
-      <input id="pictureDescription" onChange={(event)=> {setPictureDescription(event.target.value)}}></input>
-    </>
+      <input id="pictureDescription" onChange={(event)=> {setPictureDescription(event.target.value)}}></input> */}
+    </div>
 
   );
 };

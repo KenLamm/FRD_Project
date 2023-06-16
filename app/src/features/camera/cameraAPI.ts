@@ -59,7 +59,7 @@ function dataURItoBlob(dataURI: string) {
   return new Blob([ia], { type: mimeString });
 }
 
-export const uploadVideoAPI = async (recordURL: string, pictureName: string, pictureDescription:string) => {
+export const uploadVideoAPI = async (recordURL: string, pictureName: string, pictureDescription:string,record:string) => {
   const blob = await fetch(recordURL).then(r => r.blob());
   console.log(blob.type)
   const formData = new FormData()
@@ -68,8 +68,11 @@ export const uploadVideoAPI = async (recordURL: string, pictureName: string, pic
   formData.append("pictureDescription", pictureDescription);
 
   try {
-    const res = await fetch(`http://localhost:8080/photos/upload`, {
+    const res = await fetch(`http://localhost:8080/photos/upload/`, {
       method: 'POST',
+      headers:{
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      },
       body: formData
     })
 
@@ -83,15 +86,20 @@ export const uploadVideoAPI = async (recordURL: string, pictureName: string, pic
 }
 
 
-export const uploadAPI = async (dataURL: string) => {
+export const uploadAPI = async (dataURL: string, pictureName:string, pictureDescription:string, record:string) => {
   let blob = dataURItoBlob(dataURL);
   console.log(blob.type)
   let formData = new FormData()
   formData.append("file", blob,'image.png')
+  formData.append("pictureName", pictureName)
+  formData.append("pictureDescription", pictureDescription)
 
   try {
-    const res = await fetch(`http://localhost:8080/photos/upload`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/photos/upload/`, {
       method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      },
       body: formData
     })
 

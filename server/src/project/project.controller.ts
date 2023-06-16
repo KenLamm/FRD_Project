@@ -6,9 +6,8 @@ import { GetUser } from 'src/auth/decorator';
 @Controller('project')
 export class ProjectController {
   constructor(private readonly projectService: ProjectService) { }
-
-  @Get('get')
   @UseGuards(JwtGuard)
+  @Get('get')
   getAllProject(@GetUser('id') userId: number,) {
     return this.projectService.getAllProject(userId);
   }

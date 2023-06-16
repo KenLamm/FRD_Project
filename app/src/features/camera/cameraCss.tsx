@@ -2,24 +2,26 @@ import { createStyles } from "@mantine/core";
 
 const useStyles = createStyles({
   visibleVideo: {
+    // position:'absolute',
     height: "100%",
+
   },
   videoContainer: {
+    // position:"absolute",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    position: "fixed",
-    marginLeft: "10%",
-    marginRight: "10%",
-    marginTop: "10%",
-    marginBottom: "10%",
-    maxHeight: "fit-content",
-    height: "100vh",
-    width: "100vw",
-    top: "30%",
-    left: "40%",
-    bottom: "30%",
-    transform: "translate(-50%, -50%)",
+    // position: "relative",
+    // marginLeft: "10%",
+    // marginRight: "10%",
+    // marginTop: "10%",
+    // marginBottom: "10%",
+    // maxHeight: "fit-content",
+    height: '100%',
+    // width: "100vh",
+    // left: "40%",
+    // bottom: "30%",
+    // transform: "translate(-50%, -50%)",
   },
   buttonArea: {
     position: "absolute",
