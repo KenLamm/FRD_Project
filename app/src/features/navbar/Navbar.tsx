@@ -1,7 +1,7 @@
 import React from "react";
 import App from "../../pages/navbar/Navbar";
 
-const Navbar = () => {
+const logOut = () => {
   return (
     <nav className="navbar">
       <ul className="navbar-list">
@@ -22,4 +22,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default logOut;

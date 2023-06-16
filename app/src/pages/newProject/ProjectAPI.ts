@@ -1,13 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 interface Project {
   id: number;
   name: string;
 }
 
 export function useProject() {
+  const navigate = useNavigate();
   const { isLoading, error, data, isFetching } = useQuery({
     queryKey: ["useProject"],
     queryFn: async () => {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        navigate("/login");
+        return [];
+      }
       const res = await fetch(`${process.env.REACT_APP_API_URL}/project/get`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,

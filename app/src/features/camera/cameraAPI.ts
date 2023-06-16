@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // interface photos {
 //   id: number;
 //   user_id: number;
@@ -8,7 +7,6 @@ import React, { useState } from 'react';
 //   description: string;
 //   record_id: number;
 // }
-
 
 // const uploadForm = () => {
 //   const [file, setFile] = useState(null);
@@ -36,19 +34,17 @@ import React, { useState } from 'react';
 // }
 // export default uploadForm;
 
-
 function dataURItoBlob(dataURI: string) {
   // convert base64/URLEncoded data component to raw binary data held in a string
   var byteString;
-  if (dataURI.split(',')[0].indexOf('base64') >= 0)
-    byteString = atob(dataURI.split(',')[1]);
-  else
-    byteString = decodeURI(dataURI.split(',')[1]);
+  if (dataURI.split(",")[0].indexOf("base64") >= 0)
+    byteString = atob(dataURI.split(",")[1]);
+  else byteString = decodeURI(dataURI.split(",")[1]);
 
   // separate out the mime component
-  var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+  var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
 
-  console.log("check 2",mimeString)
+  console.log("check 2", mimeString);
   // write the bytes of the string to a typed array
   var ia = new Uint8Array(byteString.length);
   for (var i = 0; i < byteString.length; i++) {
@@ -59,49 +55,54 @@ function dataURItoBlob(dataURI: string) {
   return new Blob([ia], { type: mimeString });
 }
 
-export const uploadVideoAPI = async (recordURL: string, pictureName: string, pictureDescription:string) => {
-  const blob = await fetch(recordURL).then(r => r.blob());
-  console.log(blob.type)
-  const formData = new FormData()
-  formData.append("file", blob,'video.webm')
+export const uploadVideoAPI = async (
+  recordURL: string,
+  pictureName: string,
+  pictureDescription: string
+) => {
+  const blob = await fetch(recordURL).then((r) => r.blob());
+  console.log(blob.type);
+  const formData = new FormData();
+  formData.append("file", blob, "video.webm");
   formData.append("pictureName", pictureName);
   formData.append("pictureDescription", pictureDescription);
 
   try {
     const res = await fetch(`http://localhost:8080/photos/upload`, {
-      method: 'POST',
-      body: formData
-    })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: formData,
+    });
 
-    const result = await res.json()
-    return result
+    const result = await res.json();
+    return result;
   } catch (error) {
-    console.error("Error uploading file", error)
-
+    console.error("Error uploading file", error);
   }
-
-}
-
+};
 
 export const uploadAPI = async (dataURL: string) => {
   let blob = dataURItoBlob(dataURL);
-  console.log(blob.type)
-  let formData = new FormData()
-  formData.append("file", blob,'image.png')
+  console.log(blob.type);
+  let formData = new FormData();
+  formData.append("file", blob, "image.png");
 
   try {
     const res = await fetch(`http://localhost:8080/photos/upload`, {
-      method: 'POST',
-      body: formData
-    })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: formData,
+    });
 
-    const result = await res.json()
-    return result
+    const result = await res.json();
+    return result;
   } catch (error) {
-    console.error("Error uploading file", error)
-
+    console.error("Error uploading file", error);
   }
-
-}
-
-
+};

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useStyles from "./taskCss";
-import { useTask, TaskType } from "./taskAPI";
-import { useMutation } from "@tanstack/react-query";
+import { useTask, TaskType, postTask } from "./taskAPI";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryClient } from "../app/App";
+import { FaPlus } from "react-icons/fa";
 
 // import { useQueryClient } from "@tanstack/react-query";
 
@@ -14,9 +15,10 @@ import { queryClient } from "../app/App";
 // }
 
 const Task: React.FC = () => {
-  const params = useParams()
+  const params = useParams();
   const { classes } = useStyles();
-  const result = useTask(params.id??"");
+  const result = useTask(params.id ?? "");
+
   // { id: 1, name: "降水控制", isFinished: false, user_id: 1, category_id: 1 },]
   // const [todos, setTodos] = useState<Todo[]>([
   //   { id: 1, title: "降水控制", done: false },
@@ -31,12 +33,13 @@ const Task: React.FC = () => {
   //   { id: 10, title: "滲漏處理", done: false },
   // ]);
   // const task = useTask();
-
+  const queryClient = useQueryClient();
   const userTaskMutation = useMutation({
     mutationFn: (id: number) =>
       fetch(`${process.env.REACT_APP_API_URL}/task/update`, {
         method: "PATCH",
         headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ id }),
@@ -45,16 +48,25 @@ const Task: React.FC = () => {
       queryClient.invalidateQueries({ queryKey: ["useTask"] });
     },
   });
+  const onAddTask = useMutation(
+    async (data: { name: string; category_id: string }) =>
+      postTask(data.name, data.category_id),
+    {
+      onSuccess: () => queryClient.invalidateQueries(["useTask"]),
+    }
+  );
+  const [newTaskName, setNewTaskName] = useState("");
+  const [isAddingTask, setIsAddingTask] = useState(false);
 
   const handleToggleDone = (id: number) => {
-    // setTodos((prevTodos) =>
-    //   prevTodos.map((todo) =>
-    //     todo.id === id ? { ...todo, done: !todo.done } : todo
-    //   )
-    // );
     userTaskMutation.mutate(id);
     console.log("handle toggle", id);
   };
+
+  const handleAddTask = () => {
+    onAddTask.mutate({ name: newTaskName, category_id: params.id ?? "" });
+  };
+
   let todoItems: TaskType[] | undefined = [];
   let doneItems: TaskType[] | undefined = [];
 
@@ -69,7 +81,26 @@ const Task: React.FC = () => {
   return (
     <div>
       <h1 className={classes.mainHeading}>地基工程</h1>
-
+      {isAddingTask ? (
+        <div>
+          <input
+            type="text"
+            placeholder="Enter folder name"
+            value={newTaskName}
+            onChange={(e) => setNewTaskName(e.target.value)}
+          />
+          <button className={classes.addButton} onClick={handleAddTask}>
+            <FaPlus className={classes.addIcon} />
+          </button>
+        </div>
+      ) : (
+        <button
+          className={classes.addButton}
+          onClick={() => setIsAddingTask(true)}
+        >
+          <FaPlus className={classes.addIcon} />
+        </button>
+      )}
       <div className={classes.todoSection}>
         <div className={classes.todoColumn}>
           <h2>進行中</h2>
@@ -81,6 +112,7 @@ const Task: React.FC = () => {
                   <Link to={`/record/${todo.id}`} className={classes.todoLink}>
                     {todo.name}
                   </Link>
+
                   <button
                     className={classes.todoButton}
                     onClick={() => handleToggleDone(todo.id)}
