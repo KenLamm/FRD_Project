@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "capstone",
+            "database": "frd_project",
+            "username": "postgres",
+            "password": "postgres"
+        }
+    ]
+}

@@ -8,9 +8,8 @@ export class CategoryController {
   constructor(private readonly categoryService: CategoryService) {}
 
   @Get('get/:id')
-  @UseGuards(JwtGuard)
-  async getAllCategories(@Param('id') id:string,
-  @GetUser('id') userId: number,): Promise<any[]> {
+  async getAllCategories(@Param('id') id: string): Promise<any[]> {
     return this.categoryService.getAllCategory(+id);
-  }}
-  // http://localhost:3000/project/1 -> React -> getParams() -> useEffect -> HTTP Request
+  }
+}
+

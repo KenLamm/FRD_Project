@@ -1,6 +1,11 @@
 import { createStyles } from "@mantine/core";
 const useStyles = createStyles((theme) => ({
-
+  mainHeading: {
+    backgroundColor: "rgb(255, 187, 73)",
+    color: "rgb(0, 0, 0)",
+    padding: "1%",
+    textAlign: "center",
+  },
     card: {
       position: "relative",
       overflow: "visible",

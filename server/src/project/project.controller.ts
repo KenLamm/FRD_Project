@@ -5,16 +5,18 @@ import { GetUser } from 'src/auth/decorator';
 
 @Controller('project')
 export class ProjectController {
-  constructor(private readonly projectService: ProjectService) { }
-  @UseGuards(JwtGuard)
+  constructor(private readonly projectService: ProjectService) {}
+
   @Get('get')
-  getAllProject(@GetUser('id') userId: number,) {
+  @UseGuards(JwtGuard)
+  getAllProject(@GetUser('id') userId: number) {
     return this.projectService.getAllProject(userId);
   }
 
   @Post('post')
-  async postProject(@Body('name') name: string) {
-    return this.projectService.postProject(name,);
+  @UseGuards(JwtGuard)
+  async postProject(@Body('name') name: string, @GetUser('id') userId: number) {
+    return this.projectService.postProject(name, userId);
   }
 
   @Delete('delete')
