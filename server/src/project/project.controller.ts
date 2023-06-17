@@ -14,7 +14,7 @@ export class ProjectController {
 
   @Post('post')
   async postProject(@Body('name') name: string) {
-    return this.projectService.postProject(name);
+    return this.projectService.postProject(name,);
   }
 
   @Delete('delete')

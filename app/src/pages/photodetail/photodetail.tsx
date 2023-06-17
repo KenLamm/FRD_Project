@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaCamera, FaVideo } from "react-icons/fa";
+import { FaCamera, FaPhp, FaVideo } from "react-icons/fa";
 import Camera from "../../features/camera/camera";
 import { createStyles } from "@mantine/core";
 
@@ -26,6 +26,7 @@ const useStyles = createStyles((theme) => ({
 
 const Photo: React.FC = () => {
   const record = useParams()
+  console.log("checking for the record id:", record.id)
   const { data: photos } = usePhoto(record.id ?? "");
   const { classes } = useStyles();
   const [showCamera, setShowCamera] = useState(false);
@@ -56,11 +57,15 @@ const Photo: React.FC = () => {
       {showCamera && (<Camera onClose={handleCloseCamera} />)}
 
       <div className={showCamera ? classes.displayNone : "isShow"}>
-        <UserInfoIcons
-          avatar="avatar.jpg"
-          name="Sam Lee"
-          title="Software Engineer"
-        />
+        {photos && (
+          photos.map(photo => (
+            <UserInfoIcons
+              avatar={`${process.env.REACT_APP_API_URL}/uploads/${photo.s3_name}`}
+              name={`${photo.name}`}
+              title={`${photo.description}`}
+            />
+          ))
+        )}
       </div>
 
     </div>

@@ -174,7 +174,7 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           {stream ?
             <div className={classes.videoContainer + " myclass"}>
               {stream && <video className={classes.visibleVideo} ref={videoRef} autoPlay playsInline></video>}
-              <div className={classes.buttonArea}>
+              <div className={classes.buttonArea + " buttonArea"}>
                 {stream ? (
                   <>
                     <button onClick={handleCapture} id="btn-photo" className={classes.button}>
@@ -203,20 +203,18 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
             </div>
             : (
-
               <div className={classes.videoContainer + " display_result"}>
-
-                {mode === "photo" ? <>
-                  {capturedImages.map((image, index) => (
-                    <img key={index} src={image} alt={`Captured ${index}`} />
-                  ))}
-                  <div className={classes.saveCancelArea}>
-                    {!stream ? (<>
-                      <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
-                      <button onClick={() => uploadAPI(capturedImages[0], pictureName, pictureDescription, record.id ?? "")} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>) : (<></>)}
-
-                  </div>
-                </> : <></>}
+                {mode === "photo" ?
+                  <>
+                    {capturedImages.map((image, index) => (
+                      <img key={index} src={image} alt={`Captured ${index}`} />
+                    ))}
+                    <div className={classes.saveCancelArea + " Area1"}>
+                      {!stream ? (<>
+                        <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
+                        <button onClick={() => uploadAPI(capturedImages[0], pictureName, pictureDescription, record.id ?? "")} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>) : (<></>)}
+                    </div>
+                  </> : <></>}
                 {mode === "video" ?
                   <>
                     {isVideoShow && recordings && (
@@ -224,27 +222,30 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                         <source src={recordings} type="video/webm" />
                       </video>
                     )}
-                    <div className={classes.saveCancelArea}>
+                    <div className={classes.saveCancelArea + " Area"}>
                       {!isRecording && recordings ? (<>
                         <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
                         <button onClick={() => uploadVideoAPI(recordings, pictureName, pictureDescription, record.id ?? "")} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>
                       ) : (<></>)}
                     </div>
                   </> : <></>}
+
+                <div className={classes.pictureName}>
+                  <input ></input>
+                  <br></br>
+                  <input></input>
+                </div>
               </div>
 
-
             )}
+
         </>
       ) : (
         <p>Camera access denied.</p>
       )}
 
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
-      {/* <label htmlFor="pictureName">Picture Name</label>
-      <input id="pictureName" onChange={(event)=> {setPictureName(event.target.value)}}></input>
-      <label htmlFor="pictureDescription">Picture Description</label>
-      <input id="pictureDescription" onChange={(event)=> {setPictureDescription(event.target.value)}}></input> */}
+
     </div>
 
   );

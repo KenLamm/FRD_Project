@@ -9,8 +9,6 @@ const useStyles = createStyles({
   videoContainer: {
     // position:"absolute",
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     // position: "relative",
     // marginLeft: "10%",
     // marginRight: "10%",
@@ -25,13 +23,13 @@ const useStyles = createStyles({
   },
   buttonArea: {
     position: "absolute",
-    minWidth: "40%",
+    minWidth: "30%",
     minHeight: "10%",
     top: "80%",
-    left: "10%",
-    right: "10%",
+    left: "5%",
+    right:"15%",
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
   },
   button: {
     display: "flex",
@@ -71,10 +69,36 @@ const useStyles = createStyles({
     minHeight: "10%",
     top: "80%",
     left: "10%",
-    right: "10%",
+    right: "30%",
     display: "flex",
     justifyContent: "space-between",
   },
+  sendButton: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 24,
+    height: 24,
+    color: "rgba(0, 0, 0, 0.8)",
+    transition: "color 0.3s ease",
+  },
+  cancelButton: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 24,
+    height: 24,
+    color: "rgba(0, 0, 0, 0.8)",
+    transition: "color 0.3s ease",
+  },
+  pictureName: {
+    position: "absolute",
+    left: "25%",
+    minWidth: "40%",
+    bottom: 0,
+    zIndex: 9999
+  }
 });
+
 
 export default useStyles;
