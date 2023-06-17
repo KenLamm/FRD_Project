@@ -8,9 +8,10 @@ export interface TaskType {
   is_finished: boolean;
   user_id: number;
   category_id: number;
+  project_id:number;
 }
 
-export function useTask(categoryId: string) {
+export function useTask(params: string, projectId:string) {
   const navigate = useNavigate();
   const { isLoading, error, data, isFetching } = useQuery({
     queryKey: ["useTask"],
@@ -21,7 +22,7 @@ export function useTask(categoryId: string) {
         return [];
       }
       const res = await fetch(
-        `${process.env.REACT_APP_API_URL}/task/get/${categoryId}`,
+        `${process.env.REACT_APP_API_URL}/task/get/${projectId}/${params}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -32,7 +33,6 @@ export function useTask(categoryId: string) {
       return result as TaskType[];
     },
   });
-  console.log("user Task data", data);
   return {
     isLoading: isLoading,
     data: data,
@@ -41,20 +41,19 @@ export function useTask(categoryId: string) {
   };
 }
 
-export async function postTask(name: string, params: string) {
+export async function postTask(name: string, params: string, projectId:string) {
   const res = await fetch(
-    `${process.env.REACT_APP_API_URL}/task/post/${params}`,
+    `${process.env.REACT_APP_API_URL}/task/post/${projectId}/${params}`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body: JSON.stringify({ name, params }),
+      body: JSON.stringify({ name, params, projectId }),
     }
   );
   const result = await res.json();
   return result.data;
 }
 
-// export async function updateTask()

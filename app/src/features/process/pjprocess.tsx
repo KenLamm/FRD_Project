@@ -15,10 +15,10 @@ import useStyles from "./PjprocessCss";
 
 export function StatsCard() {
   const projectId = useParams();
-  console.log("project id", projectId);
+
   const { classes } = useStyles();
   const viewport = useViewportSize();
-  const process = useProcess(projectId.id??"");
+  const process = useProcess(projectId.id!);
 
   console.log("meigig", process.data);
 
@@ -44,13 +44,18 @@ export function StatsCard() {
           margin: "auto",
         }}
       >
+        {/* <h1>
+          {process.data == undefined || process.data.length == 0
+            ? "No task"
+            : "Have Task"}
+        </h1> */}
         {process.data && <><h1 className={classes.mainHeading}>{process.data[0].project_name}</h1></>}
 
         {process.data &&
           process.data.map((item) => {
             return (
               <div>
-                <Link to={`/task/${item.id}`} className={classes.linktodo}>
+                <Link to={`/task/${projectId.id}/${item.id}`} className={classes.linktodo}>
                   <div className={classes.tittleBar}>
                     <Text ta="center" fw={700} className={classes.title}>
                       <div key={item.id}>{item.name}</div>

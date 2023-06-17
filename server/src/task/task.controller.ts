@@ -12,15 +12,19 @@ import { JwtGuard } from 'src/auth/guard';
 import { GetUser } from 'src/auth/decorator';
 
 @Controller('task')
+
 export class TaskController {
   constructor(private readonly taskService: TaskService) {}
-  @Get('get/:id')
+  
+  @Get('get/:pid/:cid')
   @UseGuards(JwtGuard)
   async getAllTask(
-    @Param('id') id: string,
+    @Param('pid') projectId: string,
     @GetUser('id') userId: number,
+    @Param('cid') categoryId :string
   ): Promise<any[]> {
-    return this.taskService.getAllTask(+id, userId);
+    console.log("check task controllers222")
+    return this.taskService.getAllTask(+projectId, userId, +categoryId);
   }
 
   @Patch('update')
@@ -29,13 +33,14 @@ export class TaskController {
     console.log('/task/update id: ', id);
     return this.taskService.updateTask(+id, userId);
   }
-  @Post('post/:id')
+  @Post('post/:pid/:cid')
   @UseGuards(JwtGuard)
   async postTask(
-    @Param('id') id: string,
+    @Param('pid') projectId: string,
     @GetUser('id') userId: number,
     @Body('name') name: string,
+    @Param('cid') categoryId: string
   ) {
-    return this.taskService.postTask(+id, userId, name);
+    return this.taskService.postTask(+projectId, userId, name, +categoryId);
   }
 }

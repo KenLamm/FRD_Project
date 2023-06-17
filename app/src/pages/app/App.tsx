@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/login" element={<AuthenticationTitle />} />
           <Route path="/project" element={<Project />} />
           <Route path="/category/:id" element={<Category />} />
-          <Route path="/task/:id" element={<Task />} />
+          <Route path="/task/:pid/:cid" element={<Task />} />
           <Route path="/record/:id" element={<Folder />} />
           <Route path="/photodetail/:id" element={<Photo />} />
         </Routes>

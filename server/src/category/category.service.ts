@@ -14,9 +14,12 @@ export class CategoryService {
   constructor(private readonly prismaService: PrismaService) {}
 
   async getAllCategory(id: number): Promise<any[]> {
+
+    // 
+
     const result: Completeness[] = await this.prismaService.$queryRaw`
-       WITH incomplete AS (
-  SELECT count(*) AS ct, c.id AS id, c.name AS name 
+      WITH incomplete AS (
+  SELECT count(*) AS ct, c.id AS id
   FROM task t
   RIGHT OUTER JOIN category c ON t.category_id = c.id
   WHERE t.is_finished = FALSE
@@ -30,23 +33,25 @@ total AS (
   GROUP BY c.id
 )
 SELECT
-  incomplete.id, 
-  p.name AS project_name,
-  incomplete.name,
-  incomplete.ct::int AS inc,
-  total.ct::int AS tt,
-  incomplete.ct / total.ct::float AS percent
+  p.id,
+  p.name as project_name,
+  c.id, 
+  c.name,
+  COALESCE(incomplete.ct::int, 0) AS inc,
+  COALESCE(total.ct::int, 0) AS tt,
+  COALESCE(incomplete.ct / total.ct::float, 0) AS percent
 FROM
   incomplete
 JOIN
   total ON total.id = incomplete.id
+RIGHT JOIN
+  category c ON total.id = c.id
 JOIN
-  category c ON incomplete.id = c.id
-  JOIN
-  project p ON p.id= c.project_id;
+  project p ON p.id= c.project_id
+WHERE
+ p.id = ${id}
     `;
     console.log('category.service: result - ', result);
     return result;
   }
 }
-
