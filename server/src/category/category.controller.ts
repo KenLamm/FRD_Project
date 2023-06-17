@@ -13,4 +13,4 @@ export class CategoryController {
     return this.categoryService.getAllCategory(+id);
   }
 }
-// http://localhost:3000/project/1 -> React -> getParams() -> useEffect -> HTTP Request
+

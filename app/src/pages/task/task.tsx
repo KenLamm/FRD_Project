@@ -15,24 +15,15 @@ import { FaPlus } from "react-icons/fa";
 // }
 
 const Task: React.FC = () => {
+  console.log("task tsx")
   const params = useParams();
   const { classes } = useStyles();
-  const result = useTask(params.id ?? "");
+  const result = useTask (params.cid??"", params.pid??"");
+  // const result = useTask ("1", "1");
+  console.log("checking for getting the two different id",
+  result.data)
 
-  // { id: 1, name: "降水控制", isFinished: false, user_id: 1, category_id: 1 },]
-  // const [todos, setTodos] = useState<Todo[]>([
-  //   { id: 1, title: "降水控制", done: false },
-  //   { id: 2, title: "地基檢測", done: false },
-  //   { id: 3, title: "地基調平", done: false },
-  //   { id: 4, title: "地基加強", done: false },
-  //   { id: 5, title: "地基穩固", done: false },
-  //   { id: 6, title: "結構支撐", done: false },
-  //   { id: 7, title: "空隙填充", done: false },
-  //   { id: 8, title: "沉降處理", done: false },
-  //   { id: 9, title: "地基處理", done: false },
-  //   { id: 10, title: "滲漏處理", done: false },
-  // ]);
-  // const task = useTask();
+
   const queryClient = useQueryClient();
   const userTaskMutation = useMutation({
     mutationFn: (id: number) =>
@@ -49,8 +40,8 @@ const Task: React.FC = () => {
     },
   });
   const onAddTask = useMutation(
-    async (data: { name: string; category_id: string }) =>
-      postTask(data.name, data.category_id),
+    async (data: { name: string; category_id: string; project_id:string }) =>
+      postTask(data.name, data.category_id, data.project_id),
     {
       onSuccess: () => queryClient.invalidateQueries(["useTask"]),
     }
@@ -64,14 +55,16 @@ const Task: React.FC = () => {
   };
 
   const handleAddTask = () => {
-    onAddTask.mutate({ name: newTaskName, category_id: params.id ?? "" });
+    onAddTask.mutate({ name: newTaskName, category_id: params.cid?? "" ,project_id: params.pid??"" });
   };
 
-  let todoItems: TaskType[] | undefined = [];
-  let doneItems: TaskType[] | undefined = [];
+  let todoItems: TaskType[] | undefined = []; // useMemo
+  let doneItems: TaskType[] | undefined = []; // useMemo
 
+  console.log(result.isLoading)
   if (!result.isLoading) {
     const todos = result.data;
+    console.log("check todos type", todos)
     todoItems = todos!.filter((todo) => !todo.is_finished);
     doneItems = todos!.filter((todo) => todo.is_finished);
 
@@ -80,7 +73,7 @@ const Task: React.FC = () => {
 
   return (
     <div>
-      <h1 className={classes.mainHeading}>地基工程</h1>
+      <h1 className={classes.mainHeading}>123</h1>
       {isAddingTask ? (
         <div>
           <input
@@ -128,7 +121,9 @@ const Task: React.FC = () => {
           <ul className={classes.doneList}>
             {doneItems.map((todo) => (
               <li key={todo.id} className={classes.doneItem}>
+                <Link to={`/record/${todo.id}`}>
                 <span className={classes.doneTitle}>{todo.name}</span>
+                </Link>
               </li>
             ))}
           </ul>
@@ -139,3 +134,6 @@ const Task: React.FC = () => {
 };
 
 export default Task;
+
+
+

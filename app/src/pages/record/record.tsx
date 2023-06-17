@@ -4,6 +4,7 @@ import useStyles from "./recordCss";
 import { Link, useParams } from "react-router-dom";
 import { postRecord, useRecord } from "./recordAPI";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import Project from "../newProject/NewProject";
 
 // interface Folder {
 //   id: number;
