@@ -99,12 +99,6 @@ export function AuthenticationTitle() {
                 required
                 mt="md"
               />
-              <Group position="apart" mt="lg">
-                <Checkbox label="Remember me" />
-                <Anchor component="button" size="sm">
-                  Forgot password?
-                </Anchor>
-              </Group>
 
               <Button type="submit" fullWidth mt="xl">
                 Sign in
