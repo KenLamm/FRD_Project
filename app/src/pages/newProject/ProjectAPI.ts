@@ -37,9 +37,8 @@ export async function createProject(name: string) {
   const res = await fetch(`${process.env.REACT_APP_API_URL}/project/post`, {
     method: "POST",
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      "Content-Type": "application/json",
       Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({ name }),
   });

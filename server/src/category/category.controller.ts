@@ -12,4 +12,3 @@ export class CategoryController {
     return this.categoryService.getAllCategory(+id);
   }
 }
-
