@@ -1,11 +1,9 @@
 import { createStyles } from "@mantine/core";
 const useStyles = createStyles((theme) => ({
   mainHeading: {
-   
     color: "rgb(252, 252, 252)",
-    padding: "7%",
     textAlign: "center",
-    borderRadius: "10% ",
+    fontSize:"40px"
   },
 
   title: {
@@ -13,11 +11,11 @@ const useStyles = createStyles((theme) => ({
     lineHeight: "120%",
     backgroundColor: "#0085ff",
     // background: "linear-gradient(90deg, rgba(0,133,255,1) 0%, rgba(105,180,255,1) 100%)",
-   
+
     color: "rgb(252, 252, 252)",
     borderRadius: "20px ",
-    paddingTop:"5px",
-    paddingBottom:"5px"
+    paddingTop: "5px",
+    paddingBottom: "5px"
   },
   linktodo: {
     textDecoration: "none",

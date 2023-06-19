@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthenticationTitle } from "../auth/login";
 import Project from "../newProject/NewProject";
 import Photo from "../photodetail/photodetail";
-import Folder from "../record/record";
+import Record from "../record/record";
 import Task from "../task/task";
 import Landing from "../../Landing";
 import Navbar from "../navbar/Navbar";
@@ -14,6 +14,7 @@ export const queryClient = new QueryClient();
 
 const App = () => {
   return (
+
     <Router>
       <Navbar />
       <QueryClientProvider client={queryClient}>
@@ -23,11 +24,12 @@ const App = () => {
           <Route path="/project" element={<Project />} />
           <Route path="/category/:id" element={<Category />} />
           <Route path="/task/:pid/:cid" element={<Task />} />
-          <Route path="/record/:id" element={<Folder />} />
+          <Route path="/record/:id" element={<Record />} />
           <Route path="/photodetail/:id" element={<Photo />} />
         </Routes>
       </QueryClientProvider>
     </Router>
+
   );
 };
 

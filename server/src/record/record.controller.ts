@@ -23,4 +23,9 @@ export class RecordController {
     ) {
         return this.recordService.postRecord(name, +task_id, +userId);
     }
+    @Get('getName/:id')
+    getTaskName(
+        @Param('id') taskId:string){
+            return this.recordService.getTaskName(+taskId)
+        }
 }

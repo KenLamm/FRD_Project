@@ -4,8 +4,9 @@ const useStyles = createStyles((theme) => ({
   mainHeading: {
     backgroundColor: "#454545",
     color: "rgb(252, 252, 252)",
-    padding: "1%",
     textAlign: "center",
+    padding:"0",
+    margin:"0"
   },
   todoSection: {
     display: "flex",
@@ -34,12 +35,14 @@ const useStyles = createStyles((theme) => ({
     
   },
   todoButton: {
-    backgroundColor: "rgb(0, 0, 0)",
+    backgroundColor: "#454545",
     color: "rgb(255, 255, 255)",
     padding: "10px 20px",
     border: "none",
     cursor: "pointer",
     borderRadius: "5px",
+    borderStyle: "solid",
+    borderBottomColor: "rgb(255, 255, 255)",
   },
   doneList: {
     listStyleType: "none",
@@ -65,18 +68,26 @@ const useStyles = createStyles((theme) => ({
     padding: "10px",
     border: "none",
     borderRadius: "5px",
-    backgroundColor: "rgb(255, 255, 255)",
-    color: "rgb(255, 187, 73)",
+    backgroundColor: "#454545",
+    color: "#006fff",
     fontSize: "24px",
     cursor: "pointer",
     transition: "background-color 0.3s ease",
     marginTop: "20px",
   },
   addIcon: {
-    marginRight: "5px",
-    borderRadius: "5px",
-    backgroundColor: "rgm (255, 255, 255)",
-    color: "rgb(255, 187, 73)",
+    backgroundColor:
+    theme.colorScheme === "dark" ? theme.colors.dark[6] : "#f2f2f2",
+  border: "none",
+  borderRadius: "50%",
+  padding: "10px",
+  cursor: "pointer",
+  display: "flex",
+  // alignItems: "center",
+  // justifyContent: "center",
+  fontSize: "20px",
+  marginTop: "10px",
+  height: "auto"
   },
 }));
 export default useStyles;

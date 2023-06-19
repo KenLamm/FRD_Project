@@ -49,7 +49,6 @@ import {
   IconBrandYoutube,
   IconBrandInstagram,
 } from "@tabler/icons-react";
-import { MantineLogo } from "@mantine/ds";
 
 const Navbar = () => {
   return (

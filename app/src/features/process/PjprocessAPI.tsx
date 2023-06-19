@@ -26,7 +26,6 @@ export function useProcess(projectId:string) {
         }
       );
       const result = await res.json();
-      console.log("Data for process: ", result);
       return result;
     },
   });

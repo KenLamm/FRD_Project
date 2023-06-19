@@ -26,7 +26,6 @@ const useStyles = createStyles((theme) => ({
 
 const Photo: React.FC = () => {
   const record = useParams()
-  console.log("checking for the record id:", record.id)
   const { data: photos } = usePhoto(record.id ?? "");
   const { classes } = useStyles();
   const [showCamera, setShowCamera] = useState(false);

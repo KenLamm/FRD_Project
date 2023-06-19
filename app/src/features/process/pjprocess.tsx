@@ -20,7 +20,6 @@ export function StatsCard() {
   const viewport = useViewportSize();
   const process = useProcess(projectId.id!);
 
-  console.log("meigig", process.data);
 
   const calculatePercentage = (inc: number, tt: number): number => {
     if (tt === 0) {
@@ -29,21 +28,14 @@ export function StatsCard() {
     return Math.floor((1 - inc / tt) * 100);
   };
   return (
-    <div
-      style={{
-        backgroundColor: "#454545",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: viewport.height,
-      }}
-    >
+    <>
       <Paper
         style={{
           backgroundColor: "#454545",
           width: "80%",
-          maxWidth: "1200px",
+          maxWidth: "100%",
           margin: "auto",
+          height: viewport.height
         }}
       >
         {/* <h1>
@@ -52,11 +44,11 @@ export function StatsCard() {
             : "Have Task"}
         </h1> */}
         {process.data && (
-          <>
-            <h1 className={classes.mainHeading}>
-              {process.data[0].project_name}
-            </h1>
-          </>
+
+          <div className={classes.mainHeading}>
+            {process.data[0].project_name}
+          </div>
+
         )}
 
         {process.data &&
@@ -94,6 +86,6 @@ export function StatsCard() {
             );
           })}
       </Paper>
-    </div>
+    </>
   );
 }

@@ -23,7 +23,6 @@ export class TaskController {
     @GetUser('id') userId: number,
     @Param('cid') categoryId :string
   ): Promise<any[]> {
-    console.log("check task controllers222")
     return this.taskService.getAllTask(+projectId, userId, +categoryId);
   }
 
