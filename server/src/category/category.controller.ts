@@ -11,5 +11,12 @@ export class CategoryController {
   async getAllCategories(@Param('id') id: string): Promise<any[]> {
     return this.categoryService.getAllCategory(+id);
   }
+
+  @Get("getName/:cid")
+  async getCategoryName(
+    @Param('cid') categoryId:string,
+  ){
+    return this.categoryService.getCategoryName(+categoryId);
+  }
 }
 

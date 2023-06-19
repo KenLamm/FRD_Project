@@ -23,4 +23,14 @@ export class RecordService {
             }
         })
     }
+    getTaskName(taskId:number): Promise<any>{
+        return this.prismaService.task.findMany({
+            where: {
+                id: taskId,
+            },
+            select: {
+                name:true,
+            }
+        })
+    }
 }
