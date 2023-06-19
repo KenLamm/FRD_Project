@@ -39,7 +39,6 @@ export async function createProject(name: string) {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`,
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     body: JSON.stringify({ name }),
   });
