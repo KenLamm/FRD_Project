@@ -8,13 +8,13 @@ const useStyles = createStyles((theme) => ({
     flexDirection: 'column',
     padding: '40px',
     borderRadius: '20px',
-    backgroundColor: "rgb(255, 255, 255)",
-    color:"rgb(0, 0, 0)",
+    height: "10%",
+
   },
-  workingFolderPage: {
-      fontSize: '24px',
-      marginBottom: '20px',
-  },
+  // workingFolderPage: {
+  //     fontSize: '24px',
+  //     marginBottom: '20px',
+  // },
   folderList: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
@@ -27,11 +27,11 @@ const useStyles = createStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     padding: '5px',
-    border: `3px solid rgb(255, 255, 255) `,
+    border: `3px solid rgb(69, 69, 69) `,
     borderRadius: '15px',
     textDecoration: 'none',
-    color: "rgb(0, 0, 0 )",
-    backgroundColor:  "rgb(255, 187, 73)",
+    color: "rgb(255, 255, 255 )",
+    backgroundColor: "#006fff",
     transition: 'background-color 0.3s ease',
   },
   folderIcon: {
@@ -45,9 +45,8 @@ const useStyles = createStyles((theme) => ({
     alignItems: 'center',
     padding: '10px',
     border: 'none',
-    borderRadius: '5px',
-    backgroundColor: "rgb(255, 255, 255)",
-    color: "rgb(255, 187, 73)",
+    borderRadius: '15px',
+    color: "rgb(0, 0, 0, 0.5)",
     fontSize: '24px',
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
@@ -57,17 +56,17 @@ const useStyles = createStyles((theme) => ({
     marginRight: '5px',
     borderRadius: '5px',
     backgroundColor: "rgm (255, 255, 255)",
-    color: "rgb(255, 187, 73)",
+    color: "rgb(0, 111, 255)",
   },
   addInput: {
     marginRight: '5px',
   },
-  addButtonContainer:{
+  addButtonContainer: {
     backgroundColor: "rgb(255, 255, 255)",
   },
-  title:{
-    backgroundColor: "rgb(255, 255, 255)",
+  title: {
     alignItems: 'center',
+    color: "#fff"!!!,
   }
 
 }));

@@ -54,8 +54,8 @@ const Record: React.FC = () => {
   };
 
   return (
-    <>
-      <h1 className={classes.title}>{taskName&&taskName[0].name}</h1>
+    <div className={classes.container}>
+      <h1 className={classes.title + "checking"} style={{color: 'white'}}>{taskName&&taskName[0].name}</h1>
       {folders &&
         folders.map((folder) => (
           <Link
@@ -91,7 +91,7 @@ const Record: React.FC = () => {
           <FaPlus className={classes.addIcon} />
         </button>
       )}
-    </>
+    </div>
   );
 };
 
