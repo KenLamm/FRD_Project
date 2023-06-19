@@ -8,7 +8,7 @@ const useStyles = createStyles((theme) => ({
   },
   addButton: {
     backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[6] : "#f2f2f2",
+      theme.colorScheme === "dark" ? theme.colors.dark[6] : "#fff",
     border: "none",
     borderRadius: "50%",
     padding: "10px",
@@ -20,6 +20,7 @@ const useStyles = createStyles((theme) => ({
     marginTop: "10px",
     height: "auto",
     marginLeft: "80%",
+    color: "blue",
   },
   buttonList: {
     display: "flex",

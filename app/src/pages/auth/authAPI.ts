@@ -24,14 +24,14 @@ export async function login(user: User) {
       // set local storage
 
       let decoded: any = jwt_decode(result);
-      console.log("id", decoded);
-      console.log(
-        "data result: ",
-        decoded.userId,
-        decoded.username,
-        decoded.isAdmin,
-        result
-      );
+      // console.log("id", decoded);
+      // console.log(
+      //   "data result: ",
+      //   decoded.userId,
+      //   decoded.username,
+      //   decoded.isAdmin,
+      //   result
+      // );
 
       localStorage.setItem("id", decoded.userId);
       localStorage.setItem("username", decoded.username);

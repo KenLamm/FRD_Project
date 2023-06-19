@@ -1,5 +1,10 @@
 import useStyles from "./NewProjectCss";
-import { FaProductHunt, FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
+import {
+  FaPlus,
+  FaProductHunt,
+  FaRegPlusSquare,
+  FaTrashAlt,
+} from "react-icons/fa";
 import React, { useState } from "react";
 import { Button, Modal, Text } from "@mantine/core";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -70,7 +75,7 @@ const Project = () => {
       <div className={classes.tittle}>工程項目</div>
       <div className={classes.buttonCreator + " outter_project"}>
         <button className={classes.addButton} onClick={openModal}>
-          <FaRegPlusSquare />
+          <FaPlus />
         </button>
 
         <div className={classes.buttonList + " project_list"}>
@@ -132,7 +137,7 @@ const Project = () => {
                   type="text"
                   value={newButtonName}
                   onChange={handleInputChange}
-                  // style={{ width: "80%" }}
+                  style={{ width: "80%" }}
                 />
               </div>
             </Modal.Body>
