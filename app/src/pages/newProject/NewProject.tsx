@@ -48,7 +48,7 @@ const Project = () => {
   const createButton = () => {
     if (newButtonName) {
       const newButton = (name: string) => (
-        <div className={classes.buttonWrapper} key={newButtonName}>
+        <div>
           <button className={classes.customButton}>{newButtonName}</button>
           <FaTrashAlt onClick={() => deleteButton(newButtonName)} />
         </div>
@@ -66,32 +66,26 @@ const Project = () => {
   };
 
   return (
-    <div
-      className={classes.buttonCreator}
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "10%",
-      }}
-    >
-      <button className={classes.addButton} onClick={openModal}>
-        <FaRegPlusSquare />
-      </button>
-      <div className={classes.buttonList}>
-        {project.data?.map((elem, i) => {
-          return (
-            <div
-              key={elem.id}
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                width: "100%",
-              }}
-            >
-              {" "}
-              {/* key={elem.id} */}
-              <div className={classes.buttonWrapper} key="newButtonName">
+    <div>
+      <div className={classes.tittle}>工程項目</div>
+      <div className={classes.buttonCreator + " outter_project"}>
+        <button className={classes.addButton} onClick={openModal}>
+          <FaRegPlusSquare />
+        </button>
+
+        <div className={classes.buttonList + " project_list"}>
+          {project.data?.map((elem, i) => {
+            return (
+              <div
+                key={elem.id}
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  width: "100%",
+                }}
+              >
+                {" "}
+                {/* key={elem.id} */}
                 <button
                   className={classes.customButton}
                   onClick={() => {
@@ -100,59 +94,58 @@ const Project = () => {
                 >
                   {elem.name}
                 </button>
-
                 {/* <FaTrashAlt onClick={() => deleteButton("newButtonName")} /> */}
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
 
-        {buttons}
+          {buttons}
 
-        {/* {buttonStringArr.map((buttonStr) => (
+          {/* {buttonStringArr.map((buttonStr) => (
           <div className={classes.buttonWrapper} key={buttonStr}>
             <button className={classes.customButton}>{buttonStr}</button>
             <FaTrashAlt onClick={() => deleteButton(buttonStr)} />
           </div>
         ))} */}
-      </div>
-      <div className={classes.centerStyle}>
-        <Modal
-          opened={modalOpen}
-          onClose={closeModal}
-          centered
-          style={{
-            display: "flex",
+        </div>
+        <div className={classes.centerStyle}>
+          <Modal
+            opened={modalOpen}
+            onClose={closeModal}
+            centered
+            style={{
+              display: "flex",
 
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Modal.Header className={classes.alertTittle}>
-            <Modal.Title>
-              <div>Enter your new project name:</div>
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div>
-              <input
-                className={classes.alertInput}
-                type="text"
-                value={newButtonName}
-                onChange={handleInputChange}
-                // style={{ width: "80%" }}
-              />
-            </div>
-          </Modal.Body>
-          <Modal.Body>
-            <Button style={{ marginRight: "50px" }} onClick={createButton}>
-              Create Project
-            </Button>
-            <Button onClick={closeModal} variant="outline">
-              Cancel
-            </Button>
-          </Modal.Body>
-        </Modal>
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Modal.Header className={classes.alertTittle}>
+              <Modal.Title>
+                <div>Enter your new project name:</div>
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div>
+                <input
+                  className={classes.alertInput}
+                  type="text"
+                  value={newButtonName}
+                  onChange={handleInputChange}
+                  // style={{ width: "80%" }}
+                />
+              </div>
+            </Modal.Body>
+            <Modal.Body>
+              <Button style={{ marginRight: "50px" }} onClick={createButton}>
+                Create Project
+              </Button>
+              <Button onClick={closeModal} variant="outline">
+                Cancel
+              </Button>
+            </Modal.Body>
+          </Modal>
+        </div>
       </div>
     </div>
   );

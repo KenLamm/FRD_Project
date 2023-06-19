@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useStyles from "./taskCss";
-import { useTask, TaskType, postTask } from "./taskAPI";
+import { useTask, TaskType, postTask, useCategoryName } from "./taskAPI";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryClient } from "../app/App";
 import { FaPlus } from "react-icons/fa";
+import { useViewportSize } from "@mantine/hooks";
 
 // import { useQueryClient } from "@tanstack/react-query";
 
@@ -15,13 +16,10 @@ import { FaPlus } from "react-icons/fa";
 // }
 
 const Task: React.FC = () => {
-  console.log("task tsx")
   const params = useParams();
   const { classes } = useStyles();
   const result = useTask (params.cid??"", params.pid??"");
-  // const result = useTask ("1", "1");
-  console.log("checking for getting the two different id",
-  result.data)
+  const categoryName = useCategoryName(params.cid??"")
 
 
   const queryClient = useQueryClient();
@@ -51,7 +49,6 @@ const Task: React.FC = () => {
 
   const handleToggleDone = (id: number) => {
     userTaskMutation.mutate(id);
-    console.log("handle toggle", id);
   };
 
   const handleAddTask = () => {
@@ -61,19 +58,20 @@ const Task: React.FC = () => {
   let todoItems: TaskType[] | undefined = []; // useMemo
   let doneItems: TaskType[] | undefined = []; // useMemo
 
-  console.log(result.isLoading)
   if (!result.isLoading) {
     const todos = result.data;
-    console.log("check todos type", todos)
     todoItems = todos!.filter((todo) => !todo.is_finished);
     doneItems = todos!.filter((todo) => todo.is_finished);
-
-    console.log("done", doneItems);
   }
 
+  const viewport = useViewportSize();
+
   return (
-    <div>
-      <h1 className={classes.mainHeading}>123</h1>
+    <div style={{
+      minHeight: viewport.height,
+      padding: "10px"
+    }}>
+      <h1 className={classes.mainHeading}>{categoryName.data&&categoryName.data[0].name}</h1>
       {isAddingTask ? (
         <div>
           <input

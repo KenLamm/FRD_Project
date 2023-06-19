@@ -52,7 +52,6 @@ const useStyles = createStyles((theme) => ({
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
     marginTop: '20px',
-    
   },
   addIcon: {
     marginRight: '5px',

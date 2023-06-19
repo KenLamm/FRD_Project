@@ -55,7 +55,7 @@ export function AuthenticationTitle() {
     };
   }, []);
   return (
-    <div>
+    <>
       <div className={classes.centerStyle}>
         <Container className="name">
           <Title align="center" sx={(theme) => ({})}>
@@ -107,6 +107,6 @@ export function AuthenticationTitle() {
           </Paper>
         </Container>
       </div>
-    </div>
+    </>
   );
 }

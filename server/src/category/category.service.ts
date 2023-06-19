@@ -11,7 +11,7 @@ type Completeness = {
 
 @Injectable()
 export class CategoryService {
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(private readonly prismaService: PrismaService) { }
 
   async getAllCategory(id: number): Promise<any[]> {
 
@@ -53,5 +53,16 @@ WHERE
     `;
     console.log('category.service: result - ', result);
     return result;
+  };
+
+  async getCategoryName( categoryId: number): Promise<any> {
+    return this.prismaService.category.findMany({
+      where: {
+        id:categoryId,
+      },
+      select:{
+        name:true,
+      }
+    })
   }
 }

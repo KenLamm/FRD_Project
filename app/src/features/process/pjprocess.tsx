@@ -20,7 +20,6 @@ export function StatsCard() {
   const viewport = useViewportSize();
   const process = useProcess(projectId.id!);
 
-  console.log("meigig", process.data);
 
   const calculatePercentage = (inc: number, tt: number): number => {
     if (tt === 0) {
@@ -29,19 +28,14 @@ export function StatsCard() {
     return Math.floor((1 - inc / tt) * 100);
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: viewport.height,
-      }}
-    >
+    <>
       <Paper
         style={{
+          backgroundColor: "#454545",
           width: "80%",
-          maxWidth: "1200px",
+          maxWidth: "100%",
           margin: "auto",
+          height: viewport.height
         }}
       >
         {/* <h1>
@@ -49,13 +43,22 @@ export function StatsCard() {
             ? "No task"
             : "Have Task"}
         </h1> */}
-        {process.data && <><h1 className={classes.mainHeading}>{process.data[0].project_name}</h1></>}
+        {process.data && (
+
+          <div className={classes.mainHeading}>
+            {process.data[0].project_name}
+          </div>
+
+        )}
 
         {process.data &&
           process.data.map((item) => {
             return (
               <div>
-                <Link to={`/task/${projectId.id}/${item.id}`} className={classes.linktodo}>
+                <Link
+                  to={`/task/${projectId.id}/${item.id}`}
+                  className={classes.linktodo}
+                >
                   <div className={classes.tittleBar}>
                     <Text ta="center" fw={700} className={classes.title}>
                       <div key={item.id}>{item.name}</div>
@@ -63,26 +66,26 @@ export function StatsCard() {
                   </div>
                 </Link>
                 <Group position="apart" mt="xs">
-                  <Text fz="sm" color="dimmed">
+                  <Text fz="sm" color="#FFFFFF">
                     進度
                   </Text>
-                  <Text fz="sm" color="dimmed">
+                  <Text fz="sm" color="#FFFFFF">
                     {calculatePercentage(item.inc, item.tt)}%
                   </Text>
                 </Group>
                 <Progress
                   value={calculatePercentage(item.inc, item.tt)}
                   mt={5}
-                  color="rgb(255, 187, 73)"
+                  color="#006fff"
                 />
 
                 <Group position="apart" mt="md">
-                  <Badge size="sm">4 days left</Badge>
+                  <Badge size="sm">6 days left</Badge>
                 </Group>
               </div>
             );
           })}
       </Paper>
-    </div>
+    </>
   );
 }

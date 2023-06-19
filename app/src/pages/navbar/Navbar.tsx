@@ -86,17 +86,17 @@ import { BiHome } from "react-icons/bi";
 function Navbar() {
   return (
     <div className="navbar">
-      <button>
+      <button className="btn">
         <i className="icon">
           <FaAngleLeft />
         </i>
       </button>
-      <button className="active">
+      <button className="btn">
         <i className="icon">
           <BiHome />
         </i>
       </button>
-      <button>
+      <button className="btn">
         <i className="icon">
           <BsInfoSquare />
         </i>
