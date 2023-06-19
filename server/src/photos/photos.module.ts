@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MulterModule } from '@nestjs/platform-express';
-import { extname } from 'path';
+import { extname, join } from 'path';
 import { diskStorage } from 'multer';
 import { PhotosService } from './photos.service';
 import { PhotosController } from './photos.controller';
@@ -24,7 +24,7 @@ export const editFileName = (
   imports: [
     MulterModule.register({
       storage: diskStorage({
-        destination: './uploads',
+        destination: join(__dirname, '..', 'uploads'),
         filename: editFileName,
       }),
     }),

@@ -4,24 +4,34 @@ import {
   FileTypeValidator,
   Get,
   MaxFileSizeValidator,
+  Param,
   ParseFilePipe,
   Post,
+  Res,
   UploadedFile,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { PhotosService } from './photos.service';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { JwtGuard } from 'src/auth/guard';
+import { GetUser } from 'src/auth/decorator';
 
 @Controller('photos')
 export class PhotosController {
   constructor(private readonly photosService: PhotosService) {}
-
-  @Get()
-  getAllPhoto() {
-    return this.photosService.getAllPhotos();
+ 
+  @Get('get/:id')
+  @UseGuards(JwtGuard)
+  getAllPhoto(
+    @GetUser('id') userId: number,
+    @Param('id') recordId:string,
+  ) {
+    return this.photosService.getAllPhotos(userId,+recordId);
   }
 
-  @Post('upload')
+  @Post('upload/:id')
+  @UseGuards(JwtGuard)
   @UseInterceptors(FileInterceptor('file'))
   uploadFile(
     @UploadedFile(
@@ -35,7 +45,9 @@ export class PhotosController {
     file: Express.Multer.File,
     @Body('pictureName') pictureName: string, 
     @Body('pictureDescription') pictureDescription: string, 
+    @GetUser('id') userId: number,
+    @Param("id") recordId:string,
   ) {
-    return this.photosService.postPhotos(file.filename, pictureName, pictureDescription);
+    return this.photosService.postPhotos(file.filename,pictureName,pictureDescription,userId,+recordId)
   }
 }

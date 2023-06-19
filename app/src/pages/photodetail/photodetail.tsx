@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { FaCamera, FaVideo } from "react-icons/fa";
+import { FaCamera, FaPhp, FaVideo } from "react-icons/fa";
 import Camera from "../../features/camera/camera";
 import { createStyles } from "@mantine/core";
 
 import UserInfoIcons from "./UserInfoIcons"; // Check the file path and ensure it's correct
+import { useParams } from "react-router";
+import { usePhoto } from "./photodetailAPI";
+import { useQueryClient } from "@tanstack/react-query";
+import { relative } from "path";
 
 const useStyles = createStyles((theme) => ({
   captureButton: {
@@ -21,6 +25,9 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Photo: React.FC = () => {
+  const record = useParams()
+  console.log("checking for the record id:", record.id)
+  const { data: photos } = usePhoto(record.id ?? "");
   const { classes } = useStyles();
   const [showCamera, setShowCamera] = useState(false);
 
@@ -37,7 +44,7 @@ const Photo: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="hi234" style={{ position: "relative" }}>
       <h1>Photo Page</h1>
       <div>
         <button className={classes.captureButton} onClick={handleCapturePhoto}>
@@ -47,21 +54,20 @@ const Photo: React.FC = () => {
           <FaVideo />
         </button>
       </div>
-      {showCamera && (
-        <div className={classes.cameraOverlay}>
-          <Camera onClose={handleCloseCamera} />
-        </div>
-      )}
+      {showCamera && (<Camera onClose={handleCloseCamera} />)}
 
-      <div>
-        <div className={showCamera ? classes.displayNone : "isShow"}>
-          <UserInfoIcons
-            avatar="avatar.jpg"
-            name="Sam Lee"
-            title="Software Engineer"
-          />
-        </div>
+      <div className={showCamera ? classes.displayNone : "isShow"}>
+        {photos && (
+          photos.map(photo => (
+            <UserInfoIcons
+              avatar={`${process.env.REACT_APP_API_URL}/uploads/${photo.s3_name}`}
+              name={`${photo.name}`}
+              title={`${photo.description}`}
+            />
+          ))
+        )}
       </div>
+
     </div>
   );
 };
