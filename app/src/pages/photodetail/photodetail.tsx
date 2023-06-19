@@ -44,13 +44,10 @@ const Photo: React.FC = () => {
 
   return (
     <div className="hi234" style={{ position: "relative" }}>
-      <h1>Photo Page</h1>
+      <h1 style={{alignItems:"center"}}>Photo Page</h1>
       <div>
         <button className={classes.captureButton} onClick={handleCapturePhoto}>
-          <FaCamera />
-        </button>
-        <button className={classes.recordButton} onClick={handleRecordVideo}>
-          <FaVideo />
+          <FaCamera/>
         </button>
       </div>
       {showCamera && (<Camera onClose={handleCloseCamera} />)}

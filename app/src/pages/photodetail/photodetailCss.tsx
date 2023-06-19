@@ -13,7 +13,7 @@ const useStyles = createStyles((theme) => ({
   },
   captureButton: {
     backgroundColor: theme.colors.red[6],
-    color: theme.white,
+    color: "#006fff",
     padding: "10px 20px",
     border: "none",
     borderRadius: 5,
