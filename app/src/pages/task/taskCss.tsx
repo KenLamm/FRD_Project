@@ -2,10 +2,11 @@ import { createStyles } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   mainHeading: {
-    backgroundColor: "rgb(255, 187, 73)",
-    color: "rgb(0, 0, 0)",
-    padding: "1%",
+    backgroundColor: "#454545",
+    color: "rgb(252, 252, 252)",
     textAlign: "center",
+    padding:"0",
+    margin:"0"
   },
   todoSection: {
     display: "flex",
@@ -28,8 +29,8 @@ const useStyles = createStyles((theme) => ({
     textDecoration: "none",
     display: "inline-block",
     padding: "2% 2%",
-    backgroundColor: "rgb(255, 187, 73)",
-    color: "black",
+    backgroundColor: "#006fff",
+    color: "rgb(252, 252, 252)",
     borderRadius: "15%",
   },
   todoButton: {
@@ -52,8 +53,8 @@ const useStyles = createStyles((theme) => ({
     textDecoration: "none",
     display: "inline-block",
     padding: "5px 10px",
-    backgroundColor: "rgb(255, 187, 73)",
-    color: "black",
+    backgroundColor: "#006fff",
+    color: "rgb(252, 252, 252)",
     borderRadius: "5px",
   },
 

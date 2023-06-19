@@ -55,7 +55,7 @@ export function AuthenticationTitle() {
     };
   }, []);
   return (
-    <div>
+    <>
       <div className={classes.centerStyle}>
         <Container className="name">
           <Title align="center" sx={(theme) => ({})}>
@@ -99,12 +99,6 @@ export function AuthenticationTitle() {
                 required
                 mt="md"
               />
-              <Group position="apart" mt="lg">
-                <Checkbox label="Remember me" />
-                <Anchor component="button" size="sm">
-                  Forgot password?
-                </Anchor>
-              </Group>
 
               <Button type="submit" fullWidth mt="xl">
                 Sign in
@@ -113,6 +107,6 @@ export function AuthenticationTitle() {
           </Paper>
         </Container>
       </div>
-    </div>
+    </>
   );
 }

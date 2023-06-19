@@ -1772,10 +1772,24 @@
     "react-remove-scroll" "^2.5.5"
     "react-textarea-autosize" "8.3.4"
 
+<<<<<<< HEAD
 "@mantine/hooks@^6.0.13", "@mantine/hooks@6.0.13":
   "integrity" "sha512-fHuE3zXo5OP/Q1dMOTnegU6U+tI9GuhO2tgOz6szVuOxrrk0Hzuq1Na9NUSv27HShSRbAfQk+hvyIh+iVV7KXA=="
   "resolved" "https://registry.npmjs.org/@mantine/hooks/-/hooks-6.0.13.tgz"
   "version" "6.0.13"
+=======
+"@mantine/ds@^6.0.13":
+  version "6.0.13"
+  resolved "https://registry.yarnpkg.com/@mantine/ds/-/ds-6.0.13.tgz#92807e8d0e9cb608094ae4a6e34d79c272afdc58"
+  integrity sha512-iY1UCPoGlVWRYCdRyQYyoSs3eCfGMH8byOGZLttBbSGfJG0cRw7OuB5QyQZ5LaNr3Mz7f87No9HS5i+x4LtBLg==
+  dependencies:
+    "@mantine/utils" "6.0.13"
+
+"@mantine/hooks@^6.0.13":
+  version "6.0.13"
+  resolved "https://registry.yarnpkg.com/@mantine/hooks/-/hooks-6.0.13.tgz#d90fa315ee30a900e0d9a460c6bb00c9a65f18e0"
+  integrity sha512-fHuE3zXo5OP/Q1dMOTnegU6U+tI9GuhO2tgOz6szVuOxrrk0Hzuq1Na9NUSv27HShSRbAfQk+hvyIh+iVV7KXA==
+>>>>>>> d4c8e06c52513c1d03fdd66e3346b1de01fccd34
 
 "@mantine/styles@6.0.13":
   "integrity" "sha512-+27oX8ObiBv8jHHDxXKjqe+7cfTJyaAV/Ie00T49EE4LuHuS6nL4vlXHmqamFtDCj2ypEWBV0sdXDev/DNAXSg=="

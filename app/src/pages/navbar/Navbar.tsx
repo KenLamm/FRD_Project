@@ -43,6 +43,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { createStyles, Anchor, Group, ActionIcon, rem } from "@mantine/core";
+import {
+  IconBrandTwitter,
+  IconBrandYoutube,
+  IconBrandInstagram,
+} from "@tabler/icons-react";
 
 const Navbar = () => {
   return (

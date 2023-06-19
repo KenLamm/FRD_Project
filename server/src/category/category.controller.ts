@@ -19,4 +19,3 @@ export class CategoryController {
     return this.categoryService.getCategoryName(+categoryId);
   }
 }
-

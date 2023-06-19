@@ -4,7 +4,6 @@ import useStyles from "./recordCss";
 import { Link, useParams } from "react-router-dom";
 import { postRecord, useRecord, useTaskName } from "./recordAPI";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import Project from "../newProject/NewProject";
 
 // interface Folder {
 //   id: number;
@@ -12,7 +11,7 @@ import Project from "../newProject/NewProject";
 //   path: string;
 // }
 
-const Folder: React.FC = () => {
+const Record: React.FC = () => {
   const  task  = useParams();
   const { classes } = useStyles();
   // const [folders, setFolders] = useState<Folder[]>([
@@ -55,7 +54,7 @@ const Folder: React.FC = () => {
   };
 
   return (
-    <div className={classes.container}>
+    <>
       <h1 className={classes.title}>{taskName&&taskName[0].name}</h1>
       {folders &&
         folders.map((folder) => (
@@ -92,8 +91,8 @@ const Folder: React.FC = () => {
           <FaPlus className={classes.addIcon} />
         </button>
       )}
-    </div>
+    </>
   );
 };
 
-export default Folder;
+export default Record;

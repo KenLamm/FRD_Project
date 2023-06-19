@@ -5,6 +5,7 @@ import { useTask, TaskType, postTask, useCategoryName } from "./taskAPI";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryClient } from "../app/App";
 import { FaPlus } from "react-icons/fa";
+import { useViewportSize } from "@mantine/hooks";
 
 // import { useQueryClient } from "@tanstack/react-query";
 
@@ -63,8 +64,13 @@ const Task: React.FC = () => {
     doneItems = todos!.filter((todo) => todo.is_finished);
   }
 
+  const viewport = useViewportSize();
+
   return (
-    <div>
+    <div style={{
+      minHeight: viewport.height,
+      padding: "10px"
+    }}>
       <h1 className={classes.mainHeading}>{categoryName.data&&categoryName.data[0].name}</h1>
       {isAddingTask ? (
         <div>

@@ -3,14 +3,12 @@ import ReactDOM from "react-dom/client";
 // import "./index.css";
 import App from "./pages/app/App";
 import reportWebVitals from "./reportWebVitals";
-import Landing from "./Landing";
-import Navbar from "./pages/navbar/Navbar";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <div style={{ backgroundColor: "#454545" ,borderWidth:"0px"}}>
+  <div style={{margin:"0", backgroundColor: "#454545", backgroundSize: "cover",borderWidth:"10px",borderColor:"red" }} className="base">
     {/* <Navbar /> */}
     <App />
   </div >

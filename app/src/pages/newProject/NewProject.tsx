@@ -48,7 +48,7 @@ const Project = () => {
   const createButton = () => {
     if (newButtonName) {
       const newButton = (name: string) => (
-        <div className={classes.buttonWrapper} key={newButtonName}>
+        <div>
           <button className={classes.customButton}>{newButtonName}</button>
           <FaTrashAlt onClick={() => deleteButton(newButtonName)} />
         </div>
@@ -68,18 +68,11 @@ const Project = () => {
   return (
     <div
       className={classes.buttonCreator + " outter_project"}
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "10%",
-        width:"100%",
-        margin:"0px"
-      }}
     >
       <button className={classes.addButton} onClick={openModal}>
         <FaRegPlusSquare />
       </button>
+
       <div className={classes.buttonList + " project_list"}>
         {project.data?.map((elem, i) => {
           return (
@@ -93,19 +86,19 @@ const Project = () => {
             >
               {" "}
               {/* key={elem.id} */}
-              <div className={classes.buttonWrapper} key="newButtonName">
-                <button
-                  className={classes.customButton}
-                  onClick={() => {
-                    navigate(`/category/${elem.id}`);
-                  }}
-                >
-                  {elem.name}
-                </button>
 
-                {/* <FaTrashAlt onClick={() => deleteButton("newButtonName")} /> */}
-              </div>
+              <button
+                className={classes.customButton}
+                onClick={() => {
+                  navigate(`/category/${elem.id}`);
+                }}
+              >
+                {elem.name}
+              </button>
+
+              {/* <FaTrashAlt onClick={() => deleteButton("newButtonName")} /> */}
             </div>
+
           );
         })}
 
