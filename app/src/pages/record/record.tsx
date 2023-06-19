@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaFolder, FaPlus } from "react-icons/fa";
 import useStyles from "./recordCss";
 import { Link, useParams } from "react-router-dom";
-import { postRecord, useRecord } from "./recordAPI";
+import { postRecord, useRecord, useTaskName } from "./recordAPI";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Project from "../newProject/NewProject";
 
@@ -14,7 +14,6 @@ import Project from "../newProject/NewProject";
 
 const Folder: React.FC = () => {
   const  task  = useParams();
-  console.log("11111", task);
   const { classes } = useStyles();
   // const [folders, setFolders] = useState<Folder[]>([
   //   { id: 1, name: '岩石地基', path: '/path/to/folder1' },
@@ -24,6 +23,7 @@ const Folder: React.FC = () => {
   // ]);
 
   const { data: folders } = useRecord(task.id??"");
+  const {data: taskName } = useTaskName(task.id??"");
   const queryClient = useQueryClient();
   const onAddRecord = useMutation(
     async (data: { name: string; task_id: string }) =>
@@ -56,7 +56,7 @@ const Folder: React.FC = () => {
 
   return (
     <div className={classes.container}>
-      <h1 className={classes.title}>地基檢測</h1>
+      <h1 className={classes.title}>{taskName&&taskName[0].name}</h1>
       {folders &&
         folders.map((folder) => (
           <Link

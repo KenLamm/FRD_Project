@@ -10,10 +10,10 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <>
-    <Navbar />
+  <div style={{ backgroundColor: "#454545" ,borderWidth:"0px"}}>
+    {/* <Navbar /> */}
     <App />
-  </>
+  </div >
 );
 
 // If you want to start measuring performance in your app, pass a function

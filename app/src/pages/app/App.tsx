@@ -14,6 +14,7 @@ export const queryClient = new QueryClient();
 
 const App = () => {
   return (
+
     <Router>
       <Navbar />
       <QueryClientProvider client={queryClient}>
@@ -28,6 +29,7 @@ const App = () => {
         </Routes>
       </QueryClientProvider>
     </Router>
+
   );
 };
 

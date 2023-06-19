@@ -67,18 +67,20 @@ const Project = () => {
 
   return (
     <div
-      className={classes.buttonCreator}
+      className={classes.buttonCreator + " outter_project"}
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         height: "10%",
+        width:"100%",
+        margin:"0px"
       }}
     >
       <button className={classes.addButton} onClick={openModal}>
         <FaRegPlusSquare />
       </button>
-      <div className={classes.buttonList}>
+      <div className={classes.buttonList + " project_list"}>
         {project.data?.map((elem, i) => {
           return (
             <div
@@ -140,7 +142,7 @@ const Project = () => {
                 type="text"
                 value={newButtonName}
                 onChange={handleInputChange}
-                // style={{ width: "80%" }}
+              // style={{ width: "80%" }}
               />
             </div>
           </Modal.Body>

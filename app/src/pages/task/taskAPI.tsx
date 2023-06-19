@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { queryClient } from "../app/App";
 import { useNavigate } from "react-router-dom";
+import { query } from "express";
 
 export interface TaskType {
   id: number;
@@ -9,6 +10,10 @@ export interface TaskType {
   user_id: number;
   category_id: number;
   project_id:number;
+}
+
+interface CategoryType{
+  name:string,
 }
 
 export function useTask(params: string, projectId:string) {
@@ -57,3 +62,26 @@ export async function postTask(name: string, params: string, projectId:string) {
   return result.data;
 }
 
+export function useCategoryName(params: string) {
+  const { isLoading, error, data, isFetching } = useQuery({
+    queryKey: ["useCategoryName"],
+    queryFn: async () => {
+      const res = await fetch(
+        `${process.env.REACT_APP_API_URL}/category/getName/${params}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+      const result = await res.json();
+      return result as CategoryType[];
+    },
+  });
+  return {
+    isLoading: isLoading,
+    data: data,
+    error: error,
+    isFetching: isFetching,
+  };
+}

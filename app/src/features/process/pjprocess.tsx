@@ -20,7 +20,6 @@ export function StatsCard() {
   const viewport = useViewportSize();
   const process = useProcess(projectId.id!);
 
-  console.log("meigig", process.data);
 
   const calculatePercentage = (inc: number, tt: number): number => {
     if (tt === 0) {

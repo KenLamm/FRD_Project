@@ -5,6 +5,7 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent:"center"
   },
   addButton: {
     backgroundColor:
@@ -14,30 +15,34 @@ const useStyles = createStyles((theme) => ({
     padding: "10px",
     cursor: "pointer",
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
     fontSize: "40px",
     marginTop: "10px",
+    height: "auto"
   },
   buttonList: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
     width: "60%",
-    fontSize: "120%",
+    fontSize: "1%",
+    borderRadius: "30%",
+
   },
   customButton: {
-    margin: "10px",
-    padding: "10px 20px",
+    margin: "20px",
+    padding: "20px",
     backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[6] : "#f2f2f2",
+      theme.colorScheme === "dark" ? theme.colors.blue : "#006bff",
     border: "none",
     borderRadius: "4px",
     cursor: "pointer",
     textAlign: "center",
     width: "70%",
-    height: "60%",
+    height: "auto",
     fontSize: "18px",
+    color:"white"
   },
   buttonWrapper: {
     display: "flex",

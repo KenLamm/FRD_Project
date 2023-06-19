@@ -231,7 +231,7 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   </> : <></>}
 
                 <div className={classes.pictureName}>
-                  <input ></input>
+                  <input></input>
                   <br></br>
                   <input></input>
                 </div>
