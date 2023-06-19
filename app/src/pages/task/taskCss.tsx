@@ -1,12 +1,16 @@
 import { createStyles } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
+  // bgColor: {
+  //   backgroundColor: "#454545",
+
+  // },
   mainHeading: {
     backgroundColor: "#454545",
     color: "rgb(252, 252, 252)",
     textAlign: "center",
-    padding:"0",
-    margin:"0"
+    padding: "0",
+    margin: "0",
   },
   todoSection: {
     display: "flex",
@@ -32,7 +36,6 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: "#006fff",
     color: "rgb(252, 252, 252)",
     borderRadius: "5px",
-    
   },
   todoButton: {
     backgroundColor: "#454545",
@@ -64,7 +67,7 @@ const useStyles = createStyles((theme) => ({
   addButton: {
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
+    // alignItems: "center",
     padding: "10px",
     border: "none",
     borderRadius: "5px",
@@ -77,17 +80,17 @@ const useStyles = createStyles((theme) => ({
   },
   addIcon: {
     backgroundColor:
-    theme.colorScheme === "dark" ? theme.colors.dark[6] : "#f2f2f2",
-  border: "none",
-  borderRadius: "50%",
-  padding: "10px",
-  cursor: "pointer",
-  display: "flex",
-  // alignItems: "center",
-  // justifyContent: "center",
-  fontSize: "20px",
-  marginTop: "10px",
-  height: "auto"
+      theme.colorScheme === "dark" ? theme.colors.dark[6] : "#f2f2f2",
+    border: "none",
+    borderRadius: "50%",
+    padding: "10px",
+    cursor: "pointer",
+    display: "flex",
+    // alignItems: "center",
+    // justifyContent: "center",
+    fontSize: "20px",
+    marginTop: "10px",
+    height: "auto",
   },
 }));
 export default useStyles;

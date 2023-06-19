@@ -4,7 +4,7 @@ import useStyles from "./taskCss";
 import { useTask, TaskType, postTask, useCategoryName } from "./taskAPI";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryClient } from "../app/App";
-import { FaPlus, FaRegPlusSquare } from "react-icons/fa";
+import { FaPlus, FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
 import { useViewportSize } from "@mantine/hooks";
 
 // import { useQueryClient } from "@tanstack/react-query";
@@ -18,9 +18,8 @@ import { useViewportSize } from "@mantine/hooks";
 const Task: React.FC = () => {
   const params = useParams();
   const { classes } = useStyles();
-  const result = useTask (params.cid??"", params.pid??"");
-  const categoryName = useCategoryName(params.cid??"")
-
+  const result = useTask(params.cid ?? "", params.pid ?? "");
+  const categoryName = useCategoryName(params.cid ?? "");
 
   const queryClient = useQueryClient();
   const userTaskMutation = useMutation({
@@ -38,7 +37,7 @@ const Task: React.FC = () => {
     },
   });
   const onAddTask = useMutation(
-    async (data: { name: string; category_id: string; project_id:string }) =>
+    async (data: { name: string; category_id: string; project_id: string }) =>
       postTask(data.name, data.category_id, data.project_id),
     {
       onSuccess: () => queryClient.invalidateQueries(["useTask"]),
@@ -52,7 +51,11 @@ const Task: React.FC = () => {
   };
 
   const handleAddTask = () => {
-    onAddTask.mutate({ name: newTaskName, category_id: params.cid?? "" ,project_id: params.pid??"" });
+    onAddTask.mutate({
+      name: newTaskName,
+      category_id: params.cid ?? "",
+      project_id: params.pid ?? "",
+    });
   };
 
   let todoItems: TaskType[] | undefined = []; // useMemo
@@ -67,11 +70,16 @@ const Task: React.FC = () => {
   const viewport = useViewportSize();
 
   return (
-    <div style={{
-      minHeight: viewport.height,
-      padding: "10px"
-    }}>
-      <h1 className={classes.mainHeading}>{categoryName.data&&categoryName.data[0].name}</h1>
+    <div
+      style={{
+        minHeight: viewport.height,
+        padding: "10px",
+        // height: "100%",
+      }}
+    >
+      <h1 className={classes.mainHeading}>
+        {categoryName.data && categoryName.data[0].name}
+      </h1>
       {isAddingTask ? (
         <div>
           <input
@@ -89,12 +97,12 @@ const Task: React.FC = () => {
           className={classes.addButton}
           onClick={() => setIsAddingTask(true)}
         >
-          <FaRegPlusSquare className={classes.addIcon} />
+          <FaPlus className={classes.addIcon} />
         </button>
       )}
       <div className={classes.todoSection}>
         <div className={classes.todoColumn}>
-          <h2  style={{color:"#FFFFFF"}}>進行中</h2>
+          <h2 style={{ color: "#FFFFFF" }}>進行中</h2>
           <ul className={classes.todoList}>
             {todoItems &&
               todoItems.map((todo) => (
@@ -115,12 +123,12 @@ const Task: React.FC = () => {
           </ul>
         </div>
         <div className={classes.doneColumn}>
-          <h2 style={{color:"#FFFFFF"}} >已完成</h2>
+          <h2 style={{ color: "#FFFFFF" }}>已完成</h2>
           <ul className={classes.doneList}>
             {doneItems.map((todo) => (
               <li key={todo.id} className={classes.doneItem}>
                 <Link to={`/record/${todo.id}`}>
-                <span className={classes.doneTitle}>{todo.name}</span>
+                  <span className={classes.doneTitle}>{todo.name}</span>
                 </Link>
               </li>
             ))}
@@ -132,6 +140,3 @@ const Task: React.FC = () => {
 };
 
 export default Task;
-
-
-
