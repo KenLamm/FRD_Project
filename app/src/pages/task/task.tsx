@@ -4,7 +4,7 @@ import useStyles from "./taskCss";
 import { useTask, TaskType, postTask, useCategoryName } from "./taskAPI";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryClient } from "../app/App";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaRegPlusSquare } from "react-icons/fa";
 import { useViewportSize } from "@mantine/hooks";
 
 // import { useQueryClient } from "@tanstack/react-query";
@@ -89,12 +89,12 @@ const Task: React.FC = () => {
           className={classes.addButton}
           onClick={() => setIsAddingTask(true)}
         >
-          <FaPlus className={classes.addIcon} />
+          <FaRegPlusSquare className={classes.addIcon} />
         </button>
       )}
       <div className={classes.todoSection}>
         <div className={classes.todoColumn}>
-          <h2>進行中</h2>
+          <h2  style={{color:"#FFFFFF"}}>進行中</h2>
           <ul className={classes.todoList}>
             {todoItems &&
               todoItems.map((todo) => (
@@ -115,7 +115,7 @@ const Task: React.FC = () => {
           </ul>
         </div>
         <div className={classes.doneColumn}>
-          <h2>已完成</h2>
+          <h2 style={{color:"#FFFFFF"}} >已完成</h2>
           <ul className={classes.doneList}>
             {doneItems.map((todo) => (
               <li key={todo.id} className={classes.doneItem}>

@@ -28,18 +28,21 @@ const useStyles = createStyles((theme) => ({
   todoLink: {
     textDecoration: "none",
     display: "inline-block",
-    padding: "2% 2%",
+    padding: "4% 4%",
     backgroundColor: "#006fff",
     color: "rgb(252, 252, 252)",
-    borderRadius: "15%",
+    borderRadius: "5px",
+    
   },
   todoButton: {
-    backgroundColor: "rgb(0, 0, 0)",
+    backgroundColor: "#454545",
     color: "rgb(255, 255, 255)",
     padding: "10px 20px",
     border: "none",
     cursor: "pointer",
-    borderRadius: "15px",
+    borderRadius: "5px",
+    borderStyle: "solid",
+    borderBottomColor: "rgb(255, 255, 255)",
   },
   doneList: {
     listStyleType: "none",
@@ -65,18 +68,26 @@ const useStyles = createStyles((theme) => ({
     padding: "10px",
     border: "none",
     borderRadius: "5px",
-    backgroundColor: "rgb(255, 255, 255)",
-    color: "rgb(255, 187, 73)",
+    backgroundColor: "#454545",
+    color: "#006fff",
     fontSize: "24px",
     cursor: "pointer",
     transition: "background-color 0.3s ease",
     marginTop: "20px",
   },
   addIcon: {
-    marginRight: "5px",
-    borderRadius: "5px",
-    backgroundColor: "rgm (255, 255, 255)",
-    color: "rgb(255, 187, 73)",
+    backgroundColor:
+    theme.colorScheme === "dark" ? theme.colors.dark[6] : "#f2f2f2",
+  border: "none",
+  borderRadius: "50%",
+  padding: "10px",
+  cursor: "pointer",
+  display: "flex",
+  // alignItems: "center",
+  // justifyContent: "center",
+  fontSize: "20px",
+  marginTop: "10px",
+  height: "auto"
   },
 }));
 export default useStyles;
