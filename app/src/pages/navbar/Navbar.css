@@ -25,45 +25,102 @@
 
 /* Navbar.css */
 /* Navbar.css */
+/* // .navbar {
+//   position: fixed;
+//   bottom: 0;
+//   width: 100%;
+//   background-color: #f8f8f8;
+//   box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.3);
+//   z-index: 100;
+// }
+
+// .navbar-nav {
+//   display: flex;
+//   justify-content: space-around;
+
+//   padding: 0;
+//   margin: 0;
+//   list-style-type: none;
+// }
+
+// .nav-item {
+//   padding: 10px;
+// }
+
+// .nav-link {
+//   color: #333;
+//   text-decoration: none;
+//   transition: color 0.2s;
+// }
+
+// .nav-link:hover {
+//   color: #555;
+// }
+
+// .page-container {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+// }
+
+// .content-container {
+//   flex-grow: 1;
+//   padding-bottom: 60px; /* 調整底部間距，確保內容不被Navbar遮住 */
+/* // } */
+
 .navbar {
   position: fixed;
   bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   width: 100%;
-  background-color: #f8f8f8;
-  box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.3);
-  z-index: 100;
+  padding: 10px 0;
+  background: #f5f5f6;
+  border-radius: 30px 30px 0 0;
+  box-shadow: 0 0 30px 0 rgba(253, 253, 253, 0.874, 0.1);
 }
 
-.navbar-nav {
-  display: flex;
-  justify-content: space-around;
-
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
+.navbar button {
+  cursor: pointer;
+  width: 100px;
+  height: 50px;
+  border-radius: 20px;
+  background: transparent;
+  transition: all 0.25s ease;
 }
 
-.nav-item {
-  padding: 10px;
+.navbar button:active:not(.plus) {
+  transform: scale(1.2);
 }
 
-.nav-link {
-  color: #333;
-  text-decoration: none;
-  transition: color 0.2s;
+.navbar button.active {
+  color: #e84c4f;
 }
 
-.nav-link:hover {
-  color: #555;
+.navbar button i {
+  font-size: 1.5rem;
+  pointer-events: none;
 }
 
-.page-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.navbar button.plus {
+  height: 60px;
+  color: #fff;
+  background: #312f2f;
+  border-radius: 25px;
+  margin-top: -50px;
+  box-shadow: 0 10px 20px 0 #e84c4f66;
 }
 
-.content-container {
-  flex-grow: 1;
-  padding-bottom: 60px; /* 調整底部間距，確保內容不被Navbar遮住 */
+.navbar button.plus:hover {
+  transform: translateY(-4px);
+}
+
+.navbar .effect {
+  position: absolute;
+  width: 60px;
+  height: 50px;
+  border-radius: 18px;
+  background: #e84c4f26;
+  opacity: 0;
 }
