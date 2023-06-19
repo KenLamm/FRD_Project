@@ -25,4 +25,14 @@ export class PhotosService {
     })
 
   }
+  getRecordName(recordId:number): Promise<any>{
+    return this.prismaService.record.findMany({
+      where: {
+        id:recordId,
+      },
+      select:{
+        name:true,
+      }
+    })
+  }
 }

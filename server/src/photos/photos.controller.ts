@@ -19,15 +19,15 @@ import { GetUser } from 'src/auth/decorator';
 
 @Controller('photos')
 export class PhotosController {
-  constructor(private readonly photosService: PhotosService) {}
- 
+  constructor(private readonly photosService: PhotosService) { }
+
   @Get('get/:id')
   @UseGuards(JwtGuard)
   getAllPhoto(
     @GetUser('id') userId: number,
-    @Param('id') recordId:string,
+    @Param('id') recordId: string,
   ) {
-    return this.photosService.getAllPhotos(userId,+recordId);
+    return this.photosService.getAllPhotos(userId, +recordId);
   }
 
   @Post('upload/:id')
@@ -38,16 +38,22 @@ export class PhotosController {
       new ParseFilePipe({
         validators: [
           new MaxFileSizeValidator({ maxSize: 1 * 1000 * 1000 }),
-          new FileTypeValidator({ fileType: /(image\/png|video\/webm)$/i}),
+          new FileTypeValidator({ fileType: /(image\/png|video\/webm)$/i }),
         ],
       }),
     )
     file: Express.Multer.File,
-    @Body('pictureName') pictureName: string, 
-    @Body('pictureDescription') pictureDescription: string, 
+    @Body('pictureName') pictureName: string,
+    @Body('pictureDescription') pictureDescription: string,
     @GetUser('id') userId: number,
-    @Param("id") recordId:string,
+    @Param("id") recordId: string,
   ) {
-    return this.photosService.postPhotos(file.filename,pictureName,pictureDescription,userId,+recordId)
+    return this.photosService.postPhotos(file.filename, pictureName, pictureDescription, userId, +recordId)
   }
+
+  @Get('GetName/:id')
+  getRecordName(@Param('id') recordId: string){
+    return this.photosService.getRecordName(+recordId)
+  }
+
 }
