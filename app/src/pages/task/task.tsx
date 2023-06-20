@@ -20,6 +20,7 @@ const Task: React.FC = () => {
   const { classes } = useStyles();
   const result = useTask(params.cid ?? "", params.pid ?? "");
   const categoryName = useCategoryName(params.cid ?? "");
+  const user = localStorage.getItem('role')
 
   const queryClient = useQueryClient();
   const userTaskMutation = useMutation({
@@ -88,9 +89,10 @@ const Task: React.FC = () => {
             value={newTaskName}
             onChange={(e) => setNewTaskName(e.target.value)}
           />
+          {user === 'manager' &&
           <button className={classes.addButton} onClick={handleAddTask}>
             <FaPlus className={classes.addIcon} />
-          </button>
+          </button>}
         </div>
       ) : (
         <button

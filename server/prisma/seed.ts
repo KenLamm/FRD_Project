@@ -17,11 +17,11 @@ async function main() {
   try {
     // Seed users
     const users = [
-      { username: 'Admin', password: hashed, is_admin: true },
-      { username: 'Admin1', password: hashed, is_admin: true },
-      { username: 'Sam', password: hashed, is_admin: false },
-      { username: 'Ken', password: hashed, is_admin: false },
-      { username: 'Mav', password: hashed, is_admin: false },
+      { username: 'Admin', password: hashed, is_admin: true, role: "manager" },
+      { username: 'Admin1', password: hashed, is_admin: true,role: "manager" },
+      { username: 'Sam', password: hashed, is_admin: false, role: "contractor" },
+      { username: 'Ken', password: hashed, is_admin: false, role: "contractor"},
+      { username: 'Mav', password: hashed, is_admin: false, role: "contractor"},
     ];
 
     let seededUsers = [];
@@ -32,6 +32,7 @@ async function main() {
           username: item.username,
           password: item.password,
           is_admin: item.is_admin,
+          role: item.role,
         },
       });
       seededUsers.push(data);

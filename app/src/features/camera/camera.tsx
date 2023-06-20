@@ -36,10 +36,10 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
           {
             facingMode,
             width: {
-              max: 400, min: 400
+              max: 1280, min: 400
             },
             height: {
-              max: 600, min: 600
+              max: 1280, min: 600
             }
           }
         });
@@ -154,6 +154,10 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     onClose();
   };
 
+  const handleSubmitPhoto = () => [
+    uploadAPI(capturedImages[0], pictureName, pictureDescription, record.id ?? "")
+  ]
+
   const handleCancel = async () => {
     setStream(true);
     setCapturedImages([]);
@@ -172,8 +176,10 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
 
         <>
           {stream ?
+            // container for camera stream
             <div className={classes.videoContainer + " myclass"}>
               {stream && <video className={classes.visibleVideo} ref={videoRef} autoPlay playsInline></video>}
+              {/* container for camera stream controls */}
               <div className={classes.buttonArea + " buttonArea"}>
                 {stream ? (
                   <>
@@ -203,25 +209,40 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
               </div>
             </div>
             : (
+              // container for capture or record result
               <div className={classes.videoContainer + " display_result"}>
                 {mode === "photo" ?
                   <>
+                    {/* contianer for photo */}
                     {capturedImages.map((image, index) => (
                       <img key={index} src={image} alt={`Captured ${index}`} />
                     ))}
-                    <div className={classes.saveCancelArea + " Area1"}>
-                      {!stream ? (<>
-                        <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
-                        <button onClick={() => uploadAPI(capturedImages[0], pictureName, pictureDescription, record.id ?? "")} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>) : (<></>)}
+
+                    {/* container for photo view control */}
+                    <div className={classes.buttonArea + " Area1"}>
+                      {!stream ? (
+                        <>
+                          <button onClick={handleCancel} className={classes.button}>
+                            <TiCancel size={24} className={classes.buttonIcon} />
+                          </button>
+
+                          <button onClick={handleSubmitPhoto} className={classes.button}>
+                            <TbSend size={24} className={classes.buttonIcon} />
+                          </button>
+                        </>) :
+                        (<></>)}
                     </div>
                   </> : <></>}
                 {mode === "video" ?
                   <>
                     {isVideoShow && recordings && (
+                      // container for video 
                       <video controls>
                         <source src={recordings} type="video/webm" />
                       </video>
                     )}
+
+                    {/* container for video view control */}
                     <div className={classes.saveCancelArea + " Area"}>
                       {!isRecording && recordings ? (<>
                         <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
@@ -231,9 +252,9 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   </> : <></>}
                 <div className={classes.pictureName}>
                   {/* <label>Description</label> */}
-                  <input className={classes.inputAera}></input>
+                  <input className={classes.inputAera} placeholder='Image Name'></input>
                   <br></br>
-                  <input></input>
+                  <input placeholder='Description'></input>
                 </div>
               </div>
 

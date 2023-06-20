@@ -15,6 +15,7 @@ model User {
   username  String     @unique
   password  String
   is_admin   Boolean    @default(false)
+  role       String
   projects  Project[]
   photo     Photo[]
   user_project  UserProject[]

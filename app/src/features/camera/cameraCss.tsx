@@ -4,6 +4,7 @@ import { color } from "html2canvas/dist/types/css/types/color";
 const useStyles = createStyles({
   visibleVideo: {
     // position:'absolute',
+
     height: "100%",
 
   },
@@ -16,21 +17,23 @@ const useStyles = createStyles({
     // marginTop: "10%",
     // marginBottom: "10%",
     // maxHeight: "fit-content",
+    width: "100vw",
     height: '100%',
     // width: "100vh",
     // left: "40%",
     // bottom: "30%",
     // transform: "translate(-50%, -50%)",
+    justifyContent: "center"
   },
   buttonArea: {
     position: "absolute",
-    minWidth: "30%",
+    minWidth: "80%",
     minHeight: "10%",
     top: "80%",
-    left: "5%",
-    right: "15%",
+    // left: "5%",
+    // right: "15%",
     display: "flex",
-    justifyContent: "space-evenly",
+    justifyContent: "space-around",
   },
   button: {
     display: "flex",
@@ -69,8 +72,8 @@ const useStyles = createStyles({
     minWidth: "40%",
     minHeight: "10%",
     top: "80%",
-    left: "10%",
-    right: "30%",
+    // left: "10%",
+    // right: "30%",
     display: "flex",
     justifyContent: "space-between",
   },
@@ -94,7 +97,7 @@ const useStyles = createStyles({
   },
   pictureName: {
     position: "absolute",
-    left: "25%",
+    // left: "25%",
     minWidth: "40%",
     bottom: 40,
     zIndex: 9999,
