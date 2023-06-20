@@ -1,9 +1,7 @@
 import React from "react";
-import logo from "./logo.jpeg";
-import "./App.css";
-import Camera from "./features/camera/camera";
+import landicon from "./landicon.jpg";
+import "./landing.css";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 
 const Landing = () => {
   useEffect(() => {
@@ -19,7 +17,7 @@ const Landing = () => {
         {/* <div>TECKY ENGINEERING COMPANY</div> */}
         <div className="center">
           <div>
-            <img className="circle" src={logo} height={600} alt="Logo" />
+            <img className="circleBtn" src={landicon} height={600} alt="Logo" />
           </div>
         </div>
       </header>

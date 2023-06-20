@@ -77,6 +77,7 @@ const useStyles = createStyles((theme) => ({
     cursor: "pointer",
     transition: "background-color 0.3s ease",
     marginTop: "20px",
+    marginLeft: "80%",
   },
   addIcon: {
     backgroundColor:
@@ -91,6 +92,24 @@ const useStyles = createStyles((theme) => ({
     fontSize: "20px",
     marginTop: "10px",
     height: "auto",
+  },
+  alertTittle: {
+    height: "20px",
+  },
+  alertInput: {
+    marginTop: "3%",
+    marginBottom: "3%",
+    fontSize: "16px",
+  },
+  centerStyle: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    textAlign: "center",
+    position: "fixed",
+    top: "50%",
+    left: "50%",
   },
 }));
 export default useStyles;
