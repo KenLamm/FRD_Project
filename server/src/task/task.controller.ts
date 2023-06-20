@@ -19,11 +19,12 @@ export class TaskController {
   @Get('get/:pid/:cid')
   @UseGuards(JwtGuard)
   async getAllTask(
-    @Param('pid') projectId: string,
     @GetUser('id') userId: number,
+    @GetUser('role') role:string,
+    @Param('pid') projectId: string,
     @Param('cid') categoryId :string
   ): Promise<any[]> {
-    return this.taskService.getAllTask(+projectId, userId, +categoryId);
+    return this.taskService.getAllTask(+projectId, +categoryId, userId, role);
   }
 
   @Patch('update')

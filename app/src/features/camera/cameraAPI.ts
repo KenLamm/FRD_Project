@@ -1,38 +1,3 @@
-import React, { useState } from "react";
-// interface photos {
-//   id: number;
-//   user_id: number;
-//   name: string;
-//   s3_name: string;
-//   description: string;
-//   record_id: number;
-// }
-
-// const uploadForm = () => {
-//   const [file, setFile] = useState(null);
-
-//   const handleFileChange = (event: any) => {
-//     setFile(event.target.files[0]);
-//   };
-
-//   const handleUpload = async () => {
-//     try {
-//       const formData = new FormData();
-//       formData.append('file', file!);
-
-//       const res = await fetch(`${process.env.REACT_APP_API_SERVER}/uploads`, {
-//         method: 'POST',
-//         body: formData,
-//       });
-
-//       const result = await res.json();
-//       console.log('Uploaded file:', result);
-//     } catch (error) {
-//       console.error('Error uploading file:', error);
-//     }
-//   };
-// }
-// export default uploadForm;
 
 function dataURItoBlob(dataURI: string) {
   // convert base64/URLEncoded data component to raw binary data held in a string
@@ -63,7 +28,7 @@ export const uploadVideoAPI = async (recordURL: string, pictureName: string, pic
   formData.append("pictureDescription", pictureDescription);
 
   try {
-    const res = await fetch(`http://localhost:8080/photos/upload/${record}`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/photos/upload/${record}`, {
       method: 'POST',
       headers:{
         'Authorization': `Bearer ${localStorage.getItem('token')}`

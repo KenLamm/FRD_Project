@@ -24,6 +24,7 @@ const Task: React.FC = () => {
   const categoryName = useCategoryName(params.cid ?? "");
   const [newButtonName, setNewButtonName] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const user = localStorage.getItem("role");
 
   const queryClient = useQueryClient();
   const userTaskMutation = useMutation({
@@ -180,12 +181,14 @@ const Task: React.FC = () => {
                     {todo.name}
                   </Link>
 
-                  <button
-                    className={classes.todoButton}
-                    onClick={() => handleToggleDone(todo.id)}
-                  >
-                    完成
-                  </button>
+                  {user === "manager" && (
+                    <button
+                      className={classes.todoButton}
+                      onClick={() => handleToggleDone(todo.id)}
+                    >
+                      完成
+                    </button>
+                  )}
                 </li>
               ))}
           </ul>

@@ -10,13 +10,15 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { MulterModule } from '@nestjs/platform-express';
+import { UserProjectModule } from './user-project/user-project.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true, envFilePath: ['.env'] }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'uploads'),
-      
+      rootPath: './uploads',
+      serveRoot:'/uploads/'
     }),
     UserModule,
     PrismaModule,
@@ -27,8 +29,9 @@ import { join } from 'path';
     CategoryModule,
     TaskModule,
     RecordModule,
+    UserProjectModule
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }

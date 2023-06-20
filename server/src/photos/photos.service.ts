@@ -4,12 +4,21 @@ import { PrismaService } from '../prisma/prisma.service';
 @Injectable()
 export class PhotosService {
   constructor(private readonly prismaService: PrismaService) {}
-  getAllPhotos(userId:number,recordId:number): Promise<any[]> {
+  getAllPhotos(userId:number,recordId:number, role:string): Promise<any[]> {
+  if(role =='manager'){
     return this.prismaService.photo.findMany({
       where:{
         record_id:recordId
       }
     });
+  }else{
+    return this.prismaService.photo.findMany({
+      where:{
+        record_id:recordId,
+        user_id:userId
+      }
+    });
+  }
   }
 
   postPhotos(filename: string,pictureName: string,pictureDescription: string,userId,recordId:number) {

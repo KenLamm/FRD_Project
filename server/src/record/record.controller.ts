@@ -8,11 +8,12 @@ export class RecordController {
     constructor(private readonly recordService: RecordService) { }
     @UseGuards(JwtGuard)
     @Get('get/:id')
-    getRecord(@Param("id") id: string,
+    getRecord(
+        @Param("id") id: string,
         @GetUser('id') userId: number,
-
+        @GetUser('role') role:string
     ) {
-        return this.recordService.getRecord(+id, userId);
+        return this.recordService.getRecord(+id, userId, role);
     }
     @Post('post')
     @UseGuards(JwtGuard)

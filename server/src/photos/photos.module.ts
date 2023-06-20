@@ -16,7 +16,7 @@ export const editFileName = (
     .fill(null)
     .map(() => Math.round(Math.random() * 16).toString(16))
     .join('');
-  console.log(randomName);
+  console.log("randomName",randomName);
   callback(null, `${name}-${randomName}${fileExtName}`);
 };
 
@@ -24,7 +24,7 @@ export const editFileName = (
   imports: [
     MulterModule.register({
       storage: diskStorage({
-        destination: join(__dirname, '..', 'uploads'),
+        destination: "./uploads",
         filename: editFileName,
       }),
     }),

@@ -16,6 +16,8 @@ import { PhotosService } from './photos.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { JwtGuard } from 'src/auth/guard';
 import { GetUser } from 'src/auth/decorator';
+import { diskStorage } from 'multer';
+import { extname, join } from 'path';
 
 @Controller('photos')
 export class PhotosController {
@@ -26,19 +28,22 @@ export class PhotosController {
   getAllPhoto(
     @GetUser('id') userId: number,
     @Param('id') recordId: string,
+    @GetUser('role') role:string
   ) {
-    return this.photosService.getAllPhotos(userId, +recordId);
+    return this.photosService.getAllPhotos(userId, +recordId, role,);
   }
 
   @Post('upload/:id')
   @UseGuards(JwtGuard)
-  @UseInterceptors(FileInterceptor('file'))
-  uploadFile(
+  @UseInterceptors(FileInterceptor('file', {
+   dest: "./uploads"
+  }))
+  async uploadFile(
     @UploadedFile(
       new ParseFilePipe({
         validators: [
-          new MaxFileSizeValidator({ maxSize: 1 * 1000 * 1000 }),
-          new FileTypeValidator({ fileType: /(image\/png|video\/webm)$/i }),
+          // new MaxFileSizeValidator({ maxSize: 1 * 1280*1280 }),
+          new FileTypeValidator({ fileType: /(image\/png|video\/webm|image\/jpeg)$/i }),
         ],
       }),
     )
@@ -52,7 +57,7 @@ export class PhotosController {
   }
 
   @Get('GetName/:id')
-  getRecordName(@Param('id') recordId: string){
+  getRecordName(@Param('id') recordId: string) {
     return this.photosService.getRecordName(+recordId)
   }
 
