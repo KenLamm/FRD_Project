@@ -12,7 +12,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 // }
 
 const Record: React.FC = () => {
-  const  task  = useParams();
+  const task = useParams();
   const { classes } = useStyles();
   // const [folders, setFolders] = useState<Folder[]>([
   //   { id: 1, name: '岩石地基', path: '/path/to/folder1' },
@@ -21,8 +21,8 @@ const Record: React.FC = () => {
   //   { id: 4, name: '基石縫裂', path: '/path/to/folder4' },
   // ]);
 
-  const { data: folders } = useRecord(task.id??"");
-  const {data: taskName } = useTaskName(task.id??"");
+  const { data: folders } = useRecord(task.id ?? "");
+  const { data: taskName } = useTaskName(task.id ?? "");
   const queryClient = useQueryClient();
   const onAddRecord = useMutation(
     async (data: { name: string; task_id: string }) =>
@@ -50,22 +50,22 @@ const Record: React.FC = () => {
     //   setNewFolderName('');
     //   setIsAddingFolder(false);
     // }
-    onAddRecord.mutate({ name: newFolderName, task_id:task.id??"" });
+    onAddRecord.mutate({ name: newFolderName, task_id: task.id ?? "" });
   };
 
   return (
     <div className={classes.container}>
-      <h1 className={classes.title + "checking"} style={{color: 'white'}}>{taskName&&taskName[0].name}</h1>
+      <h1 className={classes.title + "checking"} style={{ color: 'white' }}>{taskName && taskName[0].name}</h1>
       {folders &&
         folders.map((folder) => (
           <Link
             key={folder.id}
             to={`/photodetail/${folder.id}`}
             className={classes.folderButton}
-            // onClick={e => {
-            //   e.preventDefault();
-            //   handleFolderClick(folder.path);
-            // }}
+          // onClick={e => {
+          //   e.preventDefault();
+          //   handleFolderClick(folder.path);
+          // }}
           >
             <FaFolder className={classes.folderIcon} /> {folder.name}
           </Link>
