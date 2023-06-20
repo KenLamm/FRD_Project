@@ -1,10 +1,18 @@
 import React from "react";
-import styles from "./readingPage.module.css";
+import useStyles from "./SafetyCss";
+import { FcHighPriority } from "react-icons/fc";
+import { MdOutlineHealthAndSafety } from "react-icons/md";
+import { BsEmojiWink } from "react-icons/bs";
 
 const ReadingPage: React.FC = () => {
+  const { classes } = useStyles();
   return (
-    <div className={styles["reading-page"]}>
-      <h1 className={styles.title}>地盤整理</h1>
+    <div className={classes.readingPage}>
+      <h1 className={classes.header}>注意事項:</h1>
+      <h1 className={classes.title}>
+        地盤整理
+        <BsEmojiWink />
+      </h1>
       <ul>
         <li>應時常保持通道暢通。</li>
         <li>物料應分類及安全置，不可置太高。</li>
@@ -13,7 +21,10 @@ const ReadingPage: React.FC = () => {
         <li>設置充足的照明。</li>
         <li>熟悉滅火設備的位置和使用方法。</li>
       </ul>
-      <h2 className={styles.subtitle}>安全措施</h2>
+      <h2 className={classes.subtitle}>
+        安全措施
+        <FcHighPriority />
+      </h2>
       <ul>
         <li>確保機器的危險部分已裝上護罩，才可操作機器。</li>
         <li>避免在照明不足的地方走動，因有些危險地方可能未裝上護欄。</li>
@@ -23,7 +34,10 @@ const ReadingPage: React.FC = () => {
         <li>使用裝有漏電斷路裝置的電力工具。</li>
         <li>小心使用和處理化學物品。</li>
       </ul>
-      <h2 className={styles.subtitle}>個人安全</h2>
+      <h2 className={classes.subtitle}>
+        個人安全
+        <MdOutlineHealthAndSafety />
+      </h2>
       <ul>
         <li>佩戴保護器具。</li>
         <li>工作時不要飲酒和服用藥物。</li>

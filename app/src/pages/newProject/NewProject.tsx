@@ -6,7 +6,7 @@ import {
   FaTrashAlt,
 } from "react-icons/fa";
 import React, { useState } from "react";
-import { Button, Modal, Text } from "@mantine/core";
+import { Button, Modal } from "@mantine/core";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createProject, useProject } from "./ProjectAPI";
@@ -74,7 +74,7 @@ const Project = () => {
   };
 
   return (
-    <div>
+    <div className={classes.bgColour}>
       <div className={classes.tittle}>工程項目</div>
       <div className={classes.buttonCreator + " outter_project"}>
       {user === 'manager' &&

@@ -10,7 +10,7 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "100vh",
+    height: "80vh",
   },
   icon: {
     display: "flex",
@@ -27,7 +27,7 @@ const useStyles = createStyles((theme) => ({
   circle: {
     width: "300px",
     height: "300px",
-    borderRadius: "50%",
+    borderRadius: "80%",
     objectFit: "cover",
   },
   name: {},

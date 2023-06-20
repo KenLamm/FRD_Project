@@ -1,31 +1,35 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   readingPage: {
-    fontFamily: 'Arial, sans-serif',
-    padding: '20px',
-    color: '#333',
+    fontFamily: "Arial, sans-serif",
+    padding: "20px",
+    color: "#FFF",
   },
   title: {
-    color: 'blue',
-    fontSize: '24px',
-    marginBottom: '10px',
+    color: "#FFF",
+    fontSize: "24px",
+    marginBottom: "10px",
   },
   subtitle: {
-    color: 'black',
-    fontSize: '20px',
-    marginTop: '20px',
-    marginBottom: '10px',
+    color: "#FFF",
+    fontSize: "20px",
+    marginTop: "20px",
+    marginBottom: "10px",
   },
   list: {
-    listStyleType: 'square',
-    paddingLeft: '20px',
+    listStyleType: "square",
+    paddingLeft: "20px",
   },
   listItem: {
-    marginBottom: '5px',
+    marginBottom: "5px",
+  },
+  header: {
+    color: "#FFF",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 }));
 
 export default useStyles;
-
-  

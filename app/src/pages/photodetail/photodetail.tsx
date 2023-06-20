@@ -24,9 +24,9 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const Photo: React.FC = () => {
-  const record = useParams()
+  const record = useParams();
   const { data: photos } = usePhoto(record.id ?? "");
-  const { data: recordName } = useRecordName(record.id??"")
+  const { data: recordName } = useRecordName(record.id ?? "");
   const { classes } = useStyles();
   const [showCamera, setShowCamera] = useState(false);
 
@@ -43,29 +43,41 @@ const Photo: React.FC = () => {
   };
 
   return (
-    <div className="hi234" style={{ position: "relative" }}>
-      <h1 style={{ textAlign: "center" , color:"white", marginTop:0, paddingTop:'0.67em'}}>{recordName&&recordName[0].name}</h1>
+    <div
+      className="hi234"
+      style={{
+        position: "relative",
+        backgroundColor: "#454545",
+        height: "100%",
+      }}
+    >
+      <h1
+        style={{
+          textAlign: "center",
+          color: "white",
+          marginTop: 0,
+          paddingTop: "0.67em",
+        }}
+      >
+        {recordName && recordName[0].name}
+      </h1>
       <div>
         <button className={classes.captureButton} onClick={handleCapturePhoto}>
           <FaCamera />
         </button>
       </div>
-      {showCamera && (<Camera onClose={handleCloseCamera} />)}
+      {showCamera && <Camera onClose={handleCloseCamera} />}
 
       <div className={showCamera ? classes.displayNone : "isShow"}>
-        {photos && (
-          photos.map(photo => (
+        {photos &&
+          photos.map((photo) => (
             <UserInfoIcons
               avatar={`${process.env.REACT_APP_API_URL}/uploads/${photo.s3_name}`}
               name={`${photo.name}`}
               title={`${photo.description}`}
             />
-          ))
-        )}
+          ))}
       </div>
-
-
-
     </div>
   );
 };

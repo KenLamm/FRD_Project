@@ -8,7 +8,22 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <div style={{margin:"0", backgroundColor: "#454545", backgroundSize: "cover",borderWidth:"10px",borderColor:"red", height:"100vh" }} className="base">
+  <div
+    style={{
+      position: "relative",
+      minHeight: "50vh",
+      margin: "0",
+      backgroundColor: "#454545",
+      backgroundSize: "cover",
+      borderWidth: "10px",
+      borderColor: "red",
+      paddingBottom: "30%",
+      // paddingBottom: "var(--window-bottom) + 20%",
+      // height: "100vh",
+      flex: 1,
+    }}
+    className="base"
+  >
     {/* <Navbar /> */}
     <App />
   </div>
