@@ -1,4 +1,5 @@
 import { createStyles } from "@mantine/core";
+import { color } from "html2canvas/dist/types/css/types/color";
 
 const useStyles = createStyles({
   visibleVideo: {
@@ -27,7 +28,7 @@ const useStyles = createStyles({
     minHeight: "10%",
     top: "80%",
     left: "5%",
-    right:"15%",
+    right: "15%",
     display: "flex",
     justifyContent: "space-evenly",
   },
@@ -95,8 +96,12 @@ const useStyles = createStyles({
     position: "absolute",
     left: "25%",
     minWidth: "40%",
-    bottom: 0,
-    zIndex: 9999
+    bottom: 40,
+    zIndex: 9999,
+    boderRadius: "40px",
+    color: "rgba(0,0,0,0.2)"
+  },
+  inputAera: {
   }
 });
 

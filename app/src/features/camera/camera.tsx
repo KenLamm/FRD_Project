@@ -229,9 +229,9 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                       ) : (<></>)}
                     </div>
                   </> : <></>}
-
                 <div className={classes.pictureName}>
-                  <input></input>
+                  {/* <label>Description</label> */}
+                  <input className={classes.inputAera}></input>
                   <br></br>
                   <input></input>
                 </div>

@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <div style={{margin:"0", backgroundColor: "#454545", backgroundSize: "cover",borderWidth:"10px",borderColor:"red", height:"1000vh" }} className="base">
+  <div style={{margin:"0", backgroundColor: "#454545", backgroundSize: "cover",borderWidth:"10px",borderColor:"red", height:"100%" }} className="base">
     {/* <Navbar /> */}
     <App />
   </div >
