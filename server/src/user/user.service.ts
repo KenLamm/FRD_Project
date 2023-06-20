@@ -8,7 +8,7 @@ export class UserService {
   async getSelfInfo(userId: number) {
     const foundUser = await this.prismaService.user.findUnique({
       where: { id: userId },
-      select: { id: true, username: true },
+      select: { id: true, username: true, role:true },
     });
     return foundUser;
   }

@@ -6,13 +6,21 @@ import { PrismaService } from 'src/prisma/prisma.service';
 @Injectable()
 export class RecordService {
     constructor(private readonly prismaService:PrismaService){}
-    getRecord(id:number, userId:number): Promise<any>{
-        return this.prismaService.record.findMany({
-            where: {
-                user_id:userId,
-                task_id: id
-            }
-        })
+    getRecord(id:number, userId:number,role:string): Promise<any>{
+  if(role == 'manager'){
+    return this.prismaService.record.findMany({
+        where: {
+            task_id: id
+        }
+    })
+  }else{
+    return this.prismaService.record.findMany({
+        where: {
+            user_id:userId,
+            task_id: id
+        }
+    })
+  }
     }
     postRecord(name:string, task_id:number, userId:number): Promise<any>{
         return this.prismaService.record.create({

@@ -17,11 +17,11 @@ async function main() {
   try {
     // Seed users
     const users = [
-      { username: 'Admin', password: hashed, is_admin: true },
-      { username: 'Admin1', password: hashed, is_admin: true },
-      { username: 'Sam', password: hashed, is_admin: false },
-      { username: 'Ken', password: hashed, is_admin: false },
-      { username: 'Mav', password: hashed, is_admin: false },
+      { username: 'Admin', password: hashed, is_admin: true, role: "manager" },
+      { username: 'Admin1', password: hashed, is_admin: true,role: "manager" },
+      { username: 'Sam', password: hashed, is_admin: false, role: "contractor" },
+      { username: 'Ken', password: hashed, is_admin: false, role: "contractor"},
+      { username: 'Mav', password: hashed, is_admin: false, role: "contractor"},
     ];
 
     let seededUsers = [];
@@ -32,6 +32,7 @@ async function main() {
           username: item.username,
           password: item.password,
           is_admin: item.is_admin,
+          role: item.role,
         },
       });
       seededUsers.push(data);
@@ -111,23 +112,17 @@ async function main() {
     // seed user project
     const userprojects = [
       {
-        user_id: seededUsers[0].id,
+        user_id: seededUsers[2].id,
         project_id: seededProjects[0].id,
-        role: 'admin',
-        is_valid: true,
-      },
-      {
-        user_id: seededUsers[1].id,
-        project_id: seededProjects[0].id,
-        role: 'member',
-        is_valid: true,
       },
 
       {
-        user_id: seededUsers[2].id,
+        user_id: seededUsers[3].id,
         project_id: seededProjects[0].id,
-        role: 'manger',
-        is_valid: true,
+      },
+      {
+        user_id: seededUsers[4].id,
+        project_id: seededProjects[0].id,
       },
     ];
 
@@ -138,8 +133,6 @@ async function main() {
         data: {
           user_id: item.user_id,
           project_id: item.project_id,
-          role: item.role,
-          is_valid: item.is_valid,
         },
       });
       seededUserProjects.push(data);

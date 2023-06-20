@@ -10,6 +10,8 @@ import { Button, Modal, Text } from "@mantine/core";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createProject, useProject } from "./ProjectAPI";
+import { login } from "../auth/authAPI"
+import { decode } from "punycode";
 
 const Project = () => {
   const { classes } = useStyles();
@@ -17,6 +19,7 @@ const Project = () => {
   const [newButtonName, setNewButtonName] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [getProject, setGetProject] = useState();
+  const  user  = localStorage.getItem('role')
 
   const navigate = useNavigate();
   const project = useProject();
@@ -74,10 +77,11 @@ const Project = () => {
     <div>
       <div className={classes.tittle}>工程項目</div>
       <div className={classes.buttonCreator + " outter_project"}>
+      {user === 'manager' &&
         <button className={classes.addButton} onClick={openModal}>
           <FaPlus />
         </button>
-
+        }
         <div className={classes.buttonList + " project_list"}>
           {project.data?.map((elem, i) => {
             return (
