@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FaCamera, FaPhp, FaVideo } from "react-icons/fa";
 import Camera from "../../features/camera/camera";
 import { createStyles } from "@mantine/core";
-
 import UserInfoIcons from "./UserInfoIcons"; // Check the file path and ensure it's correct
 import { useParams } from "react-router";
 import { usePhoto, useRecordName } from "./photodetailAPI";

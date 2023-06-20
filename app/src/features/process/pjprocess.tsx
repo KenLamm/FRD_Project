@@ -55,6 +55,7 @@ export function StatsCard() {
           process.data.map((item) => {
             return (
               <div>
+              <div>
                 <Link
                   to={`/task/${projectId.id}/${item.id}`}
                   className={classes.linktodo}
@@ -82,6 +83,8 @@ export function StatsCard() {
                 <Group position="apart" mt="md">
                   <Badge size="sm">6 days left</Badge>
                 </Group>
+              </div>
+
               </div>
             );
           })}
