@@ -40,38 +40,70 @@
 
 // export default Navbar;
 
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Navbar.css";
-import { createStyles, Anchor, Group, ActionIcon, rem } from "@mantine/core";
-import {
-  IconBrandTwitter,
-  IconBrandYoutube,
-  IconBrandInstagram,
-} from "@tabler/icons-react";
+// import React from "react";
+// import { Link } from "react-router-dom";
+// import "./NavbarCss";
+// import { createStyles, Anchor, Group, ActionIcon, rem } from "@mantine/core";
+// import {
+//   IconBrandTwitter,
+//   IconBrandYoutube,
+//   IconBrandInstagram,
+// } from "@tabler/icons-react";
+// import { MantineLogo } from "@mantine/ds";
 
-const Navbar = () => {
+// const Navbar = () => {
+//   return (
+//     <nav className="navbar">
+//       <ul className="navbar-nav">
+//         <li className="nav-item">
+//           <Link to="/" className="nav-link">
+//             Home
+//           </Link>
+//         </li>
+//         <li className="nav-item">
+//           <Link to="/about" className="nav-link">
+//             About
+//           </Link>
+//         </li>
+//         <li className="nav-item">
+//           <Link to="/contact" className="nav-link">
+//             Contact
+//           </Link>
+//         </li>
+//       </ul>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
+
+import React from "react";
+import "./Navbar.css"; // 導入自定義的CSS樣式
+import { FaAngleLeft } from "react-icons/fa";
+import { BsInfoSquare } from "react-icons/bs";
+import { BiHome } from "react-icons/bi";
+
+function Navbar() {
   return (
-    <nav className="navbar">
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/about" className="nav-link">
-            About
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link to="/contact" className="nav-link">
-            Contact
-          </Link>
-        </li>
-      </ul>
-    </nav>
+    <div className="navbar">
+      <button className="btn">
+        <i className="icon">
+          <FaAngleLeft />
+        </i>
+      </button>
+      <button className="btn">
+        <i className="icon">
+          <BiHome />
+        </i>
+      </button>
+      <button className="btn">
+        <i className="icon">
+          <BsInfoSquare />
+        </i>
+      </button>
+      <div className="effect"></div>
+    </div>
   );
-};
+}
 
 export default Navbar;

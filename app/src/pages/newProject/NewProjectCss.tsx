@@ -8,7 +8,7 @@ const useStyles = createStyles((theme) => ({
   },
   addButton: {
     backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[6] : "#f2f2f2",
+      theme.colorScheme === "dark" ? theme.colors.dark[6] : "#fff",
     border: "none",
     borderRadius: "50%",
     padding: "10px",
@@ -16,9 +16,11 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     // alignItems: "center",
     // justifyContent: "center",
-    fontSize: "40px",
+    fontSize: "20px",
     marginTop: "10px",
-    height: "auto"
+    height: "auto",
+    marginLeft: "80%",
+    color: "blue",
   },
   buttonList: {
     display: "flex",
@@ -40,7 +42,7 @@ const useStyles = createStyles((theme) => ({
     width: "60%",
     height: "auto",
     fontSize: "18px",
-    color: "white"
+    color: "white",
   },
   alertTittle: {
     height: "20px",
@@ -48,7 +50,7 @@ const useStyles = createStyles((theme) => ({
   alertInput: {
     marginTop: "3%",
     marginBottom: "3%",
-    fontSize: "16px"
+    fontSize: "16px",
   },
   centerStyle: {
     display: "flex",
@@ -59,6 +61,13 @@ const useStyles = createStyles((theme) => ({
     position: "fixed",
     top: "50%",
     left: "50%",
+  },
+  tittle: {
+    display: "flex",
+    justifyContent: "center",
+    fontSize: "5vh",
+    color: "white",
+    paddingTop: "3%",
   },
 }));
 
