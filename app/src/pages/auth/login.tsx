@@ -61,7 +61,12 @@ export function AuthenticationTitle() {
           <Title align="center" sx={(theme) => ({})}>
             <div>
               <img
-                style={{ width: "70%", height: "70%", marginBottom: "-30%" }}
+                style={{
+                  width: "70%",
+                  height: "70%",
+                  marginBottom: "-30%",
+                  borderRadius: "80%",
+                }}
                 className="circle"
                 src={companyName}
                 height={100}

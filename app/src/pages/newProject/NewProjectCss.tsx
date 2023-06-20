@@ -69,6 +69,9 @@ const useStyles = createStyles((theme) => ({
     color: "white",
     paddingTop: "3%",
   },
+  bgColour: {
+    backgroundColor: "#454545",
+  },
 }));
 
 export default useStyles;
