@@ -28,8 +28,9 @@ export class PhotosController {
   getAllPhoto(
     @GetUser('id') userId: number,
     @Param('id') recordId: string,
+    @GetUser('role') role:string
   ) {
-    return this.photosService.getAllPhotos(userId, +recordId);
+    return this.photosService.getAllPhotos(userId, +recordId, role,);
   }
 
   @Post('upload/:id')

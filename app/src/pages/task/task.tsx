@@ -89,10 +89,9 @@ const Task: React.FC = () => {
             value={newTaskName}
             onChange={(e) => setNewTaskName(e.target.value)}
           />
-          {user === 'manager' &&
           <button className={classes.addButton} onClick={handleAddTask}>
             <FaPlus className={classes.addIcon} />
-          </button>}
+          </button>
         </div>
       ) : (
         <button
@@ -114,12 +113,14 @@ const Task: React.FC = () => {
                     {todo.name}
                   </Link>
 
+                  {user === 'manager' &&
                   <button
                     className={classes.todoButton}
                     onClick={() => handleToggleDone(todo.id)}
                   >
                     完成
                   </button>
+                  }
                 </li>
               ))}
           </ul>

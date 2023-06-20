@@ -10,7 +10,7 @@ import { useParams } from 'react-router';
 
 const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const record = useParams();
-  console.log(record.id)
+  console.log("record id", record.id)
   const { classes } = useStyles();
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -237,8 +237,8 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                   <>
                     {isVideoShow && recordings && (
                       // container for video 
-                      <video controls>
-                        <source src={recordings} type="video/webm" />
+                      <video controls autoPlay playsInline>
+                        <source src={recordings} type="video/mp4" />
                       </video>
                     )}
 

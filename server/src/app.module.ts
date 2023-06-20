@@ -11,6 +11,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { MulterModule } from '@nestjs/platform-express';
+import { UserProjectModule } from './user-project/user-project.module';
 
 @Module({
   imports: [
@@ -27,7 +28,8 @@ import { MulterModule } from '@nestjs/platform-express';
     PrismaModule,
     CategoryModule,
     TaskModule,
-    RecordModule
+    RecordModule,
+    UserProjectModule
   ],
   controllers: [],
   providers: [],

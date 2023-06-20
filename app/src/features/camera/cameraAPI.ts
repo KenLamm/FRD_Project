@@ -28,7 +28,7 @@ export const uploadVideoAPI = async (recordURL: string, pictureName: string, pic
   formData.append("pictureDescription", pictureDescription);
 
   try {
-    const res = await fetch(`http://localhost:8080/photos/upload/${record}`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/photos/upload/${record}`, {
       method: 'POST',
       headers:{
         'Authorization': `Bearer ${localStorage.getItem('token')}`

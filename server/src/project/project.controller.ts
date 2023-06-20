@@ -9,8 +9,11 @@ export class ProjectController {
 
   @Get('get')
   @UseGuards(JwtGuard)
-  getAllProject(@GetUser('id') userId: number) {
-    return this.projectService.getAllProject(userId);
+  async getAllProject(@GetUser('id') userId: number,
+  @GetUser('role') role: string) {
+    const projectNameId = await this.projectService.getAllProject(userId,role);
+    console.log(projectNameId)
+    return projectNameId
   }
 
   @Post('post')

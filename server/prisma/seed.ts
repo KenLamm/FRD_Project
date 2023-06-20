@@ -112,23 +112,17 @@ async function main() {
     // seed user project
     const userprojects = [
       {
-        user_id: seededUsers[0].id,
+        user_id: seededUsers[2].id,
         project_id: seededProjects[0].id,
-        role: 'admin',
-        is_valid: true,
-      },
-      {
-        user_id: seededUsers[1].id,
-        project_id: seededProjects[0].id,
-        role: 'member',
-        is_valid: true,
       },
 
       {
-        user_id: seededUsers[2].id,
+        user_id: seededUsers[3].id,
         project_id: seededProjects[0].id,
-        role: 'manger',
-        is_valid: true,
+      },
+      {
+        user_id: seededUsers[4].id,
+        project_id: seededProjects[0].id,
       },
     ];
 
@@ -139,8 +133,6 @@ async function main() {
         data: {
           user_id: item.user_id,
           project_id: item.project_id,
-          role: item.role,
-          is_valid: item.is_valid,
         },
       });
       seededUserProjects.push(data);

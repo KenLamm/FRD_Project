@@ -20,7 +20,6 @@ const Project = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [getProject, setGetProject] = useState();
   const  user  = localStorage.getItem('role')
-  console.log(user)
 
   const navigate = useNavigate();
   const project = useProject();
