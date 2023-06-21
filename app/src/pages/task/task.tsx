@@ -1,26 +1,19 @@
-import React, { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import useStyles from "./taskCss";
 import { useTask, TaskType, postTask, useCategoryName } from "./taskAPI";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { queryClient } from "../app/App";
-import { FaPlus, FaRegPlusSquare, FaTrashAlt } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import { useViewportSize } from "@mantine/hooks";
-
-// import { useQueryClient } from "@tanstack/react-query";
-
-// interface Todo {
-//   id: number;
-//   title: string;
-//   done: boolean;
-// }
+import { useState } from "react";
+import { Button, Modal } from "@mantine/core";
 
 const Task: React.FC = () => {
   const params = useParams();
   const { classes } = useStyles();
   const result = useTask(params.cid ?? "", params.pid ?? "");
   const categoryName = useCategoryName(params.cid ?? "");
-  const user = localStorage.getItem('role')
+  const user = localStorage.getItem("role");
+  const [modalOpen, setModalOpen] = useState(false);
 
   const queryClient = useQueryClient();
   const userTaskMutation = useMutation({
@@ -51,12 +44,22 @@ const Task: React.FC = () => {
     userTaskMutation.mutate(id);
   };
 
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setNewTaskName("");
+  };
+
   const handleAddTask = () => {
     onAddTask.mutate({
       name: newTaskName,
       category_id: params.cid ?? "",
       project_id: params.pid ?? "",
     });
+    closeModal();
   };
 
   let todoItems: TaskType[] | undefined = []; // useMemo
@@ -81,26 +84,45 @@ const Task: React.FC = () => {
       <h1 className={classes.mainHeading}>
         {categoryName.data && categoryName.data[0].name}
       </h1>
-      {isAddingTask ? (
-        <div>
-          <input
-            type="text"
-            placeholder="Enter folder name"
-            value={newTaskName}
-            onChange={(e) => setNewTaskName(e.target.value)}
-          />
-          <button className={classes.addButton} onClick={handleAddTask}>
-            <FaPlus className={classes.addIcon} />
-          </button>
-        </div>
-      ) : (
-        <button
-          className={classes.addButton}
-          onClick={() => setIsAddingTask(true)}
-        >
+      <div className={classes.buttonCreator}>
+        <button className={classes.addButton} onClick={openModal}>
           <FaPlus className={classes.addIcon} />
         </button>
-      )}
+      </div>
+      <div>
+        <div className={classes.centerStyle}></div>
+        <Modal
+          opened={modalOpen}
+          onClose={closeModal}
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Modal.Header className={classes.alertTittle}>
+            <Modal.Title>Enter your new folder name:</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <input
+              type="text"
+              placeholder="Enter folder name"
+              value={newTaskName}
+              onChange={(e) => setNewTaskName(e.target.value)}
+            />
+          </Modal.Body>
+          <Modal.Body>
+            <Button onClick={handleAddTask}>Create Folder</Button>
+            <Button onClick={closeModal} variant="outline">
+              Cancel
+            </Button>
+          </Modal.Body>
+        </Modal>
+      </div>
       <div className={classes.todoSection}>
         <div className={classes.todoColumn}>
           <h2 style={{ color: "#FFFFFF" }}>進行中</h2>
@@ -112,8 +134,7 @@ const Task: React.FC = () => {
                   <Link to={`/record/${todo.id}`} className={classes.todoLink}>
                     {todo.name}
                   </Link>
-
-                  {user === 'manager' &&
+                { user === 'manager' &&
                   <button
                     className={classes.todoButton}
                     onClick={() => handleToggleDone(todo.id)}

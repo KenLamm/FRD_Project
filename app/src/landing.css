@@ -5,9 +5,9 @@
   height: 100vh;
 }
 
-.circle {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
+.circleBtn {
+  width: 450px;
+  height: 500px;
+
   object-fit: cover;
 }
