@@ -10,8 +10,6 @@ import { Button, Modal } from "@mantine/core";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createProject, useProject } from "./ProjectAPI";
-import { login } from "../auth/authAPI"
-import { decode } from "punycode";
 
 const Project = () => {
   const { classes } = useStyles();
@@ -19,7 +17,7 @@ const Project = () => {
   const [newButtonName, setNewButtonName] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [getProject, setGetProject] = useState();
-  const  user  = localStorage.getItem('role')
+  const user = localStorage.getItem("role");
 
   const navigate = useNavigate();
   const project = useProject();
@@ -77,11 +75,11 @@ const Project = () => {
     <div className={classes.bgColour}>
       <div className={classes.tittle}>工程項目</div>
       <div className={classes.buttonCreator + " outter_project"}>
-      {user === 'manager' &&
-        <button className={classes.addButton} onClick={openModal}>
-          <FaPlus />
-        </button>
-        }
+        {user === "manager" && (
+          <button className={classes.addButton} onClick={openModal}>
+            <FaPlus />
+          </button>
+        )}
         <div className={classes.buttonList + " project_list"}>
           {project.data?.map((elem, i) => {
             return (
@@ -131,7 +129,7 @@ const Project = () => {
           >
             <Modal.Header className={classes.alertTittle}>
               <Modal.Title>
-                <div>Enter your new project name:</div>
+                <div>新增工程項目名稱:</div>
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -139,6 +137,7 @@ const Project = () => {
                 <input
                   className={classes.alertInput}
                   type="text"
+                  placeholder="輸入名稱"
                   value={newButtonName}
                   onChange={handleInputChange}
                   style={{ width: "80%" }}
@@ -147,10 +146,10 @@ const Project = () => {
             </Modal.Body>
             <Modal.Body>
               <Button style={{ marginRight: "50px" }} onClick={createButton}>
-                Create Project
+                創建
               </Button>
               <Button onClick={closeModal} variant="outline">
-                Cancel
+                取消
               </Button>
             </Modal.Body>
           </Modal>

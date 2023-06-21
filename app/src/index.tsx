@@ -11,7 +11,7 @@ root.render(
   <div
     style={{
       position: "relative",
-      minHeight: "50vh",
+      minHeight: "100vh",
       margin: "0",
       backgroundColor: "#454545",
       backgroundSize: "cover",
@@ -19,7 +19,7 @@ root.render(
       borderColor: "red",
       paddingBottom: "30%",
       // paddingBottom: "var(--window-bottom) + 20%",
-      height: "100vh",
+      // height: "100vh",
       flex: 1,
     }}
     className="base"

@@ -150,7 +150,7 @@ const Record: React.FC = () => {
   };
 
   return (
-    <div style={{ height: "100%" }}>
+    <div style={{ height: "100%", backgroundColor: "#454545" }}>
       <div className={classes.container}>
         <h1 className={classes.title + "checking"} style={{ color: "white" }}>
           {taskName && taskName[0].name}
@@ -197,28 +197,27 @@ const Record: React.FC = () => {
             position: "absolute",
             top: "50%",
             left: "50%",
-
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
           <Modal.Header className={classes.alertTittle}>
-            <Modal.Title>Enter your new folder name:</Modal.Title>
+            <Modal.Title>新增文件夾名稱:</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <input
               type="text"
               className={classes.alertInput}
-              placeholder="Folder name"
+              placeholder="輸入名稱"
               value={newFolderName}
               onChange={(e) => setNewFolderName(e.target.value)}
             />
           </Modal.Body>
           <Modal.Body>
-            <Button onClick={handleAddClick}>Create Folder</Button>
+            <Button onClick={handleAddClick}>創建</Button>
             <Button onClick={closeModal} variant="outline">
-              Cancel
+              取消
             </Button>
           </Modal.Body>
         </Modal>

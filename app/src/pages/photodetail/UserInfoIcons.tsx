@@ -1,17 +1,17 @@
-import React from 'react';
-import { createStyles, Avatar, Text, Group } from '@mantine/core';
-import { IconPhoneCall, IconAt } from '@tabler/icons-react';
+import React from "react";
+import { createStyles, Avatar, Text, Group } from "@mantine/core";
+import { IconPhoneCall, IconAt } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   icon: {
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[3] : theme.colors.gray[5],
-  
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[3]
+        : theme.colors.gray[5],
   },
   name: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    
   },
-
 }));
 
 interface UserInfoIconsProps {
@@ -20,13 +20,17 @@ interface UserInfoIconsProps {
   title: string;
 }
 
-const UserInfoIcons: React.FC<UserInfoIconsProps> = ({ avatar, name, title }) => {
+const UserInfoIcons: React.FC<UserInfoIconsProps> = ({
+  avatar,
+  name,
+  title,
+}) => {
   const { classes } = useStyles();
-  const phone = new Date().toLocaleTimeString(); // Get the current time
-  const email = new Date().toLocaleDateString(); // Get the current date
+  const getTime = new Date().toLocaleTimeString(); // Get the current time
+  const getDate = new Date().toLocaleDateString(); // Get the current date
 
   return (
-    <div className='myAvator'>
+    <div className="myAvator">
       <Group noWrap>
         <Avatar src={avatar} size={94} radius="md" />
         <div>
@@ -39,13 +43,13 @@ const UserInfoIcons: React.FC<UserInfoIconsProps> = ({ avatar, name, title }) =>
           <Group noWrap spacing={10} mt={3}>
             <IconAt stroke={1.5} size="1rem" className={classes.icon} />
             <Text fz="xs" c="dimmed">
-              {email}
+              {getDate}
             </Text>
           </Group>
           <Group noWrap spacing={10} mt={5}>
             <IconPhoneCall stroke={1.5} size="1rem" className={classes.icon} />
             <Text fz="xs" c="dimmed">
-              {phone}
+              {getTime}
             </Text>
           </Group>
         </div>
