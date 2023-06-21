@@ -3,7 +3,8 @@ const useStyles = createStyles((theme) => ({
   mainHeading: {
     color: "rgb(252, 252, 252)",
     textAlign: "center",
-    fontSize:"40px"
+    fontSize: "40px",
+    paddingBottom: "20%",
   },
 
   title: {
@@ -15,7 +16,7 @@ const useStyles = createStyles((theme) => ({
     color: "rgb(252, 252, 252)",
     borderRadius: "20px ",
     paddingTop: "5px",
-    paddingBottom: "5px"
+    paddingBottom: "5px",
   },
   linktodo: {
     textDecoration: "none",
