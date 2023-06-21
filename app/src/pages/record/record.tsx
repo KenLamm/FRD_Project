@@ -131,13 +131,11 @@ const Record: React.FC = () => {
     closeModal();
   };
 
-<<<<<<< HEAD
     //   setFolders([...folders, newFolder]);
     //   setNewFolderName('');
     //   setIsAddingFolder(false);
     // }
     onAddRecord.mutate({ name: newFolderName, task_id: task.id ?? "" });
-=======
   const openModal = () => {
     setModalOpen(true);
   };
@@ -145,14 +143,11 @@ const Record: React.FC = () => {
   const closeModal = () => {
     setModalOpen(false);
     setNewFolderName("");
->>>>>>> 2aecd76630407dc244d27ec28302ba646983ebb4
   };
 
   return (
     <div className={classes.container}>
-<<<<<<< HEAD
       <h1 className={classes.title + "checking"} style={{ color: 'white' }}>{taskName && taskName[0].name}</h1>
-=======
       <h1 className={classes.title + "checking"} style={{ color: "white" }}>
         {taskName && taskName[0].name}
       </h1>
@@ -161,20 +156,16 @@ const Record: React.FC = () => {
           <FaPlus className={classes.addIcon} />
         </button>
       </div>
->>>>>>> 2aecd76630407dc244d27ec28302ba646983ebb4
       {folders &&
         folders.map((folder) => (
           <Link
             key={folder.id}
             to={`/photodetail/${folder.id}`}
             className={classes.folderButton}
-<<<<<<< HEAD
           // onClick={e => {
           //   e.preventDefault();
           //   handleFolderClick(folder.path);
           // }}
-=======
->>>>>>> 2aecd76630407dc244d27ec28302ba646983ebb4
           >
             <FaFolder className={classes.folderIcon} /> {folder.name}
           </Link>
