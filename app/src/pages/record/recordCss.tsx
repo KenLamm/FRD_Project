@@ -7,8 +7,9 @@ const useStyles = createStyles((theme) => ({
     flexDirection: "column",
     padding: "20px",
     borderRadius: "20px",
-    height: "100%",
+
     backgroundColor: "#454545",
+    height: "100%",
   },
   // workingFolderPage: {
   //     fontSize: '24px',

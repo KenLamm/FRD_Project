@@ -71,6 +71,7 @@ const useStyles = createStyles((theme) => ({
   },
   bgColour: {
     backgroundColor: "#454545",
+    paddingBottom: "30%",
   },
 }));
 

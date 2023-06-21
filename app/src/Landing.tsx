@@ -1,5 +1,5 @@
 import React from "react";
-import landicon from "./landicon.jpg";
+import landingicon from "./landingicon.jpg";
 import "./landing.css";
 import { useEffect } from "react";
 
@@ -17,7 +17,12 @@ const Landing = () => {
         {/* <div>TECKY ENGINEERING COMPANY</div> */}
         <div className="center">
           <div>
-            <img className="circleBtn" src={landicon} height={600} alt="Logo" />
+            <img
+              className="circleBtn"
+              src={landingicon}
+              height={600}
+              alt="Logo"
+            />
           </div>
         </div>
       </header>

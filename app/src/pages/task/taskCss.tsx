@@ -111,5 +111,10 @@ const useStyles = createStyles((theme) => ({
     top: "50%",
     left: "50%",
   },
+  buttonCreator: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
 }));
 export default useStyles;

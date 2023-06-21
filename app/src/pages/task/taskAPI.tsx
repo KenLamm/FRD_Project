@@ -9,14 +9,14 @@ export interface TaskType {
   is_finished: boolean;
   user_id: number;
   category_id: number;
-  project_id:number;
+  project_id: number;
 }
 
-interface CategoryType{
-  name:string,
+interface CategoryType {
+  name: string;
 }
 
-export function useTask(params: string, projectId:string) {
+export function useTask(params: string, projectId: string) {
   const navigate = useNavigate();
   const { isLoading, error, data, isFetching } = useQuery({
     queryKey: ["useTask"],
@@ -46,7 +46,11 @@ export function useTask(params: string, projectId:string) {
   };
 }
 
-export async function postTask(name: string, params: string, projectId:string) {
+export async function postTask(
+  name: string,
+  params: string,
+  projectId: string
+) {
   const res = await fetch(
     `${process.env.REACT_APP_API_URL}/task/post/${projectId}/${params}`,
     {
@@ -59,6 +63,7 @@ export async function postTask(name: string, params: string, projectId:string) {
     }
   );
   const result = await res.json();
+  console.log("check check task API", result);
   return result.data;
 }
 

@@ -19,7 +19,7 @@ root.render(
       borderColor: "red",
       paddingBottom: "30%",
       // paddingBottom: "var(--window-bottom) + 20%",
-      // height: "100vh",
+      height: "100vh",
       flex: 1,
     }}
     className="base"
