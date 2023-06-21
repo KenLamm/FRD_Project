@@ -21,11 +21,11 @@ export class PhotosService {
   }
   }
 
-  postPhotos(filename: string,pictureName: string,pictureDescription: string,userId,recordId:number) {
+  postPhotos(filename: string,pictureName: string,pictureDescription: string,userId:number,recordId:number) {
     console.log("checking for get the data", filename,pictureDescription, pictureName, userId, recordId)
     return this.prismaService.photo.create({
       data: {
-        user_id: 1,
+        user_id: userId,
         name: pictureName,
         s3_name:filename,
         description:pictureDescription,
