@@ -113,9 +113,12 @@ const Record: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const task = useParams();
   const { classes } = useStyles();
+
+  const queryClient = useQueryClient();
+
   const { data: folders } = useRecord(task.id ?? "");
   const { data: taskName } = useTaskName(task.id ?? "");
-  const queryClient = useQueryClient();
+
   const onAddRecord = useMutation(
     async (data: { name: string; task_id: string }) =>
       postRecord(data.name, data.task_id),
@@ -131,13 +134,12 @@ const Record: React.FC = () => {
     closeModal();
   };
 
-<<<<<<< HEAD
-    //   setFolders([...folders, newFolder]);
-    //   setNewFolderName('');
-    //   setIsAddingFolder(false);
-    // }
-    onAddRecord.mutate({ name: newFolderName, task_id: task.id ?? "" });
-=======
+  //   setFolders([...folders, newFolder]);
+  //   setNewFolderName('');
+  //   setIsAddingFolder(false);
+  // }
+  // onAddRecord.mutate({ name: newFolderName, task_id: task.id ?? "" });
+
   const openModal = () => {
     setModalOpen(true);
   };
@@ -145,42 +147,36 @@ const Record: React.FC = () => {
   const closeModal = () => {
     setModalOpen(false);
     setNewFolderName("");
->>>>>>> 2aecd76630407dc244d27ec28302ba646983ebb4
   };
 
   return (
-    <div className={classes.container}>
-<<<<<<< HEAD
-      <h1 className={classes.title + "checking"} style={{ color: 'white' }}>{taskName && taskName[0].name}</h1>
-=======
-      <h1 className={classes.title + "checking"} style={{ color: "white" }}>
-        {taskName && taskName[0].name}
-      </h1>
-      <div className={classes.buttonCreator}>
-        <button className={classes.addButton} onClick={openModal}>
-          <FaPlus className={classes.addIcon} />
-        </button>
-      </div>
->>>>>>> 2aecd76630407dc244d27ec28302ba646983ebb4
-      {folders &&
-        folders.map((folder) => (
-          <Link
-            key={folder.id}
-            to={`/photodetail/${folder.id}`}
-            className={classes.folderButton}
-<<<<<<< HEAD
-          // onClick={e => {
-          //   e.preventDefault();
-          //   handleFolderClick(folder.path);
-          // }}
-=======
->>>>>>> 2aecd76630407dc244d27ec28302ba646983ebb4
-          >
-            <FaFolder className={classes.folderIcon} /> {folder.name}
-          </Link>
-        ))}
-      {/* {isAddingFolder ? ( */}
-      {/* <div className={classes.addButtonContainer}>
+    <div style={{ height: "100%" }}>
+      <div className={classes.container}>
+        <h1 className={classes.title + "checking"} style={{ color: "white" }}>
+          {taskName && taskName[0].name}
+        </h1>
+
+        <div className={classes.buttonCreator}>
+          <button className={classes.addButton} onClick={openModal}>
+            <FaPlus className={classes.addIcon} />
+          </button>
+        </div>
+        {folders &&
+          folders.map((folder) => (
+            <Link
+              key={folder.id}
+              to={`/photodetail/${folder.id}`}
+              className={classes.folderButton}
+              // onClick={e => {
+              //   e.preventDefault();
+              //   handleFolderClick(folder.path);
+              // }}
+            >
+              <FaFolder className={classes.folderIcon} /> {folder.name}
+            </Link>
+          ))}
+        {/* {isAddingFolder ? ( */}
+        {/* <div className={classes.addButtonContainer}>
         <input
           type="text"
           className={classes.addInput}
@@ -192,40 +188,41 @@ const Record: React.FC = () => {
           <FaPlus className={classes.addIcon} />
         </button>
       </div> */}
-      {/* )}; */}
-      <div className={classes.centerStyle}></div>
-      <Modal
-        opened={modalOpen}
-        onClose={closeModal}
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
+        {/* )}; */}
+        <div className={classes.centerStyle}></div>
+        <Modal
+          opened={modalOpen}
+          onClose={closeModal}
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
 
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Modal.Header className={classes.alertTittle}>
-          <Modal.Title>Enter your new folder name:</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <input
-            type="text"
-            className={classes.alertInput}
-            placeholder="Folder name"
-            value={newFolderName}
-            onChange={(e) => setNewFolderName(e.target.value)}
-          />
-        </Modal.Body>
-        <Modal.Body>
-          <Button onClick={handleAddClick}>Create Folder</Button>
-          <Button onClick={closeModal} variant="outline">
-            Cancel
-          </Button>
-        </Modal.Body>
-      </Modal>
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Modal.Header className={classes.alertTittle}>
+            <Modal.Title>Enter your new folder name:</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <input
+              type="text"
+              className={classes.alertInput}
+              placeholder="Folder name"
+              value={newFolderName}
+              onChange={(e) => setNewFolderName(e.target.value)}
+            />
+          </Modal.Body>
+          <Modal.Body>
+            <Button onClick={handleAddClick}>Create Folder</Button>
+            <Button onClick={closeModal} variant="outline">
+              Cancel
+            </Button>
+          </Modal.Body>
+        </Modal>
+      </div>
     </div>
   );
 };

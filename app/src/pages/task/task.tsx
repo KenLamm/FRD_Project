@@ -89,49 +89,41 @@ const Task: React.FC = () => {
           <FaPlus className={classes.addIcon} />
         </button>
       </div>
-      {isAddingTask ? (
-        <div>
-          <div className={classes.centerStyle}></div>
-          <Modal
-            opened={modalOpen}
-            onClose={closeModal}
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
+      <div>
+        <div className={classes.centerStyle}></div>
+        <Modal
+          opened={modalOpen}
+          onClose={closeModal}
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
 
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Modal.Header className={classes.alertTittle}>
-              <Modal.Title>Enter your new folder name:</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <input
-                type="text"
-                placeholder="Enter folder name"
-                value={newTaskName}
-                onChange={(e) => setNewTaskName(e.target.value)}
-              />
-            </Modal.Body>
-            <Modal.Body>
-              <Button onClick={handleAddTask}>Create Folder</Button>
-              <Button onClick={closeModal} variant="outline">
-                Cancel
-              </Button>
-            </Modal.Body>
-          </Modal>
-        </div>
-      ) : (
-        <button
-          className={classes.addButton}
-          onClick={() => setIsAddingTask(true)}
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          <FaPlus className={classes.addIcon} />
-        </button>
-      )}
+          <Modal.Header className={classes.alertTittle}>
+            <Modal.Title>Enter your new folder name:</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <input
+              type="text"
+              placeholder="Enter folder name"
+              value={newTaskName}
+              onChange={(e) => setNewTaskName(e.target.value)}
+            />
+          </Modal.Body>
+          <Modal.Body>
+            <Button onClick={handleAddTask}>Create Folder</Button>
+            <Button onClick={closeModal} variant="outline">
+              Cancel
+            </Button>
+          </Modal.Body>
+        </Modal>
+      </div>
+      )
       <div className={classes.todoSection}>
         <div className={classes.todoColumn}>
           <h2 style={{ color: "#FFFFFF" }}>進行中</h2>
