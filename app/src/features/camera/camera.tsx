@@ -6,11 +6,11 @@ import { useEffect, useRef, useState } from 'react';
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { uploadAPI, uploadVideoAPI } from './cameraAPI';
 import { useParams } from 'react-router';
+import { usePhoto } from '../../pages/photodetail/photodetailAPI';
 // import uploadForm from './cameraAPI';
 
 const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const record = useParams();
-  console.log("record id", record.id)
   const { classes } = useStyles();
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -26,7 +26,16 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [isVideoShow, setIsVideoShow] = useState<boolean>(false);
   const [isShowPicture, setIsShowPicture] = useState<boolean>(false);
   const [mode, setMode] = useState("")
-
+  const [isUploadSuccess, setIsUploadSuccess] = useState<boolean>(false);
+  const queryClient = useQueryClient();
+  //  usePhoto(record.data??"")
+  // const onAddPhoto = useMutation(
+  //   async (data: { name: string, description: string, record_id: string, file: "image.png" })
+  //     => (data.file, data.record_id, data.name ,data.description),
+  //   {
+  //     onSuccess: () => queryClient.invalidateQueries(["usePhoto"])
+  //   }
+  // );
 
   useEffect(() => {
     const enableCameraAccess = async () => {
@@ -90,14 +99,12 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
       const recordedChunks: Blob[] = [];
 
       mediaRecorder.addEventListener('dataavailable', event => {
-        console.log("data available")
         if (event.data.size > 0) {
           recordedChunks.push(event.data);
         }
       });
 
       mediaRecorder.addEventListener('stop', () => {
-        console.log("stop!")
         const recordedBlob = new Blob(recordedChunks, { type: 'video/webm' });
         const recordedUrl = URL.createObjectURL(recordedBlob);
         // var a = document.createElement('a')
@@ -154,9 +161,26 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
     onClose();
   };
 
-  const handleSubmitPhoto = () => [
-    uploadAPI(capturedImages[0], pictureName, pictureDescription, record.id ?? "")
-  ]
+  const handleSubmitPhoto = async (e: { preventDefault: () => void; }) => {
+    try {
+      await uploadAPI(capturedImages[0], pictureName, pictureDescription, record.id ?? "");
+      setIsUploadSuccess(true);
+    } catch (error) {
+      console.error('上載失敗', error)
+    }
+    queryClient.invalidateQueries(["usePhoto"]);
+    onClose();
+  }
+  const handleSubmitVideo = async (e: { preventDefault: () => void;}) => {
+    try {
+      await uploadVideoAPI(recordings ?? "", pictureName, pictureDescription, record.id ?? "")
+      setIsUploadSuccess(true);
+    }catch(error){
+      console.error('上載失敗', error)
+    }
+    queryClient.invalidateQueries(["usePhoto"]);
+    onClose();
+  }
 
   const handleCancel = async () => {
     setStream(true);
@@ -246,15 +270,17 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
                     <div className={classes.saveCancelArea + " Area"}>
                       {!isRecording && recordings ? (<>
                         <button onClick={handleCancel} className={classes.button}><TiCancel className={classes.buttonIcon} /></button>
-                        <button onClick={() => uploadVideoAPI(recordings, pictureName, pictureDescription, record.id ?? "")} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>
+                        <button onClick={handleSubmitVideo} className={classes.button}><TbSend className={classes.buttonIcon} /></button></>
                       ) : (<></>)}
                     </div>
                   </> : <></>}
                 <div className={classes.pictureName}>
                   {/* <label>Description</label> */}
-                  <input className={classes.inputAera} placeholder='Image Name'></input>
+                  <input  placeholder='Image Name' value={pictureName} 
+                  onChange={(e) => setPictureName(e.target.value)}></input>
                   <br></br>
-                  <input placeholder='Description'></input>
+                  <input placeholder='Description' value={pictureDescription}
+                  onChange={(e) => setPictureDescription(e.target.value)}></input>
                 </div>
               </div>
 
@@ -263,11 +289,12 @@ const Camera: React.FC<{ onClose: () => void }> = ({ onClose }) => {
         </>
       ) : (
         <p>Camera access denied.</p>
-      )}
+      )
+      }
 
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
 
-    </div>
+    </div >
 
   );
 };

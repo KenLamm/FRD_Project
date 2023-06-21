@@ -33,7 +33,6 @@ export function useProject() {
 }
 
 export async function createProject(name: string) {
-  console.log("hihihihihihihi");
   const res = await fetch(`${process.env.REACT_APP_API_URL}/project/post`, {
     method: "POST",
     headers: {
