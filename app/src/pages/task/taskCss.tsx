@@ -24,10 +24,12 @@ const useStyles = createStyles((theme) => ({
   todoList: {
     listStyleType: "none",
     padding: 0,
+    maxWidth:'150%',
   },
   todoItem: {
     marginBottom: "3%",
     listStyleType: "none",
+    textAlign:'left'
   },
   todoLink: {
     textDecoration: "none",

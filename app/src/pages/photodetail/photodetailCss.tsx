@@ -29,6 +29,9 @@ const useStyles = createStyles((theme) => ({
     fontSize: 16,
     cursor: "pointer",
   },
+  
+
+  
   // cameraOverlay: {
   //   position: "absolute",
   //   // width: "100vh",
