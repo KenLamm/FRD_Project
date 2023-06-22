@@ -10,18 +10,61 @@ import { relative } from "path";
 
 const useStyles = createStyles((theme) => ({
   captureButton: {
-    // Add your custom styles for the capture button
+    backgroundColor: theme.colors.red[6],
+    color: "#006fff",
+    padding: "10px 20px",
+    border: "none",
+    borderRadius: 5,
+    fontSize: 16,
+    cursor: "pointer",
+    paddingBottom: "50%",
   },
   recordButton: {
-    // Add your custom styles for the record button
+    backgroundColor: theme.colors.blue[6],
+    color: theme.white,
+    padding: "10px 20px",
+    border: "none",
+    borderRadius: 5,
+    fontSize: 16,
+    cursor: "pointer",
   },
   cameraOverlay: {
     // Add your custom styles for the camera overlay
   },
   displayNone: {
     display: "none",
+    border: `1px solid ${theme.colors.gray[5]}`,
+    borderRadius: 5,
+    padding: "10%",
+  },
+  cameraBtn: {
+    color: "#006fff",
+  },
+  cameraDiv: {
+    display: "flex",
+    justifyContent: "flex-end",
+    alignItems: "flex-start",
+    marginRight: "8%",
+    paddingBottom: "3%",
+    borderRadius: "50%",
+    backgroundColor: "#454545",
+  },
+  isShow: {
+    padding: "30%",
   },
 }));
+
+const formatDateTime = (dateTimeString: string): string => {
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  };
+  return new Date(dateTimeString).toLocaleString("en-US", options);
+};
 
 const Photo: React.FC = () => {
   const record = useParams();
@@ -62,9 +105,9 @@ const Photo: React.FC = () => {
       >
         {recordName && recordName[0].name}
       </h1>
-      <div>
-        <button className={classes.captureButton} onClick={handleCapturePhoto}>
-          <FaCamera />
+      <div className={classes.cameraDiv} style={{ borderRadius: "50%" }}>
+        <button onClick={handleCapturePhoto}>
+          <FaCamera className={classes.cameraBtn} size={30} />
         </button>
       </div>
       {showCamera && <Camera onClose={handleCloseCamera} />}
@@ -75,11 +118,8 @@ const Photo: React.FC = () => {
             <UserInfoIcons
               avatar={`${process.env.REACT_APP_API_URL}/uploads/${photo.s3_name}`}
               name={`${photo.name}`}
-              title={`${photo.description}`}           
-                //  createdAt={`${photo.created_at}`}
-              // updatedAt={''}
-              // createdAt="2023-06-01"
-              // updatedAt="2023-06-20"
+              title={`${photo.description}`}
+              time={formatDateTime(photo.created_at)}
             />
           ))}
       </div>

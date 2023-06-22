@@ -6,32 +6,12 @@ const useStyles = createStyles((theme) => ({
     gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
     gridGap: 20,
   },
-  photo: {
-    border: `1px solid ${theme.colors.gray[5]}`,
-    borderRadius: 5,
-    padding: 10,
-  },
-  captureButton: {
-    backgroundColor: theme.colors.red[6],
-    color: "#006fff",
-    padding: "10px 20px",
-    border: "none",
-    borderRadius: 5,
-    fontSize: 16,
-    cursor: "pointer",
-  },
-  recordButton: {
-    backgroundColor: theme.colors.blue[6],
-    color: theme.white,
-    padding: "10px 20px",
-    border: "none",
-    borderRadius: 5,
-    fontSize: 16,
-    cursor: "pointer",
-  },
-  
+  photo: {},
+  captureButton: {},
+  recordButton: {},
+  thisIsBtn: {},
+  cameraBtn: {},
 
-  
   // cameraOverlay: {
   //   position: "absolute",
   //   // width: "100vh",
@@ -59,8 +39,3 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export default useStyles;
-
-
-
-
-

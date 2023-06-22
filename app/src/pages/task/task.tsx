@@ -78,7 +78,9 @@ const Task: React.FC = () => {
       style={{
         minHeight: viewport.height,
         padding: "10px",
-        // height: "100%",
+        paddingBottom: "30%",
+        height: "100%",
+        backgroundColor: "#454545",
       }}
     >
       <h1 className={classes.mainHeading}>
@@ -105,25 +107,25 @@ const Task: React.FC = () => {
           }}
         >
           <Modal.Header className={classes.alertTittle}>
-            <Modal.Title>Enter your new folder name:</Modal.Title>
+            <Modal.Title>新增項目名稱:</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <input
               type="text"
-              placeholder="Enter folder name"
+              placeholder="輸入名稱"
               value={newTaskName}
               onChange={(e) => setNewTaskName(e.target.value)}
             />
           </Modal.Body>
           <Modal.Body>
-            <Button onClick={handleAddTask}>Create Folder</Button>
+            <Button onClick={handleAddTask}>創建</Button>
             <Button onClick={closeModal} variant="outline">
-              Cancel
+              取消
             </Button>
           </Modal.Body>
         </Modal>
       </div>
-      
+
       <div className={classes.todoSection}>
         <div className={classes.todoColumn}>
           <h2 style={{ color: "#FFFFFF" }}>進行中</h2>

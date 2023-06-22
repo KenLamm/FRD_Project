@@ -3,12 +3,19 @@ import "./Navbar.css"; // 導入自定義的CSS樣式
 import { FaAngleLeft } from "react-icons/fa";
 import { BsInfoSquare } from "react-icons/bs";
 import { RxHome } from "react-icons/rx";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate, useLocation } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
   const goBack = () => {
+    // const isLoggedIn = localStorage.getItem("id");
+    // const isLoginPage = location.pathname === "/login";
     navigate(-1);
+    // if (isLoginPage) {
+    //   navigate("/project");
+    // } else {
+    //   navigate(-1);
+    // }
   };
 
   return (
