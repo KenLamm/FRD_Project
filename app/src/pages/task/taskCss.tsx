@@ -16,7 +16,7 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
   },
   todoColumn: {
-    flex: 1,
+    flex: 2,
   },
   doneColumn: {
     flex: 1,
@@ -24,20 +24,19 @@ const useStyles = createStyles((theme) => ({
   todoList: {
     listStyleType: "none",
     padding: 0,
-    maxWidth:'150%',
+    maxWidth:'150vw',
   },
   todoItem: {
-    marginBottom: "3%",
+    marginBottom: "10px",
     listStyleType: "none",
-    textAlign:'left'
   },
   todoLink: {
-    textDecoration: "none",
-    display: "inline-block",
-    padding: "4% 4%",
-    backgroundColor: "#006fff",
+    padding: "4% 4%",  
     color: "rgb(252, 252, 252)",
+    backgroundColor: "#006fff",
     borderRadius: "5px",
+    textDecoration: "none",
+    // display: "inline-block",
   },
   todoButton: {
     backgroundColor: "#454545",
@@ -52,6 +51,7 @@ const useStyles = createStyles((theme) => ({
   doneList: {
     listStyleType: "none",
     padding: 0,
+    maxWidth:'150%',
   },
   doneItem: {
     marginBottom: "10px",

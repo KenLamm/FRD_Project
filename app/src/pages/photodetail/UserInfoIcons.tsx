@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import { createStyles, Avatar, Text, Group } from "@mantine/core";
 import { IconAt, IconPhoneCall } from "@tabler/icons-react";
@@ -47,8 +45,8 @@ const UserInfoIcons: React.FC<UserInfoIconsProps> = ({
   title,
 }) => {
   const { classes } = useStyles();
-  const phone = new Date().toLocaleTimeString(); // Get the current time
-  const email = new Date().toLocaleDateString(); // Get the current date
+  const getTime = new Date().toLocaleTimeString(); // Get the current time
+  const getDate = new Date().toLocaleDateString(); // Get the current date
 
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -89,20 +87,19 @@ const UserInfoIcons: React.FC<UserInfoIconsProps> = ({
           <Group noWrap spacing={10} mt={3}>
             <IconAt stroke={1.5} size="1rem" className={classes.icon} />
             <Text fz="xs" c="#fff">
-              {email}
+              {getDate}
             </Text>
           </Group>
           <Group noWrap spacing={10} mt={5}>
             <IconPhoneCall stroke={1.5} size="1rem" className={classes.icon} />
             <Text fz="xs" c="#fff">
-              {phone}
+              {getTime}
             </Text>
           </Group>
         </div>
       </Group>
 
       {isLightboxOpen && (
-
         <div className={classes.lightboxContainer} onClick={closeLightbox}>
           {isVideoPlaying ? (
             <video

@@ -6,7 +6,6 @@ const useStyles = createStyles({
     // position:'absolute',
 
     height: "100%",
-
   },
   videoContainer: {
     // position:"absolute",
@@ -18,12 +17,12 @@ const useStyles = createStyles({
     // marginBottom: "10%",
     // maxHeight: "fit-content",
     width: "100vw",
-    height: '100%',
+    height: "100%",
     // width: "100vh",
     // left: "40%",
     // bottom: "30%",
     // transform: "translate(-50%, -50%)",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   buttonArea: {
     position: "absolute",
@@ -99,14 +98,14 @@ const useStyles = createStyles({
     position: "absolute",
     // left: "25%",
     minWidth: "40%",
-    bottom: 40,
+    bottom: 150,
     zIndex: 9999,
     boderRadius: "40px",
-    color: "rgba(0,0,0,0.2)"
+    color: "rgba(0,0,0,0.2)",
   },
   inputAera: {
-  }
+    zIndex: 99999,
+  },
 });
-
 
 export default useStyles;

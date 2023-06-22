@@ -6,17 +6,20 @@
   "private": true,
   "license": "UNLICENSED",
   "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+    "seed": "node dist/prisma/seed.js",
+    "seed-old": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "scripts": {
     "migrate:dev": "dotenv -e .env -- prisma migrate dev",
+    "migrate:prod": "dotenv -e .env -- prisma migrate deploy",
     "seed:dev": "dotenv -e .env -- ts-node prisma/seed.ts",
+    "seed:prod": "node prisma/seed.js",
     "build": "nest build",
     "format": "prettier --write \"src/*/.ts\" \"test/*/.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "node dist/src/main",
     "lint": "eslint \"{src,apps,libs,test}/*/.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
