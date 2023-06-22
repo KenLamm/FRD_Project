@@ -37,6 +37,10 @@ export function AuthenticationTitle() {
     setPassword(value);
   };
 
+  // const isLoggedIn = localStorage.getItem("id");
+  // if (isLoggedIn) {
+  //   navigate("/project");
+  // } else {
   // const handleSignIn = async () => {
   //   let result = await login(username, password);
   //   console.log(result);
@@ -45,15 +49,31 @@ export function AuthenticationTitle() {
   // const submitButton = () => {
   //   handleSignIn();
   // };
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowImage(false);
-    }, 3000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setShowImage(false);
+  //   }, 3000);
 
-    return () => {
-      clearTimeout(timer);
-    };
-  }, []);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, []);
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("id");
+    if (isLoggedIn) {
+      navigate("/project");
+    } else {
+      const timer = setTimeout(() => {
+        setShowImage(false);
+      }, 3000);
+
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [navigate]);
+
   return (
     <>
       <div className={classes.centerStyle}>

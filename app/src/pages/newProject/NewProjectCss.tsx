@@ -35,7 +35,7 @@ const useStyles = createStyles((theme) => ({
     padding: "20px",
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.blue : "#006bff",
-    border: "none",
+    border: "5px solid #fff",
     borderRadius: "4px",
     cursor: "pointer",
     textAlign: "center",
@@ -43,6 +43,7 @@ const useStyles = createStyles((theme) => ({
     height: "auto",
     fontSize: "18px",
     color: "white",
+    boxShadow: "10px 10px 4px rgba(0, 0, 0, 0.2)",
   },
   alertTittle: {
     height: "20px",
