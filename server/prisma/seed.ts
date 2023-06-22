@@ -17,11 +17,26 @@ async function main() {
   try {
     // Seed users
     const users = [
-      { username: 'Admin', password: hashed, is_admin: true, role: "manager" },
-      { username: 'Admin1', password: hashed, is_admin: true,role: "manager" },
-      { username: 'Sam', password: hashed, is_admin: false, role: "contractor" },
-      { username: 'Ken', password: hashed, is_admin: false, role: "contractor"},
-      { username: 'Mav', password: hashed, is_admin: false, role: "contractor"},
+      { username: 'Admin', password: hashed, is_admin: true, role: 'manager' },
+      { username: 'Admin1', password: hashed, is_admin: true, role: 'manager' },
+      {
+        username: 'Sam',
+        password: hashed,
+        is_admin: false,
+        role: 'contractor',
+      },
+      {
+        username: 'Ken',
+        password: hashed,
+        is_admin: false,
+        role: 'contractor',
+      },
+      {
+        username: 'Mav',
+        password: hashed,
+        is_admin: false,
+        role: 'contractor',
+      },
     ];
 
     let seededUsers = [];
@@ -444,7 +459,6 @@ async function main() {
         project_id: seededProjects[0].id,
       },
 
-
       ///////////////////2 (4-7)
       {
         name: '降水控制',
@@ -747,309 +761,308 @@ async function main() {
         category_id: seededCategories[7].id,
         project_id: seededProjects[1].id,
       },
-//////////////8-11
-{
-  name: '降水控制',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[8].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '地基檢測',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[8].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '地基調平',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[8].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '地基加強',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[8].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '地基穩固',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[8].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '結構支撐',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[8].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '空隙填充',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[8].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '沉降處理',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[8].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '地基處理',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[8].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '滲漏處理',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[8].id,
-  project_id: seededProjects[2].id,
-},
-///////////////////////categories 2
-{
-  name: '基礎施工',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[9].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '柱施工',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[9].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '梁施工',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[9].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '隔牆施工',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[9].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '結構施工',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[9].id,
-  project_id: seededProjects[2].id,
-},
+      //////////////8-11
+      {
+        name: '降水控制',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[8].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '地基檢測',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[8].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '地基調平',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[8].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '地基加強',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[8].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '地基穩固',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[8].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '結構支撐',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[8].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '空隙填充',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[8].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '沉降處理',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[8].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '地基處理',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[8].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '滲漏處理',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[8].id,
+        project_id: seededProjects[2].id,
+      },
+      ///////////////////////categories 2
+      {
+        name: '基礎施工',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[9].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '柱施工',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[9].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '梁施工',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[9].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '隔牆施工',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[9].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '結構施工',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[9].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '鋼結構安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[9].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '鋼結構安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[9].id,
+        project_id: seededProjects[2].id,
+      },
 
+      {
+        name: '鋼筋綁扎',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[9].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '鋼筋綁扎',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[9].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '樓板施工',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[9].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '樓板施工',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[9].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '外牆施工',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[9].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '外牆施工',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[9].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '內牆施工',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[9].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '內牆施工',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[9].id,
-  project_id: seededProjects[2].id,
-},
+      ///////////////////categories 3
 
-///////////////////categories 3
+      {
+        name: '管道安装',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[10].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '管道安装',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[10].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '排水安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[10].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '排水安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[10].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '通風設備',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[10].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '通風設備',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[10].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '門窗安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[10].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '門窗安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[10].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '消防安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[10].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '消防安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[10].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '電梯安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[10].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '電梯安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[10].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '系統安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[10].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '系統安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[10].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '照明系統',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[10].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '照明系統',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[10].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '通訊系統',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[10].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '通訊系統',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[10].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '鋁塑板安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[10].id,
+        project_id: seededProjects[2].id,
+      },
 
-{
-  name: '鋁塑板安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[10].id,
-  project_id: seededProjects[2].id,
-},
+      //////categories 4
+      {
+        name: '磚牆施工',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[11].id,
+        project_id: seededProjects[2].id,
+      },
 
-//////categories 4
-{
-  name: '磚牆施工',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[11].id,
-  project_id: seededProjects[2].id,
-},
-
-{
-  name: '油漆工程',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[11].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '木工製作',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[11].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '地板安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[11].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '石材安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[11].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '吊頂安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[11].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '壁紙貼裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[11].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '櫥櫃安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[11].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '電氣安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[11].id,
-  project_id: seededProjects[2].id,
-},
-{
-  name: '燈具安裝',
-  is_finished: false,
-  user_id: seededUsers[0].id,
-  category_id: seededCategories[11].id,
-  project_id: seededProjects[2].id,
-},
+      {
+        name: '油漆工程',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[11].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '木工製作',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[11].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '地板安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[11].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '石材安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[11].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '吊頂安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[11].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '壁紙貼裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[11].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '櫥櫃安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[11].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '電氣安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[11].id,
+        project_id: seededProjects[2].id,
+      },
+      {
+        name: '燈具安裝',
+        is_finished: false,
+        user_id: seededUsers[0].id,
+        category_id: seededCategories[11].id,
+        project_id: seededProjects[2].id,
+      },
       /////12-15
 
       {
@@ -1158,7 +1171,7 @@ async function main() {
         category_id: seededCategories[13].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '鋼結構安裝',
         is_finished: false,
@@ -1166,7 +1179,7 @@ async function main() {
         category_id: seededCategories[13].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '鋼筋綁扎',
         is_finished: false,
@@ -1174,7 +1187,7 @@ async function main() {
         category_id: seededCategories[13].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '樓板施工',
         is_finished: false,
@@ -1182,7 +1195,7 @@ async function main() {
         category_id: seededCategories[13].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '外牆施工',
         is_finished: false,
@@ -1190,7 +1203,7 @@ async function main() {
         category_id: seededCategories[13].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '內牆施工',
         is_finished: false,
@@ -1198,9 +1211,9 @@ async function main() {
         category_id: seededCategories[13].id,
         project_id: seededProjects[3].id,
       },
-      
+
       ///////////////////categories 3
-      
+
       {
         name: '管道安装',
         is_finished: false,
@@ -1208,7 +1221,7 @@ async function main() {
         category_id: seededCategories[14].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '排水安裝',
         is_finished: false,
@@ -1216,7 +1229,7 @@ async function main() {
         category_id: seededCategories[14].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '通風設備',
         is_finished: false,
@@ -1224,7 +1237,7 @@ async function main() {
         category_id: seededCategories[14].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '門窗安裝',
         is_finished: false,
@@ -1232,7 +1245,7 @@ async function main() {
         category_id: seededCategories[14].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '消防安裝',
         is_finished: false,
@@ -1240,7 +1253,7 @@ async function main() {
         category_id: seededCategories[14].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '電梯安裝',
         is_finished: false,
@@ -1248,7 +1261,7 @@ async function main() {
         category_id: seededCategories[14].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '系統安裝',
         is_finished: false,
@@ -1256,7 +1269,7 @@ async function main() {
         category_id: seededCategories[14].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '照明系統',
         is_finished: false,
@@ -1264,7 +1277,7 @@ async function main() {
         category_id: seededCategories[14].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '通訊系統',
         is_finished: false,
@@ -1272,7 +1285,7 @@ async function main() {
         category_id: seededCategories[14].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '鋁塑板安裝',
         is_finished: false,
@@ -1280,7 +1293,7 @@ async function main() {
         category_id: seededCategories[14].id,
         project_id: seededProjects[3].id,
       },
-      
+
       //////categories 4
       {
         name: '磚牆施工',
@@ -1289,7 +1302,7 @@ async function main() {
         category_id: seededCategories[15].id,
         project_id: seededProjects[3].id,
       },
-      
+
       {
         name: '油漆工程',
         is_finished: false,
@@ -1461,7 +1474,7 @@ async function main() {
         category_id: seededCategories[17].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '鋼結構安裝',
         is_finished: false,
@@ -1469,7 +1482,7 @@ async function main() {
         category_id: seededCategories[17].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '鋼筋綁扎',
         is_finished: false,
@@ -1477,7 +1490,7 @@ async function main() {
         category_id: seededCategories[17].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '樓板施工',
         is_finished: false,
@@ -1485,7 +1498,7 @@ async function main() {
         category_id: seededCategories[17].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '外牆施工',
         is_finished: false,
@@ -1493,7 +1506,7 @@ async function main() {
         category_id: seededCategories[17].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '內牆施工',
         is_finished: false,
@@ -1501,9 +1514,9 @@ async function main() {
         category_id: seededCategories[17].id,
         project_id: seededProjects[4].id,
       },
-      
+
       ///////////////////categories 3
-      
+
       {
         name: '管道安装',
         is_finished: false,
@@ -1511,7 +1524,7 @@ async function main() {
         category_id: seededCategories[18].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '排水安裝',
         is_finished: false,
@@ -1519,7 +1532,7 @@ async function main() {
         category_id: seededCategories[18].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '通風設備',
         is_finished: false,
@@ -1527,7 +1540,7 @@ async function main() {
         category_id: seededCategories[18].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '門窗安裝',
         is_finished: false,
@@ -1535,7 +1548,7 @@ async function main() {
         category_id: seededCategories[18].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '消防安裝',
         is_finished: false,
@@ -1543,7 +1556,7 @@ async function main() {
         category_id: seededCategories[18].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '電梯安裝',
         is_finished: false,
@@ -1551,7 +1564,7 @@ async function main() {
         category_id: seededCategories[18].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '系統安裝',
         is_finished: false,
@@ -1559,7 +1572,7 @@ async function main() {
         category_id: seededCategories[18].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '照明系統',
         is_finished: false,
@@ -1567,7 +1580,7 @@ async function main() {
         category_id: seededCategories[18].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '通訊系統',
         is_finished: false,
@@ -1575,7 +1588,7 @@ async function main() {
         category_id: seededCategories[18].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '鋁塑板安裝',
         is_finished: false,
@@ -1583,7 +1596,7 @@ async function main() {
         category_id: seededCategories[18].id,
         project_id: seededProjects[4].id,
       },
-      
+
       //////categories 4
       {
         name: '磚牆施工',
@@ -1592,7 +1605,7 @@ async function main() {
         category_id: seededCategories[19].id,
         project_id: seededProjects[4].id,
       },
-      
+
       {
         name: '油漆工程',
         is_finished: false,
@@ -1657,271 +1670,269 @@ async function main() {
         project_id: seededProjects[4].id,
       },
 
-//////////////// 20-23
-// {
-//   name: '降水控制',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[20].id,
-// },
-// {
-//   name: '地基檢測',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[20].id,
-// },
-// {
-//   name: '地基調平',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[20].id,
-// },
-// {
-//   name: '地基加強',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[20].id,
-// },
-// {
-//   name: '地基穩固',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[20].id,
-// },
-// {
-//   name: '結構支撐',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[20].id,
-// },
-// {
-//   name: '空隙填充',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[20].id,
-// },
-// {
-//   name: '沉降處理',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[20].id,
-// },
-// {
-//   name: '地基處理',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[20].id,
-// },
-// {
-//   name: '滲漏處理',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[20].id,
-// },
-// ///////////////////////categories 2
-// {
-//   name: '基礎施工',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[21].id,
-// },
-// {
-//   name: '柱施工',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[21].id,
-// },
-// {
-//   name: '梁施工',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[21].id,
-// },
-// {
-//   name: '隔牆施工',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[21].id,
-// },
-// {
-//   name: '結構施工',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[21].id,
-// },
+      //////////////// 20-23
+      // {
+      //   name: '降水控制',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[20].id,
+      // },
+      // {
+      //   name: '地基檢測',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[20].id,
+      // },
+      // {
+      //   name: '地基調平',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[20].id,
+      // },
+      // {
+      //   name: '地基加強',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[20].id,
+      // },
+      // {
+      //   name: '地基穩固',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[20].id,
+      // },
+      // {
+      //   name: '結構支撐',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[20].id,
+      // },
+      // {
+      //   name: '空隙填充',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[20].id,
+      // },
+      // {
+      //   name: '沉降處理',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[20].id,
+      // },
+      // {
+      //   name: '地基處理',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[20].id,
+      // },
+      // {
+      //   name: '滲漏處理',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[20].id,
+      // },
+      // ///////////////////////categories 2
+      // {
+      //   name: '基礎施工',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[21].id,
+      // },
+      // {
+      //   name: '柱施工',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[21].id,
+      // },
+      // {
+      //   name: '梁施工',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[21].id,
+      // },
+      // {
+      //   name: '隔牆施工',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[21].id,
+      // },
+      // {
+      //   name: '結構施工',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[21].id,
+      // },
 
-// {
-//   name: '鋼結構安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[21].id,
-// },
+      // {
+      //   name: '鋼結構安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[21].id,
+      // },
 
-// {
-//   name: '鋼筋綁扎',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[21].id,
-// },
+      // {
+      //   name: '鋼筋綁扎',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[21].id,
+      // },
 
-// {
-//   name: '樓板施工',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[21].id,
-// },
+      // {
+      //   name: '樓板施工',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[21].id,
+      // },
 
-// {
-//   name: '外牆施工',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[21].id,
-// },
+      // {
+      //   name: '外牆施工',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[21].id,
+      // },
 
-// {
-//   name: '內牆施工',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[21].id,
-// },
+      // {
+      //   name: '內牆施工',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[21].id,
+      // },
 
-// ///////////////////categories 3
+      // ///////////////////categories 3
 
-// {
-//   name: '管道安装',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[22].id,
-// },
+      // {
+      //   name: '管道安装',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[22].id,
+      // },
 
-// {
-//   name: '排水安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[22].id,
-// },
+      // {
+      //   name: '排水安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[22].id,
+      // },
 
-// {
-//   name: '通風設備',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[22].id,
-// },
+      // {
+      //   name: '通風設備',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[22].id,
+      // },
 
-// {
-//   name: '門窗安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[22].id,
-// },
+      // {
+      //   name: '門窗安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[22].id,
+      // },
 
-// {
-//   name: '消防安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[22].id,
-// },
+      // {
+      //   name: '消防安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[22].id,
+      // },
 
-// {
-//   name: '電梯安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[22].id,
-// },
+      // {
+      //   name: '電梯安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[22].id,
+      // },
 
-// {
-//   name: '系統安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[22].id,
-// },
+      // {
+      //   name: '系統安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[22].id,
+      // },
 
-// {
-//   name: '照明系統',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[22].id,
-// },
+      // {
+      //   name: '照明系統',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[22].id,
+      // },
 
-// {
-//   name: '通訊系統',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[22].id,
-// },
+      // {
+      //   name: '通訊系統',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[22].id,
+      // },
 
-// {
-//   name: '鋁塑板安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[22].id,
-// },
+      // {
+      //   name: '鋁塑板安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[22].id,
+      // },
 
-// //////categories 4
-// {
-//   name: '磚牆施工',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[23].id,
-// },
+      // //////categories 4
+      // {
+      //   name: '磚牆施工',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[23].id,
+      // },
 
-// {
-//   name: '油漆工程',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[23].id,
-// },
-// {
-//   name: '木工製作',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[23].id,
-// },
-// {
-//   name: '地板安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[23].id,
-// },
-// {
-//   name: '石材安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[23].id,
-// },
-// {
-//   name: '吊頂安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[23].id,
-// },
-// {
-//   name: '壁紙貼裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[23].id,
-// },
-// {
-//   name: '櫥櫃安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[23].id,
-// },
-// {
-//   name: '電氣安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[23].id,
-// },
-// {
-//   name: '燈具安裝',
-//   is_finished: false,
-//   user_id: seededUsers[0].id,
-//   category_id: seededCategories[23].id,
-// },
-
+      // {
+      //   name: '油漆工程',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[23].id,
+      // },
+      // {
+      //   name: '木工製作',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[23].id,
+      // },
+      // {
+      //   name: '地板安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[23].id,
+      // },
+      // {
+      //   name: '石材安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[23].id,
+      // },
+      // {
+      //   name: '吊頂安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[23].id,
+      // },
+      // {
+      //   name: '壁紙貼裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[23].id,
+      // },
+      // {
+      //   name: '櫥櫃安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[23].id,
+      // },
+      // {
+      //   name: '電氣安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[23].id,
+      // },
+      // {
+      //   name: '燈具安裝',
+      //   is_finished: false,
+      //   user_id: seededUsers[0].id,
+      //   category_id: seededCategories[23].id,
+      // },
     ];
-
 
     let seededTasks = [];
 
@@ -1996,153 +2007,153 @@ async function main() {
       {
         name: '基礎定位',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[0].id,
+        task_id: seededTasks[10].id,
       },
       {
         name: '基坑支撐',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[1].id,
+        task_id: seededTasks[11].id,
       },
       {
         name: '鋼筋綁扎',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[2].id,
+        task_id: seededTasks[12].id,
       },
       {
         name: '混凝土澆灌',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[3].id,
+        task_id: seededTasks[13].id,
       },
       {
         name: '垂直支撐',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[4].id,
+        task_id: seededTasks[14].id,
       },
       {
         name: '隔音性能',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[5].id,
+        task_id: seededTasks[15].id,
       },
       {
         name: '防水處理',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[6].id,
+        task_id: seededTasks[16].id,
       },
       {
         name: '鋼柱鋼梁連接',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[7].id,
+        task_id: seededTasks[17].id,
       },
       {
         name: '建造樓板結構',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[8].id,
+        task_id: seededTasks[18].id,
       },
       {
         name: '防水層修補',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[9].id,
+        task_id: seededTasks[19].id,
       },
       {
         name: '電線',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[0].id,
+        task_id: seededTasks[20].id,
       },
       {
         name: '電纜',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[1].id,
+        task_id: seededTasks[21].id,
       },
       {
         name: '插座',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[2].id,
+        task_id: seededTasks[22].id,
       },
       {
         name: '排水管',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[3].id,
+        task_id: seededTasks[23].id,
       },
       {
         name: '火災報警系統',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[4].id,
+        task_id: seededTasks[24].id,
       },
       {
         name: '消防設備',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[5].id,
+        task_id: seededTasks[25].id,
       },
       {
         name: '噴水滅火器',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[6].id,
+        task_id: seededTasks[26].id,
       },
       {
         name: '電梯系統安裝',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[7].id,
+        task_id: seededTasks[27].id,
       },
       {
         name: '電梯井道電梯廂',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[8].id,
+        task_id: seededTasks[28].id,
       },
       {
         name: '控制系統',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[9].id,
+        task_id: seededTasks[29].id,
       },
       {
         name: '磚瓦鋪設',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[0].id,
+        task_id: seededTasks[30].id,
       },
       {
         name: '天花板油漆',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[1].id,
+        task_id: seededTasks[31].id,
       },
       {
         name: '木製家具',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[2].id,
+        task_id: seededTasks[32].id,
       },
       {
         name: '地板鋪設固定',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[3].id,
+        task_id: seededTasks[33].id,
       },
       {
         name: '吊頂材料安裝',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[4].id,
+        task_id: seededTasks[34].id,
       },
       {
         name: '浴室櫥櫃安裝',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[5].id,
+        task_id: seededTasks[35].id,
       },
       {
         name: '廚房安裝',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[6].id,
+        task_id: seededTasks[36].id,
       },
       {
         name: '設備佈置連接',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[7].id,
+        task_id: seededTasks[37].id,
       },
 
       {
         name: '開關電氣',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[8].id,
+        task_id: seededTasks[38].id,
       },
       {
         name: '壁紙貼裝工作',
         user_id: seededUsers[0].id,
-        task_id: seededTasks[9].id,
+        task_id: seededTasks[39].id,
       },
     ];
 

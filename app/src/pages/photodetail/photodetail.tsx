@@ -42,6 +42,8 @@ const Photo: React.FC = () => {
     setShowCamera(false);
   };
 
+  
+
   return (
     <div
       className="hi234"
@@ -54,7 +56,6 @@ const Photo: React.FC = () => {
       <h1
         style={{
           textAlign: "center",
-          color: "white",
           marginTop: 0,
           paddingTop: "0.67em",
         }}
@@ -74,7 +75,11 @@ const Photo: React.FC = () => {
             <UserInfoIcons
               avatar={`${process.env.REACT_APP_API_URL}/uploads/${photo.s3_name}`}
               name={`${photo.name}`}
-              title={`${photo.description}`}
+              title={`${photo.description}`}           
+                //  createdAt={`${photo.created_at}`}
+              // updatedAt={''}
+              // createdAt="2023-06-01"
+              // updatedAt="2023-06-20"
             />
           ))}
       </div>

@@ -6,6 +6,7 @@ interface Photo {
     s3_name: string;
     description: string;
     record_id: number;
+    created_at: string;
 }
 
 interface Record{
