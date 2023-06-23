@@ -27,5 +27,6 @@ const useStyles = createStyles((theme) => ({
     width: "30%",
     justifyContent: "center",
   },
+  categoryList: { paddingBottom: "7%" },
 }));
 export default useStyles;

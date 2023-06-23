@@ -145,7 +145,7 @@ const Project = () => {
               </div>
             </Modal.Body>
             <Modal.Body>
-              <Button style={{ marginRight: "50px" }} onClick={createButton}>
+              <Button style={{ marginRight: "35%" }} onClick={createButton}>
                 創建
               </Button>
               <Button onClick={closeModal} variant="outline">

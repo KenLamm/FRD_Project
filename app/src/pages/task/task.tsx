@@ -133,7 +133,6 @@ const Task: React.FC = () => {
             {todoItems &&
               todoItems.map((todo) => (
                 <li key={todo.id} className={classes.todoItem}>
-                  {/* <Link to={`/details/${todo.id}`} className={classes.todoLink}> */}
                   <Link to={`/record/${todo.id}`} className={classes.todoLink}>
                     {todo.name}
                   </Link>

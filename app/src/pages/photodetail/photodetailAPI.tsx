@@ -26,6 +26,7 @@ export function usePhoto(record: string) {
         }
       );
       const result = await res.json();
+      console.log("check detail", result);
       return result as Photo[];
     },
   });
