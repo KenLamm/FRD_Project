@@ -136,14 +136,14 @@ const Task: React.FC = () => {
                   <Link to={`/record/${todo.id}`} className={classes.todoLink}>
                     {todo.name}
                   </Link>
-                { user === 'manager' &&
-                  <button
-                    className={classes.todoButton}
-                    onClick={() => handleToggleDone(todo.id)}
-                  >
-                    完成
-                  </button>
-                  }
+                  {user === "manager" && (
+                    <button
+                      className={classes.todoButton}
+                      onClick={() => handleToggleDone(todo.id)}
+                    >
+                      完成
+                    </button>
+                  )}
                 </li>
               ))}
           </ul>

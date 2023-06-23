@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { createStyles, Avatar, Text, Group } from "@mantine/core";
 import { IconAt, IconPhoneCall } from "@tabler/icons-react";
+import { MdDateRange, MdTitle } from "react-icons/md";
+import { TbFileDescription } from "react-icons/tb";
 
 const useStyles = createStyles((theme) => ({
   icon: {
@@ -11,9 +13,12 @@ const useStyles = createStyles((theme) => ({
   },
   name: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    paddingBottom: "2%",
   },
+  desception: { paddingBottom: "5%" },
   avatar: {
     cursor: "pointer",
+    padding: "3%",
   },
   lightboxContainer: {
     position: "fixed",
@@ -37,16 +42,17 @@ interface UserInfoIconsProps {
   avatar: string;
   name: string;
   title: string;
+  time: string;
 }
 
 const UserInfoIcons: React.FC<UserInfoIconsProps> = ({
   avatar,
   name,
   title,
+  time,
 }) => {
   const { classes } = useStyles();
-  const getTime = new Date().toLocaleTimeString(); // Get the current time
-  const getDate = new Date().toLocaleDateString(); // Get the current date
+  const getTime = time;
 
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -78,20 +84,22 @@ const UserInfoIcons: React.FC<UserInfoIconsProps> = ({
           onClick={openLightbox}
         />
         <div>
-          <Text fz="xs" tt="uppercase" fw={700} c="#fff">
-            {title}
-          </Text>
           <Text fz="lg" c="#fff" fw={800} className={classes.name}>
-            {name}
+            <span style={{ fontSize: "12%" }}>名稱:</span> {name}
           </Text>
-          <Group noWrap spacing={10} mt={3}>
-            <IconAt stroke={1.5} size="1rem" className={classes.icon} />
-            <Text fz="xs" c="#fff">
-              {getDate}
-            </Text>
-          </Group>
+          <Text
+            fz="xs"
+            tt="uppercase"
+            fw={700}
+            c="#fff"
+            className={classes.desception}
+          >
+            <TbFileDescription />: {title}
+          </Text>
+
+          <Group noWrap spacing={10} mt={3}></Group>
           <Group noWrap spacing={10} mt={5}>
-            <IconPhoneCall stroke={1.5} size="1rem" className={classes.icon} />
+            <MdDateRange />
             <Text fz="xs" c="#fff">
               {getTime}
             </Text>
