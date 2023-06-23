@@ -38,7 +38,7 @@ const useStyles = createStyles((theme) => ({
     padding: "10%",
   },
   cameraBtn: {
-    color: "blue",
+    color: "#006fff",
   },
   cameraDiv: {
     display: "flex",

@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../logo.jpeg";
 import name from "../../companyName.jpg";
-import BackButton from "../../features/navbar/Navbar";
+
 import { useNavigate } from "react-router-dom";
 
 const TopNavbar = () => {

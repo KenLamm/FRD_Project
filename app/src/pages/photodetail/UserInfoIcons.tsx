@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { createStyles, Avatar, Text, Group } from "@mantine/core";
 import { IconAt, IconPhoneCall } from "@tabler/icons-react";
-import { MdDateRange } from "react-icons/md";
+import { MdDateRange, MdTitle } from "react-icons/md";
+import { TbFileDescription } from "react-icons/tb";
 
 const useStyles = createStyles((theme) => ({
   icon: {
@@ -51,8 +52,7 @@ const UserInfoIcons: React.FC<UserInfoIconsProps> = ({
   time,
 }) => {
   const { classes } = useStyles();
-  const getTime = time; // Get the current time
-  const getDate = new Date().toLocaleDateString(); // Get the current date
+  const getTime = time;
 
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -85,7 +85,7 @@ const UserInfoIcons: React.FC<UserInfoIconsProps> = ({
         />
         <div>
           <Text fz="lg" c="#fff" fw={800} className={classes.name}>
-            名稱: {name}
+            <span style={{ fontSize: "12%" }}>名稱:</span> {name}
           </Text>
           <Text
             fz="xs"
@@ -94,7 +94,7 @@ const UserInfoIcons: React.FC<UserInfoIconsProps> = ({
             c="#fff"
             className={classes.desception}
           >
-            簡介: {title}
+            <TbFileDescription />: {title}
           </Text>
 
           <Group noWrap spacing={10} mt={3}></Group>
