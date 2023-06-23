@@ -105,6 +105,7 @@ const useStyles = createStyles({
   },
   inputAera: {
     zIndex: 99999,
+    fontSize: "16px"
   },
 });
 

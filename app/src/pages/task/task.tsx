@@ -83,9 +83,9 @@ const Task: React.FC = () => {
         backgroundColor: "#454545",
       }}
     >
-      <h1 className={classes.mainHeading}>
+      <div className={classes.mainHeading}>
         {categoryName.data && categoryName.data[0].name}
-      </h1>
+      </div>
       <div className={classes.buttonCreator}>
         <button className={classes.addButton} onClick={openModal}>
           <FaPlus className={classes.addIcon} />
@@ -107,18 +107,19 @@ const Task: React.FC = () => {
           }}
         >
           <Modal.Header className={classes.alertTittle}>
-            <Modal.Title>新增項目名稱:</Modal.Title>
+            <Modal.Title style={{fontSize: "150%"}}>新增項目名稱:</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <input
               type="text"
               placeholder="輸入名稱"
               value={newTaskName}
+              style={{width:"70%"}}
               onChange={(e) => setNewTaskName(e.target.value)}
             />
           </Modal.Body>
           <Modal.Body>
-            <Button onClick={handleAddTask}>創建</Button>
+            <Button style={{ marginRight:"35%"}} onClick={handleAddTask}>創建</Button>
             <Button onClick={closeModal} variant="outline">
               取消
             </Button>

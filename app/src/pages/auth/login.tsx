@@ -66,7 +66,7 @@ export function AuthenticationTitle() {
     } else {
       const timer = setTimeout(() => {
         setShowImage(false);
-      }, 3000);
+      }, 2000);
 
       return () => {
         clearTimeout(timer);

@@ -203,7 +203,7 @@ const Record: React.FC = () => {
           }}
         >
           <Modal.Header className={classes.alertTittle}>
-            <Modal.Title>新增文件夾名稱:</Modal.Title>
+            <Modal.Title style={{fontSize: "150%"}}>新增文件夾名稱:</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <input
@@ -211,11 +211,12 @@ const Record: React.FC = () => {
               className={classes.alertInput}
               placeholder="輸入名稱"
               value={newFolderName}
+              style={{width:"70%"}}
               onChange={(e) => setNewFolderName(e.target.value)}
             />
           </Modal.Body>
           <Modal.Body>
-            <Button onClick={handleAddClick}>創建</Button>
+            <Button style={{ marginRight:"35%"}} onClick={handleAddClick}>創建</Button>
             <Button onClick={closeModal} variant="outline">
               取消
             </Button>

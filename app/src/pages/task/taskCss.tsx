@@ -96,7 +96,8 @@ const useStyles = createStyles((theme) => ({
     height: "auto",
   },
   alertTittle: {
-    height: "20px",
+    height: "100%",
+    width: "100%"
   },
   alertInput: {
     marginTop: "3%",
