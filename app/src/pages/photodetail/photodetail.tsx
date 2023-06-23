@@ -85,6 +85,8 @@ const Photo: React.FC = () => {
     setShowCamera(false);
   };
 
+  
+
   return (
     <div
       className="hi234"
@@ -97,7 +99,6 @@ const Photo: React.FC = () => {
       <h1
         style={{
           textAlign: "center",
-          color: "white",
           marginTop: 0,
           paddingTop: "0.67em",
         }}
