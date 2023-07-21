@@ -85,7 +85,7 @@ const Photo: React.FC = () => {
     setShowCamera(false);
   };
 
-  
+
 
   return (
     <div

@@ -1,4 +1,9 @@
 # FRD_Project
 
-mavis testing
-hihihi
+## Setup database 
+
+```
+yarn prisma migrate dev
+```
+
+## 

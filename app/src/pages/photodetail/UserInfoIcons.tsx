@@ -55,7 +55,7 @@ const UserInfoIcons: React.FC<UserInfoIconsProps> = ({
   const getTime = time;
 
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
 
   const openLightbox = () => {
     setIsLightboxOpen(true);
@@ -73,6 +73,8 @@ const UserInfoIcons: React.FC<UserInfoIconsProps> = ({
     setIsVideoPlaying(false);
   };
 
+  
+
   return (
     <div className="myAvatar">
       <Group noWrap>
@@ -83,6 +85,7 @@ const UserInfoIcons: React.FC<UserInfoIconsProps> = ({
           className={classes.avatar}
           onClick={openLightbox}
         />
+        {/* <p>link to source {avatar}</p> */}
         <div>
           <Text fz="lg" c="#fff" fw={800} className={classes.name}>
             <span style={{ fontSize: "12%" }}>名稱:</span> {name}
@@ -109,9 +112,9 @@ const UserInfoIcons: React.FC<UserInfoIconsProps> = ({
 
       {isLightboxOpen && (
         <div className={classes.lightboxContainer} onClick={closeLightbox}>
-          {isVideoPlaying ? (
+          {avatar.split('.')[1]=="webm" ? (
             <video
-              src="path/to/video.mp4"
+              src={avatar}
               className={classes.lightboxImage}
               onClick={(e) => e.stopPropagation()}
               autoPlay
